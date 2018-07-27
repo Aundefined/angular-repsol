@@ -1,0 +1,50 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.contenedor-formulario {
+    background-color: @blanco;
+    border: solid 1px @gris-claro;
+    padding: 1.875em;
+    @media screen and (max-width: @bk1) {
+        width: 100%;
+    }
+}
+
+.titulo-formulario {
+    font-family: @regular;
+    font-size: 2.250em;
+    color: @gris-oscuro;
+    border: 0;
+    margin: 0 0 0.556em;
+}
+.fieldset-formulario {
+    margin-bottom: 0.625em;
+}
+.legend-formulario {
+    font-family: @semi-bold;
+    color: @gris-oscuro;
+    font-size: 1.313em;
+    padding-bottom: 0.476em;
+    border-bottom: 2px solid @gris-claro;
+    margin-bottom: 1.250em;
+}
+
+.input-estandar {
+    width: 100%;
+}
+
+.grupo-input,
+.grupo-fecha {
+    margin-bottom: 1.250em;
+}
+.grupo-input .contrasena,
+.grupo-input .correo,
+.grupo-input .input-estandar,
+.grupo-input textarea {
+    border-color: @gris-claro;
+
+    &:focus {
+        outline: none;
+        border-color: @turquesa;
+        box-shadow: 0 0 3px @turquesa;
+    }
+}

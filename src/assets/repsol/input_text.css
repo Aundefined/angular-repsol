@@ -1,0 +1,191 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+input[type=email],
+input[type=password],
+input[type=text],
+input[type=number],
+textarea {
+  display: block;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 0.750em;
+  font-family: 'titilliumregular';
+  font-weight: normal;
+  font-size: 0.938em;
+  width: 100%;
+}
+
+input[type=email]:disabled,
+input[type=password]:disabled,
+input[type=text]:disabled,
+input[type=number]:disabled,
+textarea:disabled {
+  border: none;
+  background-color: #e0ded9;
+}
+
+.cuenta-caracteres,
+.etiqueta-input {
+  font-family: 'titilliumregular';
+  font-weight: normal;
+  font-size: 0.938em;
+  color: #9c9081;
+}
+
+.input-valido {/* 
+  background-image: url("../img/Checked_ok.png"); */
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.grupo-input .error-validate {
+  border-color: #e40028 !important;
+  color: #e40028;/* 
+  background-image: url("../img/novalido.png"); */
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.grupo-input .error-validate:focus {
+  outline: none;
+  border-color: #e40028;
+  box-shadow: none;
+}
+
+.error-mensaje {
+  font-family: 'titilliumregular';
+  font-size: 0.813em;
+  color: #e40028;
+}
+
+textarea {
+  height: 12.5em;
+  resize: none;
+}
+
+.cuenta-caracteres {
+  margin-top: 0.625em;
+}
+
+.grupo-fecha input[type=text],
+.grupo-fecha input[type=number] {
+  width: 4%;
+  display: block;
+  border: 1px solid;
+  border-radius: 6px;
+  border-color: #e0ded9;
+  padding: 0.750em;
+  font-family: 'titilliumregular';
+  font-weight: normal;
+  font-size: 0.938em;
+  -moz-appearance: textfield;
+}
+
+.grupo-fecha input[type=text]:focus,
+.grupo-fecha input[type=number]:focus {
+  outline: none;
+  border-color: #007e94;
+  box-shadow: 0 0 3px #007e94;
+}
+
+.grupo-fecha input[type=number]::-webkit-outer-spin-button,
+.grupo-fecha input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.grupo-fecha-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.grupo-fecha-container input[type=text],
+.grupo-fecha-container input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.grupo-fecha-container .dia-nacimiento,
+.grupo-fecha-container .mes-nacimiento {
+  width: 30%;
+}
+
+.grupo-fecha-container .dia-nacimiento input[type=text],
+.grupo-fecha-container .mes-nacimiento input[type=text],
+.grupo-fecha-container .dia-nacimiento input[type=number],
+.grupo-fecha-container .mes-nacimiento input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.grupo-fecha-container .dia-nacimiento input[type=number]::-webkit-outer-spin-button,
+.grupo-fecha-container .mes-nacimiento input[type=number]::-webkit-outer-spin-button,
+.grupo-fecha-container .dia-nacimiento input[type=number]::-webkit-inner-spin-button,
+.grupo-fecha-container .mes-nacimiento input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.grupo-fecha-container .anyo-nacimiento {
+  width: 40%;
+}
+
+.separador {
+  margin: 0 0.438em;
+  color: #9c9081;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #9c9081;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #9c9081;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #9c9081;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #9c9081;
+}
+
+@media screen and (min-width: 768px) {
+  .grupo-fecha-container input[type=text],
+  .grupo-fecha-container input[type=number] {
+    width: 0;
+  }
+
+  .grupo-fecha-container .dia-nacimiento input[type=text],
+  .grupo-fecha-container .mes-nacimiento input[type=text],
+  .grupo-fecha-container .dia-nacimiento input[type=number],
+  .grupo-fecha-container .mes-nacimiento input[type=number] {
+    width: 100%;
+    text-align: center;
+  }
+
+  .grupo-fecha-container .anyo-nacimiento input[type=text],
+  .grupo-fecha-container .anyo-nacimiento input[type=number] {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .grupo-fecha input[type=text],
+  .grupo-fecha input[type=number] {
+    width: 100%;
+  }
+
+  .grupo-fecha-container input[type=text],
+  .grupo-fecha-container input[type=number] {
+    width: 100%;
+  }
+}

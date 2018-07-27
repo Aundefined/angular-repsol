@@ -1,0 +1,28 @@
+@import url('../../assets/repsol/botones_enlaces.css');
+
+
+.cls-div-entrada{
+    background-color: #ffffff;
+    padding: 0px;
+    text-align: left;
+    /* border:  1px solid rgb(160, 154, 154); */
+    padding: 55px;    
+    text-align: center;
+}
+
+.cls-div-entrada  span{   
+    font-size: 25px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 25px;
+    background-color: #f2af83; 
+    border: 1px solid #eb7b31;    
+}
+
+.boton-estandar {
+    margin-bottom: 15px;
+}
+
+.boton-secundario {
+    margin-top: 15px;
+}

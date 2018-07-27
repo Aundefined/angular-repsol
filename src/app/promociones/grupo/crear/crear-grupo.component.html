@@ -1,0 +1,283 @@
+<div class="right-paragraph">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" id="cls-breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Promociones</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Gesti&oacute;n de Grupos</li>
+        </ol>
+    </nav>
+    <div class="cls-title">
+        <span>DATOS CABECERA</span>
+    </div>
+    <div class="cls-form-registrar table-responsive">
+        <table class="table table-sm" style="width: 40%;">
+            <thead class="bg-Cabecera">
+                <tr>
+                    <th scope="col">C&oacute;digo</th>
+                    <th scope="col">Descripci&oacute;n</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-fila">
+                    <td>
+                        <input type="text" id="codigo" class="form-control cls-input" [(ngModel)]="mGrupoOferta.codigo" name="codigo" value="{{mGrupoOferta.codigo}}"
+                            [disabled]="true">
+                    </td>
+                    <td>
+                        <input type="text" id="nombre" style="width: 400px;" class="form-control cls-input" [(ngModel)]="mGrupoOferta.nombre" name="nombre"
+                            value="{{mGrupoOferta.nombre}}" [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{mGrupoOferta.nombre}}"
+                            title="{{mGrupoOferta.nombre}}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cls-title">
+        <span>ARTICULOS DEL GRUPO</span>
+    </div>
+    <div *ngIf="habilitarControles()">
+        <div class="cls-form-buscar">
+
+
+            <div class="form-row">
+                <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1 mx-sm-3 mb-2">
+                    <label for="referenciaFiltro" class="lbl-title">Referencia: &nbsp; </label>
+                    <input type="text" #Referencia id="referenciaFiltro" [(ngModel)]="filtroArticulosGrupoOferta.referenciaFiltro" name="referenciaFiltro"
+                        value="{{filtroArticulosGrupoOferta.referenciaFiltro}}" class="form-control form-control-sm cls-input"
+                        [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{filtroArticulosGrupoOferta.referenciaFiltro}}">
+                </div>
+                <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5 mx-sm-3 mb-2">
+                    <label for="descripcionFiltro" class="lbl-title">Descripci&oacute;n: &nbsp;</label>
+                    <input type="text" id="descripcionFiltro" [(ngModel)]="filtroArticulosGrupoOferta.descripcionFiltro" name="descripcionFiltro"
+                        value="{{filtroArticulosGrupoOferta.descripcionFiltro}}" class="form-control form-control-sm cls-input"
+                        [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{filtroArticulosGrupoOferta.descripcionFiltro}}">
+                </div>
+                <div class="form-group col-xs-3 col-sm-3 col-md-3 col-lg-3 mx-sm-3 mb-2">
+                    <label for="cmbProveedor" class="lbl-title">Proveedor : &nbsp;</label>
+                    <select id="cmbProveedor" class="custom-select" [(ngModel)]="filtroArticulosGrupoOferta.proveedorFiltro" class="form-control form-control-sm cls-input"
+                        [disabled]="!habilitarControles()" (change)="asignarNombreTooltip()" placement="bottom" ngbTooltip="{{proveedorFiltroNombre}}">
+                        <option *ngFor="let prov of mProveedores" [value]="prov.id_Proveedores" [disabled]="!habilitarControles()">
+                            {{prov.razon_Social}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2">
+                    <label for="cmbFamilia" class="lbl-title">Familia : &nbsp;</label>
+                    <select id="cmbFamilia" class="custom-select " [(ngModel)]="filtroArticulosGrupoOferta.categoriaFiltro" multiple [disabled]="!habilitarControles()">
+                        <option value="0" selected="selected" (click)="selectedAllCategorias()" [disabled]="!habilitarControles()">Todos</option>
+                        <option *ngFor="let cat of mCategorias" [value]="cat.id_Categoria" (click)="categoriaClick()" [disabled]="!habilitarControles()"
+                            class="optionC">
+                            {{cat.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2">
+                    <label for="cmbSubFamilia" class="lbl-title">SubFamilia : &nbsp;</label>
+                    <select id="cmbSubFamilia" class="custom-select " [(ngModel)]="filtroArticulosGrupoOferta.familiaFiltro" multiple [disabled]="!habilitarControles()">
+                        <option value="0" (click)="selectedAllFamilias()" [disabled]="!habilitarControles()">Todos</option>
+                        <option *ngFor="let fam of mFamiliasPadre" [value]="fam.id_Familias_Padre" (click)="familiaClick()" [disabled]="!habilitarControles()"
+                            class="optionFP">
+                            {{fam.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2">
+                    <label for="cmbGrupo" class="lbl-title">Grupo : &nbsp;</label>
+                    <select id="cmbGrupo" class="custom-select" [(ngModel)]="filtroArticulosGrupoOferta.subFamiliaFiltro" multiple [disabled]="!habilitarControles()">
+                        <option value="0" (click)="selectedAllSubFamilias()" [disabled]="!habilitarControles()">Todos</option>
+                        <option *ngFor="let subFam of mFamilias" [value]="subFam.id_Familias" (click)="subFamiliaClick()" selected>
+                            {{subFam.nombre}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group col-xs-3 col-sm-3 col-md-3 col-lg-3 mx-sm-3 mb-2">
+                    <div style="float: right; text-align: center; padding-top: 50px; padding-right: 30px;">
+                        <button type="submit" id="btnLimpiar" class="btn btn-primary mb-2 btn-repsol " (click)="limpiarFiltrosArticulos()" [disabled]="!habilitarControles()"
+                            style="width: 100px;" placement="bottom" ngbTooltip="Limpiar filtros">Limpiar</button>
+                        <button type="submit" id="btnBuscar" class="btn btn-primary mb-2 btn-repsol " (click)="cargarArticulosDisponiblesFisrtTime()"
+                            [disabled]="!habilitarControles()" style="width: 100px;" placement="bottom" ngbTooltip="Buscar articulos">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cls-contentGru">
+        <div class="row">
+            <div *ngIf="habilitarControles()" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="cls-content-lista ">
+                    <div>
+                        <span>Artículos disponibles</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped-alter">
+                            <thead class="bg-Cabecera">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" (click)="headerClickGO('Referencia')">Referencia
+                                        <img class="stiloImagenHeader" [src]="orderByGO=='Referencia'?setClassHeaderOrder():''" />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGO('NOMBRE')">Descripci&oacute;n
+                                        <img class="stiloImagenHeader" [src]="orderByGO=='NOMBRE'?setClassHeaderOrder():''" />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGO('FAMILIA')">Grupo
+                                        <img class="stiloImagenHeader" [src]="orderByGO=='FAMILIA'?setClassHeaderOrder():''" />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGO('PVP')">PVP
+                                        <img class="stiloImagenHeader" [src]="orderByGO=='PVP'?setClassHeaderOrder():''" />
+                                    </th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr class="bg-fila" *ngFor="let artDis of articulosDisponibles; let i = index;trackBy:trackByIdx">
+                                    <td>
+                                        <input type="checkbox" [(ngModel)]="articulosDisponibles[i].selected" name="selectedDisp{{i}}" [disabled]="articulosDisponibles[i].id_Tipo_Promocion==2?true:false">
+                                    </td>
+                                    <td>{{artDis.referencia}}</td>
+                                    <td>{{artDis.nombre}}</td>
+                                    <td>{{artDis.grupo}}</td>
+                                    <td> <input type="number" value="{{artDis.pvp}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <div *ngIf="numeroPaginasGO>1?true:false" style="background-color: #ffffff;color:#eb7b31;">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-sm paginationTexto">
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(1)">&#60;&#60;</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClick(-1)" [class]="paginaActualGO==1?'page-link page-color-link adisabled':'page-link page-color-link'">Anterior</a>
+                                        </li>
+                                        <li *ngFor="let pagina of listPaginasGO" [class]="setClassActive(pagina)">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(pagina)">{{pagina}}</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClick(0)" [class]="paginaActualGO==numeroPaginasGO?'page-link page-color-link adisabled':'page-link page-color-link'">Siguiente</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(numeroPaginasGO)">&#62;&#62;</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
+                            <div style="background-color: #ffffff; text-align: right;">
+                                <button type="submit" id="btnAnadir" (click)="agregarArticuloGrupoOferta()" [disabled]="!habilitarControles()" class="btn btn-primary mb-2 btn-repsol "
+                                    placement="bottom" ngbTooltip="Añadir articulos">Añadir &#62;&#62; </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="!habilitarControles()?'col-xs-12 col-sm-12 col-md-12 col-lg-12':'col-xs-6 col-sm-6 col-md-6 col-lg-6'">
+                <div class="cls-content-agregada ">
+                    <div>
+                        <span>Artículos añadidos</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped-alter">
+                            <thead class="bg-Cabecera">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" (click)="headerClickArticulosAnadidos('referencia')">Referencia
+                                        <img class="stiloImagenHeader" [src]="this.mGrupoOfertaById.orderBy=='referencia'?setClassHeaderOrderArticulosAnadidos():''"
+                                        />
+                                    </th>
+                                    <th scope="col" (click)="headerClickArticulosAnadidos('descripcion')">Descripci&oacute;n
+                                        <img class="stiloImagenHeader" [src]="this.mGrupoOfertaById.orderBy=='descripcion'?setClassHeaderOrderArticulosAnadidos():''"
+                                        />
+                                    </th>
+                                    <th scope="col" (click)="headerClickArticulosAnadidos('grupo')">Grupo
+                                        <img class="stiloImagenHeader" [src]="this.mGrupoOfertaById.orderBy=='grupo'?setClassHeaderOrderArticulosAnadidos():''" />
+                                    </th>
+                                    <th scope="col" (click)="headerClickArticulosAnadidos('pvp')">PVP
+                                        <img class="stiloImagenHeader" [src]="this.mGrupoOfertaById.orderBy=='pvp'?setClassHeaderOrderArticulosAnadidos():''" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-fila" *ngFor="let artAnad of mGrupoOferta.detalle; let j = index;trackBy:trackByIdx" [hidden]="artAnad.accion=='D'?true:false">
+                                    <td>
+                                        <input type="checkbox" [(ngModel)]="mGrupoOferta.detalle[j].selected" name="selectedAgre{{j}}" [disabled]="!habilitarControles()">
+                                    </td>
+                                    <td>{{artAnad.referencia}}</td>
+                                    <td>{{artAnad.nombre}}</td>
+                                    <td>{{artAnad.grupo}}</td>                                    
+                                    <td> <input type="number" value="{{artAnad.pvp}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-6">
+                            <div style="background-color: #ffffff; text-align: left;">
+                                <button *ngIf="habilitarControles()" type="submit" id="btnQuitar" class="btn btn-primary mb-2 btn-repsol" (click)="quitarArticuloGrupoOferta()"
+                                    [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="Quitar articulos"> &#60;&#60;Quitar</button>
+                            </div>
+                        </div>
+                        <div [ngClass]="!habilitarControles()?'col-xs-12 col-sm-12 col-md-12 col-lg-12':'col-xs-12 col-sm-12 col-md-6 col-lg-4'">
+                            <div *ngIf="this.mGrupoOfertaById.p.numeroPaginas>1?true:false" style="background-color: #ffffff;color:#eb7b31;">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-sm paginationTexto">
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClickArticulosAnadidos(1)">&#60;&#60;</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClickArticulosAnadidos(-1)" [class]="this.mGrupoOfertaById.p.paginaActual==1?'page-link page-color-link adisabled':'page-link page-color-link'">Anterior</a>
+                                        </li>
+                                        <li *ngFor="let pagina of this.mGrupoOfertaById.p.listPaginas" [class]="setClassActiveArticulosAnadidos(pagina)">
+                                            <a class="page-link page-color-link" (click)="paginacionClickArticulosAnadidos(pagina)">{{pagina}}</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClickArticulosAnadidos(0)" [class]="this.mGrupoOfertaById.p.paginaActual==this.mGrupoOfertaById.p.numeroPaginas?'page-link page-color-link adisabled':'page-link page-color-link'">Siguiente</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClickArticulosAnadidos(this.mGrupoOfertaById.p.numeroPaginas)">&#62;&#62;</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cls-articulo-content-botton">
+        <button *ngIf="habilitarControles()" type="submit" class="btn btn-primary  mb-2  btn-repsol" (click)="guardarGrupoOferta()"
+            [disabled]="!habilitarControles()" placement="top" ngbTooltip="Guardar grupo">Guardar</button>
+        <a [routerLink]="['/grupos']" [queryParams]="{action:1}" class="btn btn-primary mb-2 btn-repsol"
+            placement="top" ngbTooltip="Volver a buscar">
+            <span>Volver</span>
+        </a>
+    </div>
+</div>
+<!-- Modal Grabar-->
+<div class="modal fade" id="ModalGrabar" [ngStyle]="{'display': showModal ? 'block' : 'none', 'opacity': 1}" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>{{textoModal}}
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-secondary btn-repsol" data-dismiss="modal" (click)="cerrarModal(volverABusqueda)">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

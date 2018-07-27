@@ -1,0 +1,2649 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Artículos &nbsp;</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">{{altaConsulta}} de Artículos</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row primerRow">
+
+    <div class="col-md-12 col-lg-12 col-xl-12">
+      <form class="contenedor-formulario" name="form" #formu="ngForm">
+        <div class="contenedor-acordeon">
+          <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-4">
+                <h4 class="panel-title">
+                  <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseFour">
+                    <span class="acordeon-header-text">DATOS GENERALES</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in collapse show" role="tabpanel" aria-labelledby="acordeon-item-4">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-8">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada1">Código</label>
+                            <input type="text" [disabled]="disab" name="codigo" class="input-estandar" [(ngModel)]="detalle.CODIGO" #codigo="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-10">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">EAN</label>
+                            <input type="text" [disabled]="disab" name="ean" class="input-estandar" [(ngModel)]="detalle.EAN" #ean="ngModel" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-3">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Grupo</label>
+                            <input type="text" [disabled]="disab" name="codGrupo" class="input-estandar" [(ngModel)]="detalle.COD_GRUPO" #codGrupo="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                          <a>
+                            <img class="img" title="Ver" src="./assets/buscar.png" alt="">
+                          </a>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2"></label>
+                            <input type="text" [disabled]="true" name="grupo" class="input-estandar" [(ngModel)]="detalle.GRUPO" #grupo="ngModel" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-3">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Subfamilia</label>
+                            <input type="text" [disabled]="true" name="codSubfamilia" class="input-estandar" [(ngModel)]="detalle.COD_SUBFAMILIA" #codSubfamilia="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2"></label>
+                            <input type="text" [disabled]="true" name="subfamilia" class="input-estandar" [(ngModel)]="detalle.SUBFAMILIA" #subfamilia="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-3">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Familia</label>
+                            <input type="text" [disabled]="true" name="codFamilia" class="input-estandar" [(ngModel)]="detalle.COD_FAMILIA" #codFamilia="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2"></label>
+                            <input type="text" [disabled]="true" name="familia" class="input-estandar" [(ngModel)]="detalle.FAMILIA" #familia="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="opciones-multiples">Procedimiento catalogación</label>
+                            <select class="rps-select selector-multiple" [disabled]="disab" name="opciones-multiples" id="opciones-multiples">
+                              <option value="1">Lorem ips 1</option>
+                              <option value="2">Lorem ips 2</option>
+                              <option value="3">Lorem ips 3</option>
+                              <option value="4">Lorem ips 4</option>
+                              <option value="5">Lorem ips 5</option>
+                              <option value="6">Lorem ips 6</option>
+                              <option value="7">Lorem ips 7</option>
+                              <option value="8">Lorem ips 8</option>
+                              <option value="9">Lorem ips 9</option>
+                              <option value="10">Lorem ips 10</option>
+                              <option value="11">Lorem ips 11</option>
+                              <option value="12">Lorem ips 12</option>
+                              <option value="13">Lorem ips 13</option>
+                              <option value="14">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-3">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">% Mermas</label>
+                            <input type="number" [disabled]="true" id="subfamilia" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-4">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Marca</label>
+                            <input type="text" [disabled]="disab" id="entrada2" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-3 sino">
+                          <div class="checkbox-box">
+                            <div class="checkbox-btn">
+                              <input type="checkbox" [disabled]="disab" (click)="consignaChange()" [(ngModel)]="detalle.CONSIGNA" id="consigna" name="consigna"
+                              />
+                              <label for="consigna" onclick>Consigna ( {{consigna}} )</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Categoría</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Tipo Producto</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Idioma</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Nombre</label>
+                            <input [disabled]="disab" type="text" id="subfamilia" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                          <a>
+                            <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                          <div class="rps-tabla">
+                            <!-- id y class necesarios para que funcione el script de ordenación -->
+                            <table id="tablaOrdenable" class="tablesorter myTable">
+                              <thead>
+                                <tr>
+                                  <th>Idioma</th>
+                                  <th>Nombre</th>
+                                  <th>Acciones</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <span class="acordeon-header-text">DATOS DE CARACTERIZACIÓN</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
+                          <span class="acordeon-header-text">Clasificación</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseNineteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo de Artículo</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Prioridad</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-7"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseTwentyOne" aria-expanded="true" aria-controls="collapseTwentyOne">
+                          <span class="acordeon-header-text">Promoción</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwentyOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo de Promoción</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                                <option value="Lorem ips">Lorem ipsum</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-4 ibae">
+                            <div class="checkbox-box">
+                              <div class="checkbox-btn">
+                                <input type="checkbox" [disabled]="disab" [(ngModel)]="detalle.MODIF_PVP" id="modifPVP" name="modifPVP" />
+                                <label for="modifPVP" onclick>Modifica PVP ( {{modifica}} )</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseTwenty" aria-expanded="true" aria-controls="collapseTwenty">
+                          <span class="acordeon-header-text">Segmentación</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwenty" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-1 col-lg-1 col-xl-3"></div>
+                          <div class="col-md-10 col-lg-10 col-xl-5">
+                            <div class="rps-tabla">
+                              <p class="rps-tabla-titulo">Características Asignadas</p>
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="" class="tablesorter">
+                                <thead>
+                                  <tr>
+                                    <th class="tipo">Tipo</th>
+                                    <th>Características</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <a data-toggle="modal" data-target=".bs-example-modal-lg">Lorem ipsum</a>
+                                    </td>
+                                    <td>Lorem ips amet.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <a data-toggle="modal" data-target=".bs-example-modal-lg">Lorem ipsum</a>
+                                      <div class="modal fade rps-modal bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                          <div class="modal-content">
+                                            <div class="contenedor-modal">
+                                              <div class="modal-header">
+                                                <button type="button" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                                                  <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                                                </button>
+                                                <h4 class="modal-title">Surtido</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor30" id="valor31" name="valor31" />
+                                                        <label for="valor31" onclick>Campsared Franquiciadas</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor32" id="valor32" name="valor32" />
+                                                        <label for="valor32" onclick>Red abanderada Franquiciadas</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor33" id="valor33" name="valor33" />
+                                                        <label for="valor33" onclick>Campsared No Franquiciadas</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor34" id="valor34" name="valor34" />
+                                                        <label for="valor34" onclick>Red abanderada No Franquiciadas</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor35" id="valor35" name="valor35" />
+                                                        <label for="valor35" onclick>Campsared Sprint</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor36" id="valor36" name="valor36" />
+                                                        <label for="valor36" onclick>Red abanderada Sprint</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor37" id="valor37" name="valor37" />
+                                                        <label for="valor37" onclick>Gess</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                    <div class="checkbox-box">
+                                                      <div class="checkbox-btn">
+                                                        <input type="checkbox" value="valor38" id="valor38" name="valor38" />
+                                                        <label for="valor38" onclick>Seleccionar Todas</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="boton boton-auxiliar" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="boton boton-estandar">Otra acción</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td>Lorem ips amet.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <a data-toggle="modal" data-target=".bs-example-modal-lg">Lorem ipsum</a>
+                                    </td>
+                                    <td>Lorem ips amet.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <a data-toggle="modal" data-target=".bs-example-modal-lg">Lorem ipsum</a>
+                                    </td>
+                                    <td>Lorem ips amet.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-1 col-lg-1 col-xl-4 promo"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <span class="acordeon-header-text">DATOS PRECIOS</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                          <span class="acordeon-header-text">Impuestos</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-12">
+                                <div class="row">
+                                  <div class="col-md-12 col-lg-12 col-xl-1">
+                                    <div class="grupo-input">
+                                      <label class="etiqueta-input" for="entrada2">Descuento %</label>
+                                      <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-3">
+                                    <div class="grupo-input">
+                                      <label class="etiqueta-input" for="opciones-multiples">Divisa</label>
+                                      <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones-multiples">
+                                        <option value="1">Lorem ips 1</option>
+                                        <option value="2">Lorem ips 2</option>
+                                        <option value="3">Lorem ips 3</option>
+                                        <option value="4">Lorem ips 4</option>
+                                        <option value="5">Lorem ips 5</option>
+                                        <option value="6">Lorem ips 6</option>
+                                        <option value="7">Lorem ips 7</option>
+                                        <option value="8">Lorem ips 8</option>
+                                        <option value="9">Lorem ips 9</option>
+                                        <option value="10">Lorem ips 10</option>
+                                        <option value="11">Lorem ips 11</option>
+                                        <option value="12">Lorem ips 12</option>
+                                        <option value="13">Lorem ips 13</option>
+                                        <option value="14">Lorem ips 14</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-2 sino">
+                                    <div class="checkbox-box">
+                                      <div class="checkbox-btn">
+                                        <input [disabled]="disab" type="checkbox" value="valor6" id="valor6" name="valor6" />
+                                        <label for="valor6" onclick>Aplica IBAE (si/no)</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-1">
+                                    <div class="grupo-input">
+                                      <label class="etiqueta-input" for="entrada2">€/Ud</label>
+                                      <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-3">
+                                    <div class="grupo-input">
+                                      <label class="etiqueta-input" for="entrada6">Tipo de tasa</label>
+                                      <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                        <option value="Lorem ips">Lorem ips 1</option>
+                                        <option value="Lorem ips">Lorem ips 2</option>
+                                        <option value="Lorem ips">Lorem ips 3</option>
+                                        <option value="Lorem ips">Lorem ips 4</option>
+                                        <option value="Lorem ips">Lorem ips 5</option>
+                                        <option value="Lorem ips">Lorem ips 6</option>
+                                        <option value="Lorem ips">Lorem ips 7</option>
+                                        <option value="Lorem ips">Lorem ips 8</option>
+                                        <option value="Lorem ips">Lorem ips 9</option>
+                                        <option value="Lorem ips">Lorem ips 10</option>
+                                        <option value="Lorem ips">Lorem ips 11</option>
+                                        <option value="Lorem ips">Lorem ips 12</option>
+                                        <option value="Lorem ips">Lorem ips 13</option>
+                                        <option value="Lorem ips">Lorem ips 14</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+
+                                  <div class="col-md-0 col-lg-0 col-xl-3"></div>
+
+                                  <div class="col-md-12 col-lg-12 col-xl-2 ibae">
+                                    <div class="checkbox-box">
+                                      <div class="checkbox-btn">
+                                        <input [disabled]="disab" type="checkbox" value="valor4" id="valor4" name="valor4" />
+                                        <label for="valor4" onclick>Eliminar Segmentación de Precios (si/no)</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-2 ibae">
+                                    <div class="checkbox-box">
+                                      <div class="checkbox-btn">
+                                        <input [disabled]="disab" type="checkbox" value="valor5" id="valor5" name="valor5" />
+                                        <label for="valor5" onclick>Eliminar Segmentación de Precios Áreas (si/no)</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-lg-12 col-xl-2 ibae">
+                                    <div class="checkbox-box">
+                                      <div class="checkbox-btn">
+                                        <input [disabled]="disab" type="checkbox" value="valor7" id="valor7" name="valor7" />
+                                        <label for="valor7" onclick>Inversión de sujeto pasivo (si/no)</label>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-0 col-lg-0 col-xl-3"></div>
+
+                                </div>
+
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                              <div class="col-md-12 col-lg-12 col-xl-3">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada6">Tipo de impuesto</label>
+                                  <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                    <option value="Lorem ips">Lorem ips 1</option>
+                                    <option value="Lorem ips">Lorem ips 2</option>
+                                    <option value="Lorem ips">Lorem ips 3</option>
+                                    <option value="Lorem ips">Lorem ips 4</option>
+                                    <option value="Lorem ips">Lorem ips 5</option>
+                                    <option value="Lorem ips">Lorem ips 6</option>
+                                    <option value="Lorem ips">Lorem ips 7</option>
+                                    <option value="Lorem ips">Lorem ips 8</option>
+                                    <option value="Lorem ips">Lorem ips 9</option>
+                                    <option value="Lorem ips">Lorem ips 10</option>
+                                    <option value="Lorem ips">Lorem ips 11</option>
+                                    <option value="Lorem ips">Lorem ips 12</option>
+                                    <option value="Lorem ips">Lorem ips 13</option>
+                                    <option value="Lorem ips">Lorem ips 14</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-12 col-lg-12 col-xl-3">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada6">Tipo Impositivo</label>
+                                  <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                    <option value="Lorem ips">Lorem ips 1</option>
+                                    <option value="Lorem ips">Lorem ips 2</option>
+                                    <option value="Lorem ips">Lorem ips 3</option>
+                                    <option value="Lorem ips">Lorem ips 4</option>
+                                    <option value="Lorem ips">Lorem ips 5</option>
+                                    <option value="Lorem ips">Lorem ips 6</option>
+                                    <option value="Lorem ips">Lorem ips 7</option>
+                                    <option value="Lorem ips">Lorem ips 8</option>
+                                    <option value="Lorem ips">Lorem ips 9</option>
+                                    <option value="Lorem ips">Lorem ips 10</option>
+                                    <option value="Lorem ips">Lorem ips 11</option>
+                                    <option value="Lorem ips">Lorem ips 12</option>
+                                    <option value="Lorem ips">Lorem ips 13</option>
+                                    <option value="Lorem ips">Lorem ips 14</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="col-xl-1 btnlnk">
+                                <a>
+                                  <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                                </a>
+                              </div>
+                              <div class="col-md-12 col-lg-12 col-xl-2">
+
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-1 col-lg-1 col-xl-3"></div>
+                              <div class="col-md-10 col-lg-10 col-xl-6">
+                                <div class="rps-tabla">
+                                  <p class="rps-tabla-titulo">Impuestos Asignados</p>
+                                  <!-- id y class necesarios para que funcione el script de ordenación -->
+                                  <table id="myTable" class="tablesorter">
+                                    <thead>
+                                      <tr>
+                                        <th>Tipo de Impuesto</th>
+                                        <th>Tipo Impositivo</th>
+                                        <th>Acciones</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                        <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                        <td>
+                                          <a>
+                                            <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                          </a>
+                                          <a (click)="editable()" class="mrgnlft">
+                                            <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                          </a>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                        <td [contentEditable]="editableBool">Lorem ips amet.</td>
+                                        <td>
+                                          <a>
+                                            <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                          </a>
+                                          <a (click)="editable()" class="mrgnlft">
+                                            <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                </div>
+                              </div>
+                              <div class="col-md-1 col-lg-1 col-xl-3"></div>
+                            </div>
+                          </div>
+                          <!--end col 12-->
+                        </div>
+                      </div>
+                      <!--end panel body-->
+                    </div>
+                  </div>
+
+
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+                          <span class="acordeon-header-text">Precios de Compra / Datos del Proveedor</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseEleven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row ">
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Código</label>
+                              <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                            <a>
+                              <img class="img" title="Ver" src="./assets/buscar.png" alt="">
+                            </a>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-5">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2"></label>
+                              <input [disabled]="true" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Referencia Artículo</label>
+                              <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoAllNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Descuento</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Divisa</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-3 ibae">
+                            <div class="grupo-input">
+                              <button class="boton boton-estandar">Alta Nuevo Proveedor</button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <div class="row sep"></div> -->
+                        <div class="row secNoTopNoPad">
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-10">
+                            <div class="rps-tabla">
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table  class="tablesorter myTablePrecios">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo Precio</th>
+                                    <th>Importe</th>
+                                    <th>Margen</th>
+                                    <th>Fecha Inicial</th>
+                                    <th>Fecha Final</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Precio de Compra</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Precio Promocional</td>
+                                    <td>1.20</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Precio Cesión Logista</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Precio Promocional Logista</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+
+                        </div>
+                        <div class="row secNoTop">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="rps-tabla">
+                              <p class="rps-tabla-titulo">Precios de Compra Según la Estación para Península</p>
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter myTable">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo Estación</th>
+                                    <th>Precio Compra</th>
+                                    <th>Precio Cesión</th>
+                                    <th>Margen Cesión</th>
+                                    <th>Fecha inicio P.Cesión</th>
+                                    <th>Fecha Final P.Cesión</th>
+                                    <th>PVP Recomendado</th>
+                                    <th>Margen PVP</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>CampsaRed Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Base 100</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>CampsaRed No Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada no Franquicia</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada Sprint</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Guess</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Campsared Sprint</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row secNoTop">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="rps-tabla">
+                              <p class="rps-tabla-titulo">Precios de Compra Según la Estación para Canarias</p>
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter myTable">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo Estación</th>
+                                    <th>Precio Compra</th>
+                                    <th>Precio Cesión</th>
+                                    <th>Margen Cesión</th>
+                                    <th>Fecha inicio P.Cesión</th>
+                                    <th>Fecha Final P.Cesión</th>
+                                    <th>PVP Recomendado</th>
+                                    <th>Margen PVP</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>CampsaRed Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Base 100</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>CampsaRed No Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada Franquicia</td>
+                                    <td>1.50</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada no Franquicia</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Red abanderada Sprint</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Guess</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Campsared Sprint</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-12 canarias text-right">
+                                <a>
+                                  <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <!-- <div class="row">
+                              <legend class="legend-formulario">Precios de Compra / Datos del Proveedor</legend>
+                            </div> -->
+                        <div class="row secNoTop">
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-9">
+                            <div class="rps-tabla">
+                              <p class="rps-tabla-titulo">Proveedores ya asignados al artículos</p>
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter myTable">
+                                <thead>
+                                  <tr>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Referencia</th>
+                                    <th>Descuento</th>
+                                    <th>Divisa</th>
+                                    <th>Acciones</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td [contentEditable]="editableBool">1</td>
+                                    <td [contentEditable]="editableBool">Coca cola Iberians</td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td>
+                                      <a>
+                                        <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                      </a>
+                                      <a (click)="editable()" class="mrgnlft">
+                                        <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                      </a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td>
+                                      <a>
+                                        <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                      </a>
+                                      <a (click)="editable()" class="mrgnlft">
+                                        <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                      </a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td [contentEditable]="editableBool"></td>
+                                    <td>
+                                      <a>
+                                        <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                      </a>
+                                      <a (click)="editable()" class="mrgnlft">
+                                        <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseTwentyfive" aria-expanded="true" aria-controls="collapseTwentyfive">
+                          <span class="acordeon-header-text">Precios de Venta</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwentyfive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row sep"></div>
+                        <div class="row secNoBottom">
+                          <div class="col-md-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="rps-tabla">
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter">
+                                <thead>
+                                  <tr>
+                                    <th>BASE</th>
+                                    <th>%</th>
+                                    <th>PRECIO</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>BASE_100</td>
+                                    <td>100</td>
+                                    <td>1.7</td>
+
+                                  </tr>
+                                  <tr>
+                                    <td>BASE_85</td>
+                                    <td></td>
+                                    <td></td>
+
+                                  </tr>
+                                  <tr>
+                                    <td>BASE_70</td>
+                                    <td></td>
+                                    <td></td>
+
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-6 tablaseg">
+                            <div class="rps-tabla">
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter myTable">
+                                <thead>
+                                  <tr>
+                                    <th>SEGMENTO</th>
+                                    <th>%</th>
+                                    <th>PRECIO</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>A_INSENSIBLE</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>B_MUY_ALTO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>C_ALTO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>D_MEDIO_ALTO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>E_MEDIO_MEDIO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>F_MEDIO_BAJO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>G_MEDIO_MUY_BAJO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>H_BAJO_ALTO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>I_BAJO_MEDIO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>J_BAJO_BAJO</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>K_SENSINLES</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>L_EXTRASENSIBLES</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoTop">
+                          <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-5">
+                            <button class="boton boton-estandar">Modificar</button>
+                            <button class="boton boton-estandar">Guardar</button>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    <span class="acordeon-header-text">DATOS ETIQUETA </span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Código EAN</label>
+                            <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-6"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Unidad de Medida (UMC)</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-8"></div>
+
+
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-4">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Cantidad</label>
+                            <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-8"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Medida de Venta</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-8">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12 btnlnk text-right">
+                          <a>
+                            <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-6 derecha">
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-5">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada6">Idioma</label>
+                            <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                              <option value="Lorem ips">Lorem ips 1</option>
+                              <option value="Lorem ips">Lorem ips 2</option>
+                              <option value="Lorem ips">Lorem ips 3</option>
+                              <option value="Lorem ips">Lorem ips 4</option>
+                              <option value="Lorem ips">Lorem ips 5</option>
+                              <option value="Lorem ips">Lorem ips 6</option>
+                              <option value="Lorem ips">Lorem ips 7</option>
+                              <option value="Lorem ips">Lorem ips 8</option>
+                              <option value="Lorem ips">Lorem ips 9</option>
+                              <option value="Lorem ips">Lorem ips 10</option>
+                              <option value="Lorem ips">Lorem ips 11</option>
+                              <option value="Lorem ips">Lorem ips 12</option>
+                              <option value="Lorem ips">Lorem ips 13</option>
+                              <option value="Lorem ips">Lorem ips 14</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                          <div class="grupo-input">
+                            <label class="etiqueta-input" for="entrada2">Ingedientes</label>
+                            <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                          <a>
+                            <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                          <div class="rps-tabla">
+                            <!-- id y class necesarios para que funcione el script de ordenación -->
+                            <table id="tablaOrdenable" class="tablesorter">
+                              <thead>
+                                <tr>
+                                  <th>Idioma</th>
+                                  <th class="ingredientes">Ingredientes</th>
+                                  <th>Acciones</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td [contentEditable]="editableBool"></td>
+                                  <td>
+                                    <a>
+                                      <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                    </a>
+                                    <a (click)="editable()" class="mrgnlft">
+                                      <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row secNoTop">
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-10">
+                      <div class="rps-tabla">
+                        <p class="rps-tabla-titulo">códigos EAN ya asignados al artículos</p>
+                        <!-- id y class necesarios para que funcione el script de ordenación -->
+                        <table id="tablaOrdenable" class="tablesorter">
+                          <thead>
+                            <tr>
+                              <th>Código</th>
+                              <th>UMC</th>
+                              <th>Cantidad</th>
+                              <th>Medida de Venta</th>
+                              <th>Tipo Número</th>
+                              <th>Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td>
+                                <a>
+                                  <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                </a>
+                                <a (click)="editable()" class="mrgnlft">
+                                  <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td>
+                                <a>
+                                  <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                </a>
+                                <a (click)="editable()" class="mrgnlft">
+                                  <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                    <span class="acordeon-header-text">DATOS ESTADO</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2">Alta artículo</label>
+                        <input [disabled]="disab" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-0 col-lg-0 col-xl-1"></div> -->
+                    <div class="col-lg-3">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha última modificación</label>
+                        <input [disabled]="true" type="text" disabled class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1"
+                          placeholder="XX/XX/2017" />
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="checkbox-box" style="position: relative; top: 1.5em;">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor4" id="valor4" name="valor4" />
+                          <label for="valor4" onclick>Bloqueado a la compra (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="checkbox-box" style="position: relative; top: 1.5em;">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor9" id="valor9" name="valor9" />
+                          <label for="valor9" onclick>Baja de artículo (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="checkbox-box" style="position: relative; top: 1.5em;">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor8" id="valor8" name="valor8" />
+                          <label for="valor8" onclick>Bloqueado a la venta (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="checkbox-box" style="position: relative; top: 1.5em;">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor10" id="valor10" name="valor10" />
+                          <label for="valor10" onclick>Artículo Sustitutivo (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2">del artículo...</label>
+                        <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-lg-1">
+                      <label class="etiqueta-input" for="entrada2">&nbsp;</label>
+                      <a style="position: relative;top: 1.5em;">
+                        <img class="img" title="Ver" src="./assets/buscar.png" alt="">
+                      </a>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2"></label>
+                        <input [disabled]="true" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!--
+                  <div class="row ">
+                    <div class="col-md-12 col-lg-12 col-xl-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2">Alta artículo</label>
+                        <input [disabled]="disab" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha última modificación</label>
+                        <input [disabled]="true" type="text" disabled class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1"
+                          placeholder="XX/XX/2017" />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                  </div>
+                  <div class="row secNoAllNoPad">
+                    <div class="col-md-12 col-lg-12 col-xl-4 ibae">
+                      <div class="checkbox-box">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor4" id="valor4" name="valor4" />
+                          <label for="valor4" onclick>Bloqueado a la compra (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                  </div>
+                  <div class="row secNoAllNoPad">
+                    <div class="col-md-12 col-lg-12 col-xl-4 ibae">
+                      <div class="checkbox-box">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor8" id="valor8" name="valor8" />
+                          <label for="valor8" onclick>Bloqueado a la venta (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                  </div>
+                  <div class="row secNoAllNoPad">
+                    <div class="col-md-12 col-lg-12 col-xl-4 ibae">
+                      <div class="checkbox-box">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor9" id="valor9" name="valor9" />
+                          <label for="valor9" onclick>Baja de artículo (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                        <label class="etiqueta-input" for="calendario1">Fecha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input [disabled]="true" type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="calendario1" placeholder="XX/XX/2017"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                  </div>
+                  <div class="row secNoTopNoPad">
+                    <div class="col-md-12 col-lg-12 col-xl-4 ibae">
+                      <div class="checkbox-box">
+                        <div class="checkbox-btn">
+                          <input [disabled]="disab" type="checkbox" value="valor10" id="valor10" name="valor10" />
+                          <label for="valor10" onclick>Artículo Sustitutivo (si/no)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2">del artículo...</label>
+                        <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                      <a>
+                        <img class="img" title="Ver" src="./assets/buscar.png" alt="">
+                      </a>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2"></label>
+                        <input [disabled]="true" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                  </div>
+                -->
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                    <span class="acordeon-header-text">DATOS LOGÍSTICOS</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                          <span class="acordeon-header-text">Pedidos</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseNine" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row ">
+                          <div class="col-md-12 col-lg-12 col-xl-5">
+                            <div class="checkbox-box">
+                              <div class="checkbox-btn">
+                                <input [disabled]="disab" type="checkbox" value="valor11" id="valor11" name="valor11" />
+                                <label for="valor11" onclick>Devolución a Proveedor (si/no)</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-4">
+                            <div class="checkbox-box">
+                              <div class="checkbox-btn">
+                                <input [disabled]="disab" type="checkbox" value="valor12" id="valor12" name="valor12" />
+                                <label for="valor12" onclick>Planificación compras logista (si/no)</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                        </div>
+                        <div class="row secNoAllNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo Almacenamiento</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Condición de almacenaje</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-5"></div>
+                        </div>
+                        <div class="row secNoAllNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Pedido mínimo</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Stock Mínimo Pedido</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                        </div>
+                        <div class="row secNoTopNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Pedido Mínimo Logista </label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Tiempo de reposición</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                          <span class="acordeon-header-text">Caducidad</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseEight" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Caducidad Total (Días) </label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Caducidad mínima entrada en almacén </label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
+                          <span class="acordeon-header-text">Almacenamiento</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwelve" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-2 btnlnk">
+                            <div class="checkbox-box">
+                              <div class="checkbox-btn">
+                                <input [disabled]="disab" type="checkbox" value="valor13" id="valor13" name="valor13" />
+                                <label for="valor13" onclick>Control de Stock (si/no)</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Volumen caja master</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Nº Unidades ventas por caja</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Nº Unidades ventas por palet</label>
+                              <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
+                          <span class="acordeon-header-text">Dimensiones</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThirteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-12 col-xl-4">
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Contenido Neto</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Largo (CM)</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-0 col-lg-0 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Alto (CM)</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-12 ibae">
+                                <div class="checkbox-box">
+                                  <div class="checkbox-btn">
+                                    <input [disabled]="disab" type="checkbox" value="valor14" id="valor14" name="valor14" />
+                                    <label for="valor14" onclick>Pack (si/no)</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-4">
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Peso (GR)</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Ancho (CM)</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada2">Volúmen Ud de venta (LITROS)</label>
+                                  <input [disabled]="disab" type="number" id="entrada2" class="input-estandar" name="entrada2" />
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="grupo-input">
+                                  <label class="etiqueta-input" for="entrada6">Tipo de Envasado</label>
+                                  <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                    <option value="Lorem ips">Lorem ips 1</option>
+                                    <option value="Lorem ips">Lorem ips 2</option>
+                                    <option value="Lorem ips">Lorem ips 3</option>
+                                    <option value="Lorem ips">Lorem ips 4</option>
+                                    <option value="Lorem ips">Lorem ips 5</option>
+                                    <option value="Lorem ips">Lorem ips 6</option>
+                                    <option value="Lorem ips">Lorem ips 7</option>
+                                    <option value="Lorem ips">Lorem ips 8</option>
+                                    <option value="Lorem ips">Lorem ips 9</option>
+                                    <option value="Lorem ips">Lorem ips 10</option>
+                                    <option value="Lorem ips">Lorem ips 11</option>
+                                    <option value="Lorem ips">Lorem ips 12</option>
+                                    <option value="Lorem ips">Lorem ips 13</option>
+                                    <option value="Lorem ips">Lorem ips 14</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-0 col-lg-0 col-xl-4"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-lg-12 col-xl-4">
+                            <div class="row filaCaja"></div>
+                            <div class="row">
+                              <div class="col-md-12 col-lg-12 col-xl-12 colCaja">
+                                <img class="caja" src="./assets/caja.jpg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
+                    <span class="acordeon-header-text">OTROS DATOS</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseFourteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
+                          <span class="acordeon-header-text">Imágenes</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseFifteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row secNoBottom">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <input type="file" style="display:none" (change)="onFileChanged($event)" #fileInput>
+                            <a (click)="fileInput.click()">
+                              <img class="upload" src="./assets/imgupload.jpg" alt="">
+                            </a>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <input type="file" style="display:none" (change)="onFileChanged($event)" #fileInput>
+                            <a (click)="fileInput.click()">
+                              <img class="upload" src="./assets/imgupload.jpg" alt="">
+                            </a>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <input type="file" style="display:none" (change)="onFileChanged($event)" #fileInput>
+                            <a (click)="fileInput.click()">
+                              <img class="upload" src="./assets/imgupload.jpg" alt="">
+                            </a>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoAll">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Imagen 1</label>
+                              <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Imagen 2</label>
+                              <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Imagen 3</label>
+                              <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoTop">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tipo</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseSixteen" aria-expanded="true" aria-controls="collapseSixteen">
+                          <span class="acordeon-header-text">Otros datos</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseSixteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row ">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Agrupa Colores</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Agrupa Tallas</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-2">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Modelo</label>
+                              <input [disabled]="disab" type="text" name="modelo" class="input-estandar" [(ngModel)]="detalle.MODELO" #modelo="ngModel"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoAllNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Color</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-2"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-3">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada6">Tallas</label>
+                              <select [disabled]="disab" class="rps-select selector-multiple" name="opciones-multiples" id="opciones núltiples">
+                                <option value="Lorem ips">Lorem ips 1</option>
+                                <option value="Lorem ips">Lorem ips 2</option>
+                                <option value="Lorem ips">Lorem ips 3</option>
+                                <option value="Lorem ips">Lorem ips 4</option>
+                                <option value="Lorem ips">Lorem ips 5</option>
+                                <option value="Lorem ips">Lorem ips 6</option>
+                                <option value="Lorem ips">Lorem ips 7</option>
+                                <option value="Lorem ips">Lorem ips 8</option>
+                                <option value="Lorem ips">Lorem ips 9</option>
+                                <option value="Lorem ips">Lorem ips 10</option>
+                                <option value="Lorem ips">Lorem ips 11</option>
+                                <option value="Lorem ips">Lorem ips 12</option>
+                                <option value="Lorem ips">Lorem ips 13</option>
+                                <option value="Lorem ips">Lorem ips 14</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-6"></div>
+                        </div>
+                        <div class="row secNoAllNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-5">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Características</label>
+                              <input [disabled]="disab" type="text" name="caracteristicas" class="input-estandar" [(ngModel)]="detalle.CARACTERISTICAS"
+                                #caracteristicas="ngModel" />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-5">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="entrada2">Link Web</label>
+                              <input [disabled]="disab" type="text" name="linkWeb" class="input-estandar" [(ngModel)]="detalle.LINK_WEB" #linkWeb="ngModel"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                        <div class="row secNoTopNoPad">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="grupo-input">
+                              <label class="etiqueta-input" for="areatexto">Observaciones</label>
+                              <textarea [disabled]="disab" class="input-limit" name="observaciones" placeholder="Puede introducir hasta 500 caracteres"
+                                [(ngModel)]="detalle.OBSERVACIONES" #observaciones="ngModel" maxlength="500"></textarea>
+                              <div class="cuenta-caracteres">
+                                <span id="cuenta"></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default ssecc">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                      <h4 class="panel-title">
+                        <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                          data-parent="#acordeon" href="#collapseSeventeen" aria-expanded="true" aria-controls="collapseSeventeen">
+                          <span class="acordeon-header-text">Surtidos</span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseSeventeen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                          <div class="col-md-12 col-lg-12 col-xl-10">
+                            <div class="rps-tabla">
+                              <p class="rps-tabla-titulo">Surtidos asignados</p>
+                              <!-- id y class necesarios para que funcione el script de ordenación -->
+                              <table id="tablaOrdenable" class="tablesorter">
+                                <thead>
+                                  <tr>
+                                    <th>Surtido</th>
+                                    <th>Nombre</th>
+                                    <th>Tipo estación</th>
+                                    <th>Nº Versión</th>
+                                    <th>Nivel Surtido</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                          <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="acordeon-item-1">
+                <h4 class="panel-title">
+                  <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                    data-parent="#acordeon" href="#collapseEighteen" aria-expanded="true" aria-controls="collapseEighteen">
+                    <span class="acordeon-header-text">ESTACIONES</span>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseEighteen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                <div class="panel-body">
+                  <div class="row secNoBottom">
+                    <div class="col-md-0 col-lg-0 col-xl-3"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-2">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2">Estación</label>
+                        <input [disabled]="disab" type="text" id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                      <a>
+                        <img class="img" title="Ver" src="./assets/buscar.png" alt="">
+                      </a>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-3">
+                      <div class="grupo-input">
+                        <label class="etiqueta-input" for="entrada2"></label>
+                        <input [disabled]="disab" type="text" disabled id="entrada2" class="input-estandar" name="entrada2" />
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-1 btnlnk">
+                      <a>
+                        <img class="img" title="Añadir" src="./assets/anyadir.png" alt="">
+                      </a>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-12"></div>
+                  </div>
+                  <div class="row secNoTop">
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                    <div class="col-md-12 col-lg-12 col-xl-10">
+                      <div class="rps-tabla">
+                        <p class="rps-tabla-titulo">Estaciones asignadas</p>
+                        <!-- id y class necesarios para que funcione el script de ordenación -->
+                        <table id="tablaOrdenable" class="tablesorter">
+                          <thead>
+                            <tr>
+                              <th>Nº Estaciones</th>
+                              <th>Estación</th>
+                              <th>Margen</th>
+                              <th>Tipo</th>
+                              <th>Proveedor</th>
+                              <th>Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td>
+                                <a>
+                                  <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                </a>
+                                <a (click)="editable()" class="mrgnlft">
+                                  <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td>
+                                <a>
+                                  <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                </a>
+                                <a (click)="editable()" class="mrgnlft">
+                                  <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td [contentEditable]="editableBool"></td>
+                              <td>
+                                <a>
+                                  <img class="imgTabla" title="Borrar" src="./assets/borrar.png" alt="">
+                                </a>
+                                <a (click)="editable()" class="mrgnlft">
+                                  <img class="imgTabla" title="Editar" src="./assets/editar.png" alt="">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                    <div class="col-md-0 col-lg-0 col-xl-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+  <div class="row botones">
+    <div class="col-md-0 col-lg-0 col-xl-7"></div>
+    <div class="bot">
+      <button (click)="habilitar()" class="boton boton-estandar">Modificar</button>
+    </div>
+    <div class="bot">
+      <button class="boton boton-estandar">Guardar</button>
+    </div>
+    <div class="bot">
+      <button (click)="borrar()" class="boton boton-estandar">Borrar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+@import "../../assets/repsol/menu-lateral.css";
+
+/* TABLA DE CONTENIDOS
+
+    1. Contenedor
+    2. Cabecera
+    3. Menu
+
+*/
+
+.contenedor {
+    padding: 10px;
+}
+
+.body {
+    padding-bottom: 15px;
+}
+
+
+/* 2. Cabecera
+--------------------------------------------*/
+
+.cabecera {
+    border-bottom: 1.5px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    padding-top: none;
+    margin: 0px;
+}
+
+#divLogo {
+    width: 15%;
+    float: left;
+}
+
+#divInfoUser {
+    width: 78%;
+    float: left;
+}
+
+#usuarioYperfil {
+    text-align: left;
+    float: right;
+}
+
+#botonLogOut {
+    width: 7%;
+    float: left;
+    padding-left: 1%;
+}
+
+#divContenido {
+    margin-top: 80px;
+}
+
+#divSidebar {
+    padding-left: 0px;
+    padding-right: 0px;
+    min-width: 140px;
+}
+
+#optionsSidebar {
+    border-bottom: none;
+    border-top: none;
+    background-color: white;
+}
+
+.logo {
+    width: 150px;
+    height: 60px;
+}
+
+.usuario-logout {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+
+.logout {
+    padding: 0px;
+}
+
+.btn-logout {
+    width: 50px;
+    height: 50px;
+    padding: 0px 0px;
+    font-size: 20px;
+    border-radius: 1.5em;
+    background-color: #E4002B;
+    border-color: #E4002B;
+}
+
+.btn-logout:hover {
+    background-color: white;
+    color: #E4002B;
+    border-color: #E4002B;
+}
+
+.nombre {
+    font-family: 'titilliumbold';
+}
+
+
+/* 2. Menú
+--------------------------------------------*/
+
+.menu {
+    border-right: 1.5px solid rgba(0, 0, 0, .1);
+    padding-top: 15px;
+}
+
+ul li {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    margin-top: 5px;
+}
+
+.menus {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+}
+
+.btn-circle {
+    background-color: #041E42;
+    border: 1px solid;
+    border-color: #041E42;
+}
+
+.btn-circle:hover {
+    background-color: white;
+    border: 1px solid;
+    color: #041E42;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 0px 0px;
+    line-height: 0;
+    font-size: 35px;
+    border-radius: 35px;
+    margin-right: 0px;
+}
+
+i.fas {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 0px;
+}
+
+.menus:hover {
+    transform: scale(1.2);
+}
+
+#cabecera {
+    height: 80px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 2;
+    background-color: white
+}
+
+@media (max-width: 1200px) {
+    #optionsSidebar {
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+/* .main-navega{
+     overflow: scroll;
+     overflow-y: auto;
+} */
+
+.scro{
+    position:fixed;
+    z-index: 2;
+    overflow-y:auto;
+    height: calc(100vh - 80px);
+
+}
+
+
+
+

@@ -1,0 +1,136 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.boton,
+.boton-estandar,
+.boton-secundario,
+.boton-auxiliar,
+.boton-inactivo {
+  font-family: 'titilliumbold';
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  height: 2.825em;
+  padding: 0 1.2em 0.1em;
+}
+
+.boton-estandar {
+  background-color: #e67600;
+  color: #ffffff;
+  border: 1px solid #e67600;
+}
+
+.boton-estandar:hover {
+  background-color: #ffffff;
+  color: #e67600;
+  border: 1px solid #e67600;
+}
+
+.boton-estandar:focus {
+  background-color: #e67600;
+  color: #ffffff;
+  outline: none !important;
+}
+
+a.boton-estandar {
+  padding: 9px 1.2em 11px;
+  border-color: #e67600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.boton-secundario {
+  background-color: #041e42;
+  color: #ffffff;
+}
+
+.boton-secundario:hover {
+  background-color: #ffffff;
+  color: #041e42;
+  border: 1px solid #041e42;
+}
+
+.boton-secundario:focus {
+  background-color: #041e42;
+  color: #ffffff;
+  border: none;
+  outline: none !important;
+}
+
+.boton-auxiliar {
+  background-color: #ffffff;
+  color: #9c9081;
+  border: 1px solid #9c9081;
+}
+
+.boton-auxiliar:hover {
+  background-color: #9c9081;
+  color: #ffffff;
+  border: none;
+}
+
+.boton-auxiliar:focus {
+  background-color: #ffffff;
+  color: #9c9081;
+  border: 1px solid #9c9081;
+}
+
+.boton-inactivo {
+  background-color: #e0ded9;
+  color: #9c9081;
+  cursor: default;
+}
+
+.enlace,
+.enlace-principal,
+.enlace-parrafo {
+  font-family: 'titilliumbold';
+}
+
+.enlace-principal {
+  color: #e67600;
+}
+
+.enlace-principal:hover {
+  color: #e67600;
+}
+
+.enlace-parrafo {
+  color: #007e94;
+}
+
+.enlace-parrafo:hover {
+  color: #007e94;
+}
+
+.btn-info {
+  background-color: #e67600;
+  border-color: #e67600;
+  border-radius: 50%;
+  font-size: 21px;
+  width: 1.905em;
+  height: 1.905em;
+  font-family: 'titillium_bdbold';
+  line-height: 21px;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+  background-color: #ffffff;
+  color: #e67600;
+  border: 1px solid #e67600;
+}
+
+.btn-info:active {
+  background-color: #e67600;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-info:active:focus {
+  background-color: #e67600;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}

@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 espacio"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <span  *ngFor="let prod of productos"><a (click)="verDetalle(prod.id)">{{prod.nombre}}</a></span>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+<button type="btn" [routerLink]="['/alta-articulos']" class="btn btn-info">Alta Articulo</button>
+
+<!-- <a [routerLink]="['/detalle-articulos',prod.id]">{{prod.nombre}}</a> -->

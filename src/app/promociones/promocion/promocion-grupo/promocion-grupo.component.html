@@ -1,0 +1,320 @@
+<div class="right-paragraph">
+    <div *ngIf="habilitarControles()">
+        <div class="cls-title">
+            <span>SELECCIÓN GRUPOS</span>
+        </div>
+        <div class="cls-form-buscar">
+            <div class="form-row">
+                <div class="form-group  col-xs-1 col-sm-1 col-md-1 col-lg-1  mx-sm-3 mb-2">
+                    <label for="inputCodigo" class="lbl-title">Código: &nbsp; </label>
+                    <input type="text" #Referencia class="form-control form-control-sm cls-input" id="inputCodigo" [(ngModel)]="gruposOfertasFiltro.codigoFiltro"
+                        name="codigoFiltro" placement="bottom" ngbTooltip="{{gruposOfertasFiltro.codigoFiltro}}">
+                </div>
+                <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5 mx-sm-3 mb-2">
+                    <label for="inputDescripcion" class="lbl-title">Descripción: &nbsp;</label>
+                    <input type="text" #descripcion class="form-control form-control-sm cls-input" id="inputDescripcion" [(ngModel)]="gruposOfertasFiltro.descripcionFiltro"
+                        name="descripcionFiltro" placement="bottom" ngbTooltip="{{gruposOfertasFiltro.descripcionFiltro}}">
+                </div>
+                <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-sm-3 mb-2">
+                    <div style="float: right; text-align: center; padding-top: 30px;">
+                        <button type="submit" id="btnBuscar" class="btn btn-primary mb-2 btn-repsol " (click)="limpiarFiltroGrupos()" style="width: 100px;"
+                            placement="bottom" ngbTooltip="Limpiar filtros">Limpiar</button> &nbsp;&nbsp;
+                        <button type="submit" id="btnBuscar" class="btn btn-primary mb-2 btn-repsol " (click)="cargarPromotionsFisrtTime()" style="width: 100px;"
+                            placement="bottom" ngbTooltip="Buscar grupos">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cls-title">
+            <span>ASIGNACIÓN: PVP PROMOCIONAL, % DESCUENTO Y Nº ARTÍCULOS MÍNIMO</span>
+        </div>
+        <div class="cls-form-asignar">
+            <div class="form-inline">
+
+
+                <div class="form-group input-group col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-sm-3 mb-2">
+                    <select id="cmbPvpPromocional" #idProveedor class="form-control form-control-sm" [(ngModel)]="tipoAsignacion" name="tipoAsignacion"
+                        (change)="limpiarCantidad()">
+                        <option value="1" selected>PVP Promocional </option>
+                        <option value="2">% DTO</option>
+                    </select>
+                    <div class="input-group-append" style="padding-left: 2px;">
+                        <input type="number" min="0" max="100" #CantPvpPromocional class="form-control form-control-sm" id="inputcantTipoAsignacion"
+                            name="cantTipoAsignacion" value="0.00" ng-model="myDecimal" maxlength="3" step="0.01" [(ngModel)]="cantTipoAsignacion"
+                            (blur)="validarEntradaCanTipAsi()" (keyup)="onInputCanTipAsi()">
+                    </div>
+                </div>
+                <div class="form-group  input-group col-xs-2 col-sm-3 col-md-3 col-lg-2 mx-sm-3 mb-2">
+                    <div class="input-group-prepend">
+                        <label for="inputNroArticulo" class="lbl-title">N° artículos mínino: &nbsp; </label>
+                    </div>
+                    <input type="number" min="0" #NroActiculo class="form-control form-control-sm" id="inputNroArticulo" name="cant_Min" [(ngModel)]="cant_Min"
+                        (blur)="validarEntradaNroArti()" (keyup)="onInputNroArt()" (keyup)="onInputNroArt()">
+                </div>
+                <div class="form-group  col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2">
+                    <label class="cls-Error">{{mensajeError}}</label>
+                </div>
+
+                <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2">
+                    <div style="float: right;">
+                        <button type="submit" id="btnAsignar" class="btn btn-primary mb-2 btn-repsol" (click)="asignarPvpPromDesc()" style="width: 100px;"
+                            placement="bottom" ngbTooltip="Asignar">Asignar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="cls-grupo-content">
+        <div class="row">
+            <div *ngIf="habilitarControles()" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="cls-content-disponible">
+                    <div>
+                        <span>Grupos disponibles</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped-alter">
+                            <thead class="bg-Cabecera">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" (click)="headerClickGO('codigo')">
+                                        <span class="textoHeader">Codigo Grupo</span>
+                                        <img [src]="gruposOfertasFiltro.orderByGO=='referencia'?setClassHeaderOrder():''" />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGO('nombre')">
+                                        <span class="textoHeader">Descripción Grupo</span>
+                                        <img [src]="gruposOfertasFiltro.orderByGO=='nombre'?setClassHeaderOrder():''" />
+                                    </th>
+                                    <th scope="col">N° Articulos Min</th>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Descripcion articulo</th>
+                                    <th scope="col">Coste</th>
+                                    <th scope="col">PVP</th>
+                                    <th scope="col">PVP Promocional</th>
+                                    <th scope="col">% DTO</th>
+                                    <th scope="col">Valor % medio grupo</th>
+                                </tr>
+                            </thead>
+                            <tbody [hidden]="!estadoGrupoDisp">
+                                <tr class="bg-fila" *ngFor="let grupoDis of promotionsGrupo; let i = index;trackBy:trackByIdx">
+                                    <td [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila">
+                                        <input type="checkbox" [(ngModel)]="promotionsGrupo[i].selected" name="selectedDisp{{i}}" (change)="asignarSeleccionDisponible(grupoDis.id_Grupos_Oferta)"
+                                            [disabled]="promotionsGrupo[i].estadoCheck">
+                                    </td>
+                                    <td [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila">{{grupoDis.codigo}}</td>
+                                    <td [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila">{{grupoDis.nombre}}</td>
+                                    <td [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila">{{grupoDis.cant_Min}}</td>
+                                    <td>{{grupoDis.referencia}}</td>
+                                    <td>{{grupoDis.nombre_Articulo}}</td>
+                                    <!-- <td [style.color]="grupoDis.colorImporte">{{grupoDis.importe}}</td>
+                                    <td [style.color]="grupoDis.colorPvp">{{grupoDis.pvp}}</td>
+                                    <td>{{grupoDis.pvp_Promocional | number:'1.2-2'}}</td>
+                                    <td [style.backgroundColor]="grupoDis.fondo">{{grupoDis.dto | number:'1.2-2'}}</td>
+                                    <td [style.backgroundColor]="grupoDis.fondoMedio" [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila">{{grupoDis.dto_Medio_Grupo | number:'1.2-2'}}</td> -->
+                                    <td [style.color]="grupoDis.colorImporte"> <input type="number" value="{{grupoDis.importe}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td [style.color]="grupoDis.colorPvp"> <input type="number" value="{{grupoDis.pvp}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td> <input type="number" value="{{grupoDis.pvp_Promocional | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td [style.backgroundColor]="grupoDis.fondo"> <input type="number" value="{{grupoDis.dto | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td [style.backgroundColor]="grupoDis.fondoMedio" [rowSpan]="grupoDis.valorRowSpan" [hidden]="!grupoDis.ocultarFila"> <input type="number" value="{{grupoDis.dto_Medio_Grupo | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" [hidden]="!estadoGrupoDisp">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <div *ngIf="numeroPaginasGO>1?true:false" style="background-color: #ffffff;color:#eb7b31;">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-sm paginationTexto">
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(1)">&#60;&#60;</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClick(-1)" [class]="gruposOfertasFiltro.paginaActualGO==1?'page-link page-color-link adisabled':'page-link page-color-link'">Anterior</a>
+                                        </li>
+                                        <li *ngFor="let pagina of gruposOfertasFiltro.listPaginasGO" [class]="setClassActive(pagina)">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(pagina)">{{pagina}}</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClick(0)" [class]="gruposOfertasFiltro.paginaActualGO==numeroPaginasGO?'page-link page-color-link adisabled':'page-link page-color-link'">Siguiente</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClick(numeroPaginasGO)">&#62;&#62;</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
+                            <div style="background-color: #ffffff; text-align: right;">
+                                <button type="submit" id="btnAnadir" (click)="validarSeleccion(contentSel)" class="btn btn-primary  mb-2 " placement="bottom"
+                                    ngbTooltip="Añadir grupos">Añadir &#62;&#62; </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="!habilitarControles()?'col-xs-12 col-sm-12 col-md-12 col-lg-12':'col-xs-6 col-sm-6 col-md-6 col-lg-6'">
+                <div class="cls-content-agregada ">
+                    <div>
+                        <span>Grupos Añadidos</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped-alter">
+                            <thead class="bg-Cabecera">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" (click)="headerClickGruposAnadidos('codigo')">Codigo Grupo
+                                        <img class="stiloImagenHeader" [src]="this.mPromotionsById.orderBy=='codigo'?setClassHeaderOrderGruposAnadidos():''"
+                                        />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGruposAnadidos('descripcion')">Descripcion Grupo
+                                        <img class="stiloImagenHeader" [src]="this.mPromotionsById.orderBy=='descripcion'?setClassHeaderOrderGruposAnadidos():''"
+                                        />
+                                    </th>
+                                    <th scope="col" (click)="headerClickGruposAnadidos('cantMin')">N° Articulos Min
+                                        <img class="stiloImagenHeader" [src]="this.mPromotionsById.orderBy=='cantMin'?setClassHeaderOrderGruposAnadidos():''"
+                                        />
+                                    </th>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Descripcion articulo</th>
+                                    <th scope="col">Coste</th>
+                                    <th scope="col">PVP</th>
+                                    <th scope="col">PVP Promocional</th>
+                                    <th scope="col">% DTO</th>
+                                    <th scope="col">Valor % medio grupo</th>
+                                </tr>
+                            </thead>
+                            <tbody [hidden]="!estadoGrupoAgr">
+
+                                <tr class="bg-fila" *ngFor="let grupoAnad of mPromotions.detalleGrupos; let i = index;trackBy:trackByIdx" [hidden]="grupoAnad.accion=='D'?true:false">
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila">
+                                        <input type="checkbox" [(ngModel)]="mPromotions.detalleGrupos[i].selected" name="selectedAgre{{i}}" (change)="asignarSeleccionAgregados(grupoAnad.id_Grupos_Oferta)"
+                                            [disabled]="!habilitarControles()">
+                                    </td>
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila">{{grupoAnad.codigo}}</td>
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila">{{grupoAnad.nombre}}</td>
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila">{{grupoAnad.cant_Min}}</td>
+                                    <td>{{grupoAnad.referencia}}</td>
+                                    <td>{{grupoAnad.nombre_Articulo}}</td>
+                                    <!-- <td>{{grupoAnad.importe}}</td>
+                                    <td>{{grupoAnad.pvp}}</td>
+                                    <td>{{grupoAnad.pvp_Promocional | number:'1.2-2'}}</td>
+                                    <td>{{grupoAnad.dto | number:'1.2-2'}}</td>
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila">{{grupoAnad.dto_Medio_Grupo | number:'1.2-2'}}</td> -->
+
+                                    <td> <input type="number" value="{{grupoAnad.importe}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td> <input type="number" value="{{grupoAnad.pvp}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td> <input type="number" value="{{grupoAnad.pvp_Promocional | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td> <input type="number" value="{{grupoAnad.dto | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                    <td [rowSpan]="grupoAnad.valorRowSpan" [hidden]="!grupoAnad.ocultarFila"> <input type="number" value="{{grupoAnad.dto_Medio_Grupo | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" [hidden]="!estadoGrupoAgr">
+                        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-6">
+                            <div style="background-color: #ffffff; text-align: left;">
+                                <button *ngIf="habilitarControles()" type="submit" id="btnQuitar" (click)="validarSeleccionQuitar(contentSelQuitar)" [disabled]="!habilitarControles()"
+                                    class="btn btn-primary mb-2 " placement="bottom" ngbTooltip="Quitar grupos"> &#60;&#60;Quitar</button>
+                            </div>
+                        </div>
+                        <div [ngClass]="!habilitarControles()?'col-xs-12 col-sm-12 col-md-12 col-lg-12':'col-xs-12 col-sm-12 col-md-6 col-lg-4'">
+                            <div *ngIf="mPromotionsById.p.numeroPaginas>1?true:false" style="background-color: #ffffff;color:#eb7b31;">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-sm paginationTexto">
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClickGruposAnadidos(1)">&#60;&#60;</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClickGruposAnadidos(-1)" [class]="mPromotionsById.p.paginaActual==1?'page-link page-color-link adisabled':'page-link page-color-link'">Anterior</a>
+                                        </li>
+                                        <li *ngFor="let pagina of mPromotionsById.p.listPaginas" [class]="setClassActiveGruposAnadidos(pagina)">
+                                            <a class="page-link page-color-link" (click)="paginacionClickGruposAnadidos(pagina)">{{pagina}}</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a (click)="paginacionClickGruposAnadidos(0)" [class]="mPromotionsById.p.paginaActual==mPromotionsById.p.numeroPaginas?'page-link page-color-link adisabled':'page-link page-color-link'">Siguiente</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link page-color-link" (click)="paginacionClickGruposAnadidos(mPromotionsById.p.numeroPaginas)">&#62;&#62;</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cls-articulo-content-botton">
+        <button *ngIf="habilitarControles()" type="submit" class="btn btn-primary  mb-2  btn-repsol" (click)="validarFormulario(content)"
+            [disabled]="!habilitarControles()" placement="top" ngbTooltip="Guardar promoción">Guardar</button>
+        <a [routerLink]="['/promociones']" [queryParams]="{action:1}" class="btn btn-primary mb-2 btn-repsol"
+            placement="top" ngbTooltip="Volver a buscar">
+            <span>Volver</span>
+        </a>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+
+<!-- Modal Grabar-->
+<div class="modal fade" id="ModalGrabar" [ngStyle]="{'display': showModal ? 'block' : 'none', 'opacity': 1}" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>{{textoModal}}
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-secondary btn-repsol" data-dismiss="modal" (click)="cerrarModal()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="border-modal">
+        <div class="modal-body">
+            <div class="modal-body-contents">
+                <span>{{resul}}</span>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-center">
+            <button type="button" class="btn btn-primary btn-repsol" (click)="c('Close click')">Aceptar</button>&nbsp;
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #contentSel let-c="close" let-d="dismiss">
+    <div class="border-modal">
+        <div class="modal-body">
+            <div class="modal-body-contentSel">
+                <span>{{resul}}</span>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-center">
+            <button type="button" class="btn btn-primary btn-repsol" (click)="c('Close click')">Aceptar</button>&nbsp;
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #contentSelQuitar let-c="close" let-d="dismiss">
+    <div class="border-modal">
+        <div class="modal-body">
+            <div class="modal-body-contentSel">
+                <span>{{resul}}</span>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-center">
+            <button type="button" class="btn btn-primary btn-repsol" (click)="c('Close click')">Aceptar</button>&nbsp;
+        </div>
+    </div>
+</ng-template>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

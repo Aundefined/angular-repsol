@@ -1,0 +1,61 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.contenedor-formulario {
+  background-color: #ffffff;
+  border: solid 1px #e0ded9;
+  padding: 1.875em;
+}
+
+.titulo-formulario {
+  font-family: 'titilliumregular';
+  font-size: 2.250em;
+  color: #5c4e44;
+  border: 0;
+  margin: 0 0 0.556em;
+}
+
+.fieldset-formulario {
+  margin-bottom: 0.625em;
+}
+
+.legend-formulario {
+  font-family: 'titilliumbold';
+  color: #5c4e44;
+  font-size: 1.313em;
+  padding-bottom: 0.476em;
+  border-bottom: 2px solid #e0ded9;
+  margin-bottom: 1.250em;
+}
+
+.input-estandar {
+  width: 100%;
+}
+
+.grupo-input,
+.grupo-fecha {
+  margin-bottom: 1.250em;
+}
+
+.grupo-input .contrasena,
+.grupo-input .correo,
+.grupo-input .input-estandar,
+.grupo-input textarea {
+  border-color: #e0ded9;
+}
+
+.grupo-input .contrasena:focus,
+.grupo-input .correo:focus,
+.grupo-input .input-estandar:focus,
+.grupo-input textarea:focus {
+  outline: none;
+  border-color: #007e94;
+  box-shadow: 0 0 3px #007e94;
+}
+
+@media screen and (max-width: 767px) {
+  .contenedor-formulario {
+    width: 100%;
+  }
+}

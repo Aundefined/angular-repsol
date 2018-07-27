@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h3>{{menu.LEYENDA | uppercase}}</h3>
+    <!-- <h6>{{'demo.title' | translate}}</h6> -->
+  </div>
+</div>
+
+ 
+<div class="row">
+  <form class="form-control" #f="ngForm" (ngSubmit)="f.form.valid && funcion()">
+  <div class="form-group col-3">
+    <label *ngIf="NOMBRE" for="nombre">{{NOMBRE.campoObj.NOMBRE}}</label>
+    <span class="asterisco" *ngIf="NOMBRE && NOMBRE.OBLIGATORIO"> * </span>
+    <span class="asterisco" *ngIf="f.submitted && NOMBRE && NOMBRE.OBLIGATORIO && !nombre.valid">Campo obligatorio</span>
+    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="model.nombre" class="form-control" [disabled]="ALTA_BOTON && !ALTA_BOTON.EDIT_MENU_PERFIL_ACC || NOMBRE && !NOMBRE.EDITABLE || !NOMBRE"
+      [required]="NOMBRE && NOMBRE.OBLIGATORIO">
+  </div>
+  <div class="form-group col-3">
+    <label *ngIf="CODIGO" for="codigo">{{CODIGO.campoObj.NOMBRE}}</label>
+    <span class="asterisco" *ngIf="CODIGO && CODIGO.OBLIGATORIO"> * </span>
+    <span class="asterisco" *ngIf="f.submitted && CODIGO && CODIGO.OBLIGATORIO && !codigo.valid">Campo obligatorio</span>
+    <input type="text" name="codigo" #codigo="ngModel" [(ngModel)]="model.codigo" class="form-control" [disabled]="ALTA_BOTON && !ALTA_BOTON.EDIT_MENU_PERFIL_ACC || CODIGO && !CODIGO.EDITABLE || !CODIGO"
+      [required]="CODIGO && CODIGO.OBLIGATORIO">
+  </div>
+  <div class="form-group col-3">
+    <label *ngIf="DESCRIPCION" for="descripcion">{{DESCRIPCION.campoObj.NOMBRE}}</label>
+    <span class="asterisco" *ngIf="DESCRIPCION && DESCRIPCION.OBLIGATORIO">*</span>
+    <span class="asterisco" *ngIf="f.submitted && DESCRIPCION && DESCRIPCION.OBLIGATORIO && !descripcion.valid">Campo obligatorio</span>
+    <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="model.descripcion" class="form-control" [disabled]="ALTA_BOTON && !ALTA_BOTON.EDIT_MENU_PERFIL_ACC || DESCRIPCION  && !DESCRIPCION.EDITABLE || !DESCRIPCION"
+      [required]="DESCRIPCION && DESCRIPCION.OBLIGATORIO">
+  </div>
+  <div class="form-group col-3">
+    <label *ngIf="PAIS" for="iva">{{PAIS.campoObj.NOMBRE}}</label>
+    <span class="asterisco" *ngIf="PAIS && PAIS.OBLIGATORIO">*</span>
+    <span class="asterisco" *ngIf="f.submitted && PAIS && PAIS.OBLIGATORIO && !pais.valid">Campo obligatorio</span>
+    <input type="text" name="pais" #pais="ngModel" [(ngModel)]="model.pais" class="form-control" [disabled]="ALTA_BOTON && !ALTA_BOTON.EDIT_MENU_PERFIL_ACC || PAIS && !PAIS.EDITABLE || !PAIS"
+      [required]="PAIS && PAIS.OBLIGATORIO">
+  </div> 
+    <button type="submit" class="btn btn-info" [disabled]="ALTA_BOTON && !ALTA_BOTON.EDIT_MENU_PERFIL_ACC || !ALTA_BOTON ">ALTA_BOTON</button>
+  </form>
+</div>
+ 

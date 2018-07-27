@@ -1,0 +1,324 @@
+<div class="row calcpantalla">
+    <div class="pestana-filtros">
+        <div class="rps-button_addons input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" title="Mostrar filtros" (click)="mostrarFiltros()">
+                    <i class="fa fa-filter"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-2 filtros">
+        <div class="contenedor-acordeon">
+            <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+                <div class="panel">
+                    <div class="panel-heading panel-heading-principal" role="tab" id="acordeon-item-0">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text" class="main-content">FILTROS: </span>
+                            </a>
+                            <button type="button" class="btn refrescar" (click)="ocultarFiltros()" title="Ocultar filtros" style="float:right;">
+                                <i class="fa fa-arrow-left"></i>
+                            </button>
+                            <button type="button" class="btn refrescar" (click)=limpiarFiltros() style="float:right">
+                                <i class="fa fa-sync-alt"></i>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text">DELEGACIÓN ÁREA:</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                        <div class="panel-body">
+                            <div class="checkbox-box">
+                                <div class="checkbox-vertical">
+                                    <div *ngFor="let estDelegacionArea of vm.rspDelegacionArea.ListaEstacionDelegacionArea; let i = index;trackBy:trackByIdx"
+                                        class="checkbox-btn" [hidden]="!estDelegacionArea.Es_Visible">
+                                        <input type="checkbox" id="estDelegacionArea.Selected{{i}}" name="estDelegacionArea.Selected{{i}}" [(ngModel)]="vm.rspDelegacionArea.ListaEstacionDelegacionArea[i].Selected"
+                                            (ngModelChange)="getAllByFiltros()" />
+                                        <label for="estDelegacionArea.Selected{{i}}">{{estDelegacionArea.Nombre}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div [hidden]="this.vm.cantidadDelegacionesAreaShow > vm.rspDelegacionArea.ListaEstacionDelegacionArea.length">
+                                <div class="row" style="margin-left: 100px;font-size: 14px;text-decoration: underline;color: cornflowerblue;" [hidden]="vm.verMasDelegacionesArea">
+                                    <a (click)="verMasDelegacionesArea()">Ver más</a>
+                                </div>
+                                <div class="row" style="margin-left: 100px;font-size: 14px;text-decoration: underline;color: cornflowerblue;" [hidden]="!vm.verMasDelegacionesArea">
+                                    <a (click)="verMenosDelegacionesArea()">Ver menos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="acordeon-item-2">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="acordeon-header-text">PROVINCIAS:</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-2">
+                        <div class="panel-body">
+                            <div class="row" style="margin-left: 40px;font-size: 14px;">
+                                <a href="#" data-target="#modalProvincias" data-toggle="modal" class="enlace enlace-principal">Seleccionar</a>
+                            </div>
+                            <div class="row" style="margin-left: 40px;font-size: 12px;">
+                                <span>{{vm.cantidadProvinciasSeleccionadas}} Provincia{{vm.cantidadProvinciasSeleccionadas==1?'':'s'}}</span>
+                            </div>
+                            <div class="row" style="margin-left: 40px;font-size: 12px;">
+                                <span>Seleccionados</span>
+                            </div>
+                            <!-- <div class="checkbox-box">
+                                    <div class="checkbox-vertical">
+                                        <div *ngFor="let provincia of vm.rspProvincias.ListaProvincias; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                            <input type="checkbox" id="provincia.Selected{{i}}" name="provincia.Selected{{i}}" [(ngModel)]="vm.rspProvincias.ListaProvincias[i].Selected" />
+                                            <label for="provincia.Selected{{i}}">{{provincia.Nombre}}</label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="acordeon-item-3">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="acordeon-header-text">SEGMENTO:</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-3">
+                        <div class="panel-body">
+                            <div class="row" style="margin-left: 40px;font-size: 14px;">
+                                <a href="#" data-target="#modalSegmentos" data-toggle="modal" class="enlace enlace-principal">Seleccionar</a>
+                            </div>
+                            <div class="row" style="margin-left: 40px;font-size: 12px;">
+                                <span>{{vm.cantidadSegmentosSeleccionadas}} Segmento{{vm.cantidadSegmentosSeleccionadas==1?'':'s'}}</span>
+                            </div>
+                            <div class="row" style="margin-left: 40px;font-size: 12px;">
+                                <span>Seleccionados</span>
+                            </div>
+                            <!-- <div class="checkbox-box">
+                                    <div class="checkbox-vertical">
+                                        <div *ngFor="let segmento of vm.rspSegmento.ListaSegmentos; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                            <input type="checkbox" id="segmento.Selected{{i}}" name="segmento.Selected{{i}}" [(ngModel)]="vm.rspSegmento.ListaSegmentos[i].Selected" />
+                                            <label for="segmento.Selected{{i}}">{{segmento.Nombre}}</label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="acordeon-item-4">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <span class="acordeon-header-text">CARACTERIZACIÓN:</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-4">
+                        <div class="panel-body">
+                            <div class="checkbox-box">
+                                <div class="checkbox-vertical">
+                                    <div *ngFor="let estDelegacionArea of vm.rspDelegacionArea.ListaEstacionDelegacionArea; let i = index;trackBy:trackByIdx"
+                                        class="checkbox-btn">
+                                        <input type="checkbox" id="estDelegacionArea.Selected{{i}}" name="estDelegacionArea.Selected{{i}}" [(ngModel)]="vm.rspDelegacionArea.ListaEstacionDelegacionArea[i].Selected"
+                                        />
+                                        <label for="estDelegacionArea.Selected{{i}}">{{estDelegacionArea.Nombre}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col" style="background: white;">
+        <div class="row justify-content-start">
+            <!-- <a href="#" data-toggle=".container" id="sidebar-toggle" class="btn"(click)=menu()>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a> -->
+            <div class="container-fluid container-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Estaciones&nbsp;&nbsp;</li>
+                    <li class="breadcrumb-item " aria-current="page">Búsqueda de Estaciones</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="rps-button_addons input-group">
+                            <input #buscador type="text" class="form-control" placeholder="Introduce una palabra para buscar" (keyup)="buscar(buscador.value)">
+                            <!-- <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Buscar</button>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="rps-tabla">
+                            <table id="tablaEstaciones" class="tablesorter"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row  sizefooter flex-row-reverse">
+    <div class="botonera">
+        <button [routerLink]="['/alta-proveedores']" class="boton boton-estandar">Alta Nueva</button>
+    </div>
+</div>
+
+<div class="modal fade rps-modal" id="modalProvincias" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="contenedor-modal">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-xs-5">
+                            <h4 class="modal-title">PROVINCIAS</h4>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-7">
+                            <div class="checkbox-box">
+                                <div class="checkbox-vertical">
+                                    <div class="checkbox-btn">
+                                        <div class="modal-cabecera">
+                                            <input type="checkbox" id="selTodasProvincias" name="selTodasProvincias" [(ngModel)]="vm.rspProvincias.SelectedAll" (change)="selAllProvincias()"
+                                            />
+                                            <label for="selTodasProvincias" onclick>
+                                                <span style="position: relative;top: 0.2em;"> Seleccionar Todas:</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <div class="checkbox-box">
+                            <div class="checkbox-vertical">
+                                <div *ngFor="let provincia of vm.rspProvincias.ListaProvincias; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                    <!-- <div class="row">
+                                                <div class="col-md-3 col-xs-6"> -->
+                                    <input type="checkbox" id="provincia.Selected{{i}}" name="provincia.Selected{{i}}" [(ngModel)]="vm.rspProvincias.ListaProvincias[i].Selected"
+                                    />
+                                    <label for="provincia.Selected{{i}}" class="checkbox-inline">{{provincia.Nombre}}</label>
+                                    <!-- </div>    
+                                            </div>   -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton boton-auxiliar" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnAsignarProvincia" class="boton boton-estandar" data-ng-value="" data-dismiss="modal" (click)="getAllByFiltros()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade rps-modal" id="modalSegmentos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="contenedor-modal">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-xs-5">
+                            <h4 class="modal-title">SEGMENTOS</h4>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-7">
+                            <div class="checkbox-box">
+                                <div class="checkbox-vertical">
+                                    <div class="checkbox-btn">
+                                        <div class="modal-cabecera">
+                                            <input type="checkbox" id="selTodosSegmentos" name="selTodosSegmentos" [(ngModel)]="vm.rspSegmento.SelectedAll" (change)="selAllSegmentos()"
+                                            />
+                                            <label for="selTodosSegmentos" onclick>
+                                                <span style="position: relative;top: 0.2em;"> Seleccionar Todas:</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <div class="checkbox-box">
+                            <div class="checkbox-vertical">
+
+                                <!-- <div class="checkbox-btn">
+                                    <div class="row">
+                                        <div class="col-md-3 col-lg-3">
+                                            <input type="checkbox" id="segmento.Selected1" name="segmento.Selected1" />
+                                            <label for="segmento.Selected1" class="checkbox-inline">CheCK 1</label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <input type="checkbox" id="segmento.Selected2" name="segmento.Selected2" />
+                                            <label for="segmento.Selected2" class="checkbox-inline">CheCK 2</label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <input type="checkbox" id="segmento.Selected3" name="segmento.Selected3" />
+                                            <label for="segmento.Selected3" class="checkbox-inline">CheCK 1</label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <input type="checkbox" id="segmento.Selected4" name="segmento.Selected4" />
+                                            <label for="segmento.Selected4" class="checkbox-inline">CheCK 1</label>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div *ngFor="let segmento of vm.rspSegmento.ListaSegmentos; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                        <!-- <div class="row">
+                                            <div class="col-md-3 col-xs-6"> -->
+                                                <input type="checkbox" id="segmento.Selected{{i}}" name="segmento.Selected{{i}}" [(ngModel)]="vm.rspSegmento.ListaSegmentos[i].Selected" />
+                                                <label for="segmento.Selected{{i}}" class="checkbox-inline">{{segmento.Nombre}}</label>
+                                            <!-- </div>    
+                                        </div>   -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton boton-auxiliar" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnAsignarSegmento" class="boton boton-estandar" data-ng-value="" data-dismiss="modal" (click)="getAllByFiltros()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="vm.loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+<app-loading-component></app-loading-component>

@@ -1,0 +1,119 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.rps-dropdown {
+    font-family: 'titilliumregular';
+    width: 100%;
+  }
+  
+  .rps-dropdown.btn-col1 {
+    width: 100px;
+  }
+  
+  .rps-dropdown.btn-col2 {
+    width: 190px;
+  }
+  
+  .rps-dropdown.btn-col3 {
+    width: 280px;
+  }
+  
+  .rps-dropdown.btn-col4 {
+    width: 370px;
+  }
+  
+  .rps-dropdown.open .btn-default {
+    box-shadow: none;
+    border-radius: 5px 0 0 0;
+    background-color: #ffB81C;
+    color: #ffffff;
+  }
+  
+  .rps-dropdown.open .btn-default:hover,
+  .rps-dropdown.open .btn-default:focus,
+  .rps-dropdown.open .btn-default:visited {
+    background-color: #ffB81C;
+    color: #ffffff;
+  }
+  
+  .rps-dropdown.open .btn-default:active {
+    background-color: #ffB81C;
+    box-shadow: none;
+    color: #ffffff;
+  }
+  
+  .rps-dropdown.open .btn-default .caret {
+    border-radius: 0 5px 0 0;
+  }
+  
+  .rps-dropdown .btn-default {
+    background-color: #e67600;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 0.813em 2.813em 1em 0.750em;
+    width: 100%;
+    line-height: 100%;
+  }
+  
+  .rps-dropdown .btn-default:active:focus,
+  .rps-dropdown .btn-default:active {
+    background-color: #ffB81C;
+    box-shadow: none;
+    color: #ffffff;
+  }
+  
+  .rps-dropdown .caret {
+    border: 0;
+    background-color: #e67600;
+    width: 2.813em;
+    height: 2.813em;
+    position: absolute;
+    border-radius: 0 5px 5px 0;
+    top: 0;
+    right: 0;
+    border-left: 1px solid;
+  }
+  
+  .rps-dropdown .caret:after {
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    content: '';
+    display: block;
+    height: 0.938em;
+    margin-top: -4px;
+    pointer-events: none;
+    position: absolute;
+    right: 18px;
+    top: 35%;
+    transform-origin: 66% 66%;
+    transform: rotate(45deg);
+    transition: all 0.15s ease-in-out;
+    width: 15px;
+  }
+  
+  .rps-dropdown .dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border-color: #e0ded9;
+    border-radius: 0 0 5px 5px;
+    box-shadow: none;
+    width: 100%;
+    min-width: auto;
+    overflow: hidden;
+    color: #5c4e44;
+  }
+  
+  .rps-dropdown .dropdown-menu li a {
+    padding: 0.719em 0.594em;
+    white-space: normal;
+    font-size: 0.938em;
+  }
+  
+  .rps-dropdown .dropdown-menu li a:hover,
+  .rps-dropdown .dropdown-menu li a:focus {
+    background-color: #e67600;
+    color: #ffffff;
+  }
+  

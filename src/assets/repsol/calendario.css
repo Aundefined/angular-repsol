@@ -1,0 +1,387 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.date {
+  width: 10.000em;
+}
+
+.date .input-group-addon {
+  border: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2.813em;
+  height: 2.813em;
+  background-color: transparent;
+  padding: 0;
+}
+
+.date .glyphicon-calendar:before {
+  content: url(../img/Checked_ok.png);
+  width: 1.563em;
+  height: 1.563em;
+  display: block;
+  padding-top: 0.563em;
+}
+
+.date .glyphicon-calendar:hover {
+  cursor: pointer;
+}
+
+.date .glyphicon-calendar:hover:before {
+  content: url(../img/Checked_ok.png);
+}
+
+.date .glyphicon-calendar.active:before {
+  content: url(../img/Checked_ok.png);
+}
+
+.date .bootstrap-datetimepicker-widget {
+  min-width: 17.500em;
+  box-shadow: none;
+  border-color: #e0ded9;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed {
+  width: 100%;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .picker-switch {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed thead th,
+.date .bootstrap-datetimepicker-widget .table-condensed tbody th,
+.date .bootstrap-datetimepicker-widget .table-condensed thead td,
+.date .bootstrap-datetimepicker-widget .table-condensed tbody td {
+  text-align: center;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed thead th:hover,
+.date .bootstrap-datetimepicker-widget .table-condensed tbody th:hover,
+.date .bootstrap-datetimepicker-widget .table-condensed thead td:hover,
+.date .bootstrap-datetimepicker-widget .table-condensed tbody td:hover {
+  cursor: pointer;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .dow {
+  text-transform: capitalize;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .next {
+  vertical-align: sub;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .next .glyphicon-chevron-right {
+  top: 0;
+  display: block;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .next .glyphicon-chevron-right:before {
+  transform: rotate(-90deg);
+  content: '\e805';
+  font-family: "fontello";
+  color: #e67600;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .prev {
+  vertical-align: sub;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .prev .glyphicon-chevron-left {
+  top: 0;
+  display: block;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .prev .glyphicon-chevron-left:before {
+  transform: rotate(90deg);
+  content: '\e805';
+  font-family: "fontello";
+  color: #e67600;
+  position: absolute;
+  left: 8px;
+  top: 5px;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .day {
+  position: relative;
+  border-bottom: 2px solid transparent;
+  overflow: hidden;
+  color: #5c4e44;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .day:before {
+  content: "";
+  border: 1px solid transparent;
+  width: 100%;
+  display: block;
+  height: 70px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .day:hover {
+  border-bottom: 1px solid #e67600;
+  color: #e67600;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .day:hover:before {
+  content: "";
+  border: 1px solid #e67600;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .today {
+  border-bottom: 2px solid #e67600;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .old,
+.date .bootstrap-datetimepicker-widget .table-condensed .new {
+  color: #e0ded9;
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .active {
+  background-color: #e67600;
+  border-bottom-color: #e67600;
+  color: #ffffff;
+  font-family: "titilliumbold";
+}
+
+.date .bootstrap-datetimepicker-widget .table-condensed .active:hover {
+  color: #ffffff;
+}
+
+.rps-datepicker {
+  position: relative;
+}
+
+.rps-datepicker .hasDatepicker,
+.rps-datepicker input[type=text].hasDatepicker {
+  width: 10.667em;
+}
+
+.rps-datepicker button {
+  border: 0;
+  font-family: "fontello";
+  font-size: 1.563em;
+  color: #e67600;
+}
+
+.rps-datepicker button:before {
+  content: '\e807';
+  display: block;
+}
+
+.rps-datepicker button:hover {
+  cursor: pointer;
+}
+
+.rps-datepicker button:hover:before {
+  content: '\e808';
+}
+
+.rps-datepicker button.active:before {
+  content: '\e808';
+}
+
+.rps-datepicker .ui-datepicker-trigger {
+  position: absolute;
+  right: 0.400em;
+  /* bottom: 0.400em; */
+  bottom: 0.7em;  
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.ui-datepicker {
+  min-width: 17.500em;
+  box-shadow: none;
+  border-color: #e0ded9 !important;
+  padding: 0.500em;
+  display: none;
+  margin-top: 5px;
+}
+
+.ui-datepicker:before {
+  content: url(../img/pico-up.png);
+  width: 25px;
+  height: 15px;
+  position: absolute;
+  top: -16px;
+  left: 125px;
+}
+
+.ui-datepicker.calendar-top {
+  margin-top: -5px;
+}
+
+.ui-datepicker.calendar-top:before {
+  content: url(../img/pico-down.png);
+  width: 25px;
+  height: 15px;
+  position: absolute;
+  bottom: -11px;
+  left: 125px;
+  top: auto;
+}
+
+.ui-datepicker .ui-datepicker-header {
+  background-color: transparent;
+  border: 0;
+}
+
+.ui-datepicker .ui-datepicker-title {
+  min-height: 3.125em;
+  margin: 0 1.375em;
+  line-height: 1.8em;
+  text-align: center;
+}
+
+.ui-datepicker .ui-datepicker-month,
+.ui-datepicker .ui-datepicker-year {
+  border: 0;
+  font-family: "titilliumregular";
+  margin: 0.625em 0.313em 0;
+  font-size: 15px;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  width: 1.375em;
+  height: 3.125em;
+  position: absolute;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+  position: absolute;
+  left: -1599984px;
+  left: -99999rem;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+  left: 0.500em;
+  top: 0.500em;
+}
+
+.ui-datepicker .ui-datepicker-prev:before {
+  transform: rotate(90deg);
+  content: '\e805';
+  font-family: "fontello";
+  color: #e67600;
+  position: inherit;
+  left: 0;
+  top: 0.875em;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover {
+  border: 0;
+  background-color: transparent;
+}
+
+.ui-datepicker .ui-datepicker-next {
+  right: 0.500em;
+  top: 0.500em;
+}
+
+.ui-datepicker .ui-datepicker-next:before {
+  transform: rotate(-90deg);
+  content: '\e805';
+  font-family: "fontello";
+  color: #e67600;
+  position: inherit;
+  right: 0;
+  top: 0.875em;
+}
+
+.ui-datepicker .ui-datepicker-next-hover {
+  border: 0;
+  background-color: transparent;
+}
+
+.ui-datepicker .ui-datepicker-calendar {
+  width: 100%;
+}
+
+.ui-datepicker td {
+  text-align: center;
+  font-family: "titilliumregular";
+  font-size: 15px;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.ui-datepicker td .ui-state-default {
+  border: 0;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.ui-datepicker td.ui-datepicker-today .ui-state-default {
+  color: #5c4e44;
+}
+
+.ui-datepicker td.ui-datepicker-today .ui-state-default.ui-state-active {
+  color: #ffffff;
+}
+
+.ui-datepicker td.ui-datepicker-today:before {
+  content: "";
+  border-bottom: 2px solid #e67600;
+  width: 100%;
+  height: 23px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ui-datepicker td.ui-datepicker-today:hover:before {
+  border-bottom-width: 2px;
+}
+
+.ui-datepicker td.ui-datepicker-current-day {
+  background-color: #e67600;
+  color: #ffffff;
+  font-family: "titilliumbold";
+}
+
+.ui-datepicker td.ui-datepicker-current-day:hover {
+  color: #ffffff;
+}
+
+.ui-datepicker td:hover {
+  color: #e67600;
+  cursor: pointer;
+}
+
+.ui-datepicker td:hover:before {
+  content: "";
+  border: 1px solid #e67600;
+  width: 100%;
+  height: 23px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ui-datepicker th {
+  text-align: center;
+  font-family: "titilliumregular";
+  font-size: 15px;
+  width: calc(14.28571429%);
+}
+
+

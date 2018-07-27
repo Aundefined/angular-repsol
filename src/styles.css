@@ -1,0 +1,310 @@
+@import url("./assets/repsol/paginacionDatatable.css");
+@import url("./assets/repsol/desplegable.css");
+@import url("./assets/repsol/tabla.css");
+
+  html,
+  body,
+  span,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  article,
+  aside,
+  details,
+  dialog,
+  figcaption,
+  figure,
+  footer,
+  header,
+  main,
+  nav,
+  section,
+  summary,
+  audio,
+  canvas,
+  video,
+  mark,
+  code,
+  kbd,
+  pre,
+  samp,
+  a,
+  abbr,
+  acronym,
+  address,
+  code,
+  del,
+  dfn,
+  em,
+  strong,
+  img,
+  q,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  div {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  
+  input,
+  button,
+  select,
+  textarea {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  button:focus,
+  button:hover{
+    cursor: pointer;
+    box-shadow: none;
+  }
+
+  a {
+    cursor: pointer;
+    background-color: transparent;
+    text-decoration-skip: objects;
+    -webkit-text-decoration-skip: objects;
+  }
+  
+  a:focus,
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:visited,
+  a:active {
+    text-decoration: none;
+  }
+  
+  a:active,
+  a:hover {
+    outline-width: 0;
+  }
+  
+  /*-----------------------------------
+    #HEADINGS, WITH AND WITHOUT LINK
+  -------------------------------------*/
+  
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: inherit;
+  }
+
+  button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+html,
+body {
+  font-size: 16px;
+  background-color: transparent;
+  font-family: 'titilliumregular';
+  min-width: 840px;
+}
+
+p {
+  margin: 0 0 25px;
+  color: #5c4e44;
+}
+
+.fila-componente {
+  margin: 0 0 1.875em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #5c4e44;
+  margin-top: 22px;
+  margin-bottom: 11px;
+}
+
+h1,
+.h1 {
+  font-size: 41px;
+}
+
+h2,
+.h2 {
+  font-size: 34px;
+}
+
+h3,
+.h3 {
+  font-size: 28px;
+}
+
+h4,
+.h4 {
+  font-size: 20px;
+}
+
+h5,
+.h5 {
+  font-size: 16px;
+}
+
+h6,
+.h6 {
+  font-size: 14px;
+}
+
+h5 {
+  margin: 0;
+}
+body{
+  font-family: 'titilliumregular';
+}
+/*--------------------------------
+	# GENERIC FONTS
+--------------------------------*/
+
+@font-face {
+    font-family: 'titilliumregular';
+    src: url('/assets/fonts/titillium-regular-webfont.eot') format('eot');
+    src: url('/assets/fonts/titillium-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/titillium-regular-webfont.woff2') format('woff2'), url('/assets/fonts/titillium-regular-webfont.woff') format('woff'), url('/assets/fonts/titillium-regular-webfont.svg#svgFontName') format('svg'), url('/assets/fonts/titillium-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'titillium_bdbold';
+    src: url('/assets/fonts/titillium-bold-webfont.eot') format('eot');
+    src: url('/assets/fonts/titillium-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/titillium-bold-webfont.woff2') format('woff2'), url('/assets/fonts/titillium-bold-webfont.woff') format('woff'), url('/assets/fonts/titillium-bold-webfont.svg#svgFontName') format('svg'), url('/assets/fonts/titillium-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'titilliumbold';
+    src: url('/assets/fonts/titillium-semibold-webfont.eot') format('eot');
+    src: url('/assets/fonts/titillium-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/titillium-semibold-webfont.woff2') format('woff2'), url('/assets/fonts/titillium-semibold-webfont.woff') format('woff'), url('/assets/fonts/titillium-semibold-webfont.svg#svgFontName') format('svg'), url('/assets/fonts/titillium-semibold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'repsolvietregular';
+    src: url('/assets/fonts/repsolviet-regular-webfont.eot') format('eot');
+    src: url('/assets/fonts/repsolviet-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/repsolviet-regular-webfont.woff2') format('woff2'), url('/assets/fonts/repsolviet-regular-webfont.woff') format('woff'), url('/assets/fonts/repsolviet-regular-webfont.svg#svgFontName') format('svg'), url('/assets/fonts/repsolviet-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'fontello';
+    src: url('/assets/fonts/fontello.eot?40008215');
+    src: url('/assets/fonts/fontello.eot?40008215#iefix') format('embedded-opentype'), url('/assets/fonts/fontello.woff2?40008215') format('woff2'), url('/assets/fonts/fontello.woff?40008215') format('woff'), url('/assets/fonts/fontello.ttf?40008215') format('truetype'), url('/assets/fonts/fontello.svg?40008215#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .font-pri-regular {
+    font-family: 'titilliumregular' !important;
+  }
+  
+  .font-pri-bold {
+    font-family: 'titillium_bdbold' !important;
+  }
+  
+  .font-pri-semibold {
+    font-family: 'titilliumbold' !important;
+  }
+
+  

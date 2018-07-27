@@ -1,0 +1,189 @@
+[class^="icon-"]:before,
+[class*=" icon-"]:before,
+[class^="icon-"]:after,
+[class*=" icon-"]:after {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  /*margin-right: .2em;*/
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  /*margin-left: .2em;*/
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-checked:before {
+  content: '\e800';
+}
+
+/* '' */
+
+.icon-close:before {
+  content: '\e801';
+}
+
+/* '' */
+
+.icon-danger-sign:before {
+  content: '\e802';
+}
+
+/* '' */
+
+.icon-hamburguer-menu:before {
+  content: '\e803';
+}
+
+/* '' */
+
+.icon-perfil_usuario:before {
+  content: '\e804';
+}
+
+/* '' */
+
+.icon-arrow-down-sign-to-navigate:before {
+  content: '\e805';
+}
+
+/* '' */
+
+.icon-buscar_descriptor:before {
+  content: '\e806';
+}
+
+/* '' */
+
+.icon-perfil_ayuda:before {
+  content: '\e809';
+}
+
+/* '' */
+
+.icon-calendar:before {
+  content: '\e807';
+}
+
+/* '' */
+
+.icon-calendar_hover:before {
+  content: '\e808';
+}
+
+/* '' */
+
+.icon-after {
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+  /* '' */
+}
+
+.icon-after.icon-checked:after {
+  content: '\e800';
+}
+
+.icon-after.icon-close:after {
+  content: '\e801';
+}
+
+.icon-after.icon-danger-sign:after {
+  content: '\e802';
+}
+
+.icon-after.icon-hamburguer-menu:after {
+  content: '\e803';
+}
+
+.icon-after.icon-perfil_usuario:after {
+  content: '\e804';
+}
+
+.icon-after.icon-arrow-down-sign-to-navigate:after {
+  content: '\e805';
+}
+
+.icon-after.icon-buscar_descriptor:after {
+  content: '\e806';
+}
+
+.icon-after.icon-perfil_ayuda:after {
+  content: '\e809';
+}
+
+.icon-after.icon-calendar:after {
+  content: '\e807';
+}
+
+.icon-after.icon-calendar_hover:after {
+  content: '\e808';
+}
+
+.icon-after.icon-buscar_descriptor:before {
+  content: '';
+}
+
+.icon-after.icon-checked:before {
+  content: '';
+}
+
+.icon-after.icon-close:before {
+  content: '';
+}
+
+.icon-after.icon-danger-sign:before {
+  content: '';
+}
+
+.icon-after.icon-hamburguer-menu:before {
+  content: '';
+}
+
+.icon-after.icon-perfil_usuario:before {
+  content: '';
+}
+
+.icon-after.icon-arrow-down-sign-to-navigate:before {
+  content: '';
+}
+
+.icon-after.icon-buscar_descriptor:before {
+  content: '';
+}
+
+.icon-after.icon-perfil_ayuda:before {
+  content: '';
+}
+
+.icon-after.icon-calendar:before {
+  content: '';
+}
+
+.icon-after.icon-calendar_hover:before {
+  content: '';
+}

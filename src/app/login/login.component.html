@@ -1,0 +1,62 @@
+<div class="container">
+
+  <div class="row"> <!-- LOGO REPSOL -->
+    <div class="col-md-6 offset-md-3">
+      <img class="img-fluid" src="../../assets/logo.jpg" alt="Logo Repsol">
+    </div>
+  </div> <!-- END OF LOGO -->
+
+  <div class="row" [hidden]="perfilesLoad">
+    
+    <div class="col-md-4 offset-md-4">
+
+      <form class="form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <alert></alert>
+        <div class="card">
+
+          <div id="divForm" class="form-group card-body">
+          
+            <div class="grupo-input">
+              <input type="text" class="input-estandar" name="codigoUsuario" placeholder="Código de usuario" name="codigoUsuario" [(ngModel)]="logUser.CODIGO_USUARIO"
+              #codigoUsuario="ngModel" required autofocus>
+            </div>
+
+            <div id="inputPass" class="grupo-input">
+              <input type="password" class="contrasena" placeholder="Contraseña" name="password" [(ngModel)]="logUser.PASSWORD" #password="ngModel"
+              required>
+            </div>
+          </div><!--End Form group-->
+
+          <div class="card-footer">
+            <div class="col fila-componente">
+                <a class="enlace enlace-principal" [routerLink]="['/recordar']">¿Has olvidado tu contraseña?</a>
+            </div>
+
+            <div class="col fila-componente">
+              <button id="enterButton" type="submit" [class] = "f.form.valid ? 'boton boton-estandar' : 'boton boton-inactivo'" [disabled]="!f.form.valid">Entrar</button>
+            </div>
+          </div><!--End Modal Footer-->
+
+        </div><!--End card-->
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="row" [hidden]="!perfilesLoad"> <!-- SELECT PROFILE-->
+    <div class="col-md-4 offset-md-4">
+        <div>
+          <h2>Seleccione el perfil:</h2>
+        </div>
+  
+        <div class="col-md-8 offset-md-2">
+          <ng-container class="col fila-componente" *ngFor="let perfil of perfiles">
+            <a href="#" onclick="return false" class="enlace enlace-principal" (click)="cargarPerfil(perfil.ID)">{{perfil.NOMBRE | uppercase}}<br/></a>
+          </ng-container>
+        </div>
+    </div>
+  </div> <!-- END OF SELECT PROFILE -->
+
+</div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 

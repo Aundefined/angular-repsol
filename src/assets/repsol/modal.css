@@ -1,0 +1,61 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.rps-modal {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.rps-modal .contenedor-modal {
+  width: 100%;
+  padding: 0 1.875em;
+}
+
+.rps-modal .modal-content {
+  border: 1px solid #e0ded9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rps-modal .modal-header {
+  padding: 3em 0 0.625em;
+  border-bottom: 1px solid #e0ded9;
+}
+
+.rps-modal .modal-title {
+  font-family: 'titillium_bdbold';
+  font-size: 1.5em;
+  color: #5c4e44;
+}
+
+.rps-modal .modal-body {
+  padding: 1.25em 0 1.875em;
+}
+
+.rps-modal .parrafo-modal {
+  font-family: 'titilliumregular';
+  color: #5c4e44;
+}
+
+.rps-modal .modal-footer {
+  border: none;
+  padding: 0 0 1.875em;
+}
+
+.rps-modal .modal-footer .boton-estandar {
+  margin-left: 1.125em;
+}
+
+.rps-modal .modal-header .close {
+  font-family: 'titilliumregular';
+  margin-top: -18px;
+  color: #e67600;
+  opacity: 1;
+  position: relative;
+}
+
+.rps-modal .modal-header .close:after {
+  position: absolute;
+  font-size: 0.810em;
+  right: 0;
+}

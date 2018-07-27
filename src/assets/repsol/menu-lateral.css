@@ -1,0 +1,101 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.main-navega {
+  float: left;
+  width: 100%;
+  border: solid 1px #e0ded9;
+}
+
+.main-navega .panel-default {
+  border: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.main-navega .panel-title {
+  font-size: 1.125em;
+  position: relative;
+  padding-right: 22px;
+}
+
+.main-navega .panel-title a {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+}
+
+.main-navega .panel-title a[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+  content: '\e805';
+  color: #e67600;
+  position: absolute;
+  font-size: 17px;
+  line-height: 22px;
+  font-family: "fontello";
+  margin-left: 8px;
+  right: 0;
+  top: 0;
+}
+
+.main-navega .panel-title a[aria-expanded="false"]:after {
+  transform: rotate(0deg);
+  content: '\e805';
+  font-family: "fontello";
+  margin-left: 8px;
+  color: #e67600;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.main-navega .panel-group {
+  padding: 1.875em 1.563em 0.938em 1.875em;
+  margin: 0;
+}
+
+.main-navega .panel-body {
+  padding: 0;
+}
+
+.main-navega .menu-nivel-1 {
+  font-family: 'titilliumbold';
+  color: #5c4e44;
+  padding-bottom: 1.111em;
+}
+
+.main-navega .menu-nivel-2 {
+  padding: 0;
+  margin: 0;
+}
+
+.main-navega .menu-nivel-2-item {
+  padding: 0 0 1.250em 1.250em;
+}
+
+.main-navega .menu-nivel-2-item-link {
+  font-size: 1em;
+}
+
+.main-navega .menu-nivel-2 {
+  list-style: none;
+}
+
+.main-navega .menu-nivel-2-item-link {
+  font-family: 'titilliumregular';
+  font-size: 1em;
+  color: #5c4e44;
+  text-decoration: none;
+  display: block;
+}
+
+.main-navega .menu-nivel-2-item-link:focus,
+.main-navega .menu-nivel-2-item-link:hover {
+  text-decoration: none;
+  color: #e67600;
+}
+
+.main-navega .link-activo {
+  color: #e67600;
+}

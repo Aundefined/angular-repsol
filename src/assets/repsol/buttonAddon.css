@@ -1,0 +1,43 @@
+/*--------------------------------
+	# BUTTON ADDONS
+--------------------------------*/
+
+.rps-button_addons .form-control {
+    border-color: #e0ded9;
+    color: #555;
+    font-size: 0.938em;
+    height: 2.813em;
+    box-shadow: none;
+    border-right: 0;
+    border-radius: 5px 0px 0px 5px;
+    
+    
+}
+
+.rps-button_addons .form-control:hover,
+.rps-button_addons .form-control:focus,
+.rps-button_addons .form-control:visited {
+    box-shadow: none;
+}
+
+.rps-button_addons .input-group-btn .btn-default {
+    background-color: #e67600;
+    border: 0;
+    border-radius: 0px 5px 5px 0px;
+    color: #ffffff;
+    font-size: 0.938em;
+    border: 1px solid #e67600;
+    font-family: titilliumregular;
+    height: 2.813em;
+}
+
+.rps-button_addons .input-group-btn .btn-default:hover {
+    background-color: #ffffff;
+    color: #e67600; 
+    border: 1px solid #e67600;
+    box-shadow: none;
+}
+
+.rps-button_addons .input-group-btn .btn-default:active {
+    box-shadow: none;
+}

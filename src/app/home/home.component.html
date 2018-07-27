@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div id="cabecera" class="row cabecera">
+    <div id="divLogo">
+      <img class="logo" src="./assets/logo.jpg" alt="Logo Repsol" [routerLink]="['/']">
+    </div>
+    <div id="divInfoUser">
+      <div id="usuarioYperfil"><a (click)="changeSelectPerfil()">{{currentUser.NOMBRE_EMP | uppercase}}</a>
+        <br>
+        <div *ngIf="selectPerfil; else elseBlock">
+          <select class="form-control form-control-sm" ng-init="{nombrePerfil}" (change)="changePerfil($event.target.value)">
+            <option>Selección perfil</option>
+            <option *ngFor="let perfil of perfiles" [value]="perfil.ID">{{perfil.NOMBRE}}</option>
+          </select>
+        </div>
+        <ng-template #elseBlock>
+          <a (click)="changeSelectPerfil()">{{nombrePerfil | uppercase}}</a>
+        </ng-template>
+      </div>
+    </div>
+    <div id="botonLogOut">
+      <button [routerLink]="['/login']" type="button" class="btn btn-primary btn-logout">
+        <i class="fas fa-power-off"></i>
+      </button>
+    </div>
+  </div>
+  <div id="divContenido" class="row">
+    <div id="divSidebar" class="col-2 scro">
+      <div id="optionsSidebar" class="main-navega" style="height: 100%">
+        <div class="navegacion">
+          <div class="panel-group" id="acordeon-naveg" role="tablist" aria-multiselectable="true">
+            <ng-container *ngFor="let menu of listaMenu; let i = index">
+              <div class="panel panel-default">
+                <div class="menu-nivel-1" role="tab" id="navega-item-1">
+                  <h4 class="panel-title">
+                    <a role="button" title="{{menu.DESCRIPCION}}" data-toggle="collapse" data-parent="#acordeon-naveg" href="#collapse{{i}}"
+                      aria-expanded="true" aria-controls="collapse1">{{menu.DESCRIPCION}}</a>
+                  </h4>
+                </div>
+                <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                  <div class="panel-body">
+                    <ng-container *ngFor="let submenu of menu.listSubmenu; let j = index">
+                      <ng-container *ngIf="submenu.listSubmenu;else elseBlock">
+                                              <div class="menu-nivel-1" role="tab" id="navega-item-2">
+                          <h4 class="panel-title">
+                            <a role="button" title="{{submenu.DESCRIPCION}}" data-toggle="collapse" data-parent="#acordeon-naveg"
+                              href="#scollapse{{j}}" aria-expanded="true" aria-controls="collapse1">{{submenu.DESCRIPCION}}</a>
+                          </h4>
+                        </div>
+                        <div id="scollapse{{j}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                          <div class="panel-body">
+                            <ng-container *ngFor="let submenu of submenu.listSubmenu; let j = index">
+                              <ul class="menu-nivel-2">
+                                <li class="menu-nivel-2-item" (click)="cargarVista(menu.listSubmenu[j].URL)">
+                                  <a   title="{{submenu.DESCRIPCION}}" data-id="#subt-1-1" class="menu-nivel-2-item-link link-activo">{{submenu.DESCRIPCION}}</a>
+                                  
+                                </li>
+                              </ul>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </ng-container>
+                      <ng-template #elseBlock>
+                        <ul class="menu-nivel-2">
+                          <li class="menu-nivel-2-item" (click)="cargarVista(menu.listSubmenu[j].URL)">
+                            <a  title="{{submenu.DESCRIPCION}}" data-id="#subt-1-1" class="menu-nivel-2-item-link link-activo">{{submenu.DESCRIPCION}}</a>
+                          </li>
+                        </ul>
+                      </ng-template>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 offset-2">
+      <router-outlet></router-outlet>
+    </div>
+    <!--en col router-->
+  </div>
+</div>

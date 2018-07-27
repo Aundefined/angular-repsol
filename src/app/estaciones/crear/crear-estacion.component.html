@@ -1,0 +1,1349 @@
+<form class="contenedor-formulario" #myForm="ngForm" (ngSubmit)="guardarEstaciones(content)" ngNativeValidate>
+
+    <div class="rowFila calcpantalla">
+        <div class="container-fluid container-breadcrumb">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="#">Estaciones</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">Alta de Estaciones</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-acordeon">
+            <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text">DATOS BASICOS DE E.S.</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in collapse show" role="tabpanel" aria-labelledby="acordeon-item-1">
+                        <div class="panel-body">
+                            <div class="row  ">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <!--Cod. Empresa-->
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codigo_Repsol">Cod. Empresa:</label>
+                                                <input type="text" id="codigo_Repsol" class="input-estandar" name="codigo_Repsol" maxlength="5" placeholder="" [(ngModel)]="vm.datosBasicos.Codigo_Repsol"
+                                                    #mCodigoRepsol="ngModel" autocomplete="off" (keyup)="searchSugerencia($event)"
+                                                    (focusout)="hideResults(mCodigoRepsol)" [readonly]="!vm.habilitarModificar || !vm.habilitarCodigoRepsol"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar || !vm.habilitarCodigoRepsol}"
+                                                    (blur)="codigoEmpresaValidate()" />
+                                                <div id="errorMessageCodigoRepsol">
+                                                    <span id="errorMessageCodigoRepsolSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                                <div class="sugerencias" [hidden]="vm.hideSugerencias">
+                                                    <div id="colores" class="list-group">
+                                                        <a #autocompletar *ngFor="let sugerencia of this.vm.ListaCodigosRepsol" class="list-group-item list-group-item-action" (click)="confirmSearch(mCodigoRepsol,sugerencia.Codigo_Repsol)">{{sugerencia.Codigo_Repsol}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="cod_Instalacion">Cod. Instalación:</label>
+                                                <input type="text" id="cod_Instalacion" class="input-estandar" name="cod_Instalacion" maxlength="10" placeholder="" [(ngModel)]="vm.datosBasicos.Cod_Instalacion"
+                                                    #mCodInstalacion="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="codigoInstalacionValidate()"
+                                                />
+                                                <div id="errorMessageCodigoInstalacion">
+                                                    <span id="errorMessageCodigoInstalacionSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Cod. Instalacion-->
+                                    <!-- <div class="row">
+                                    <div class=" col-sm-6 col-md-6 col-lg-6">
+                                        <div class="grupo-input" [ngClass]="{'has-error': !mcodInstalacion.valid && (mcodInstalacion.dirty || mcodInstalacion.touched)}">
+                                            <label class="etiqueta-input" for="cod_Instalacion">Cod. Instalacion:</label>
+                                            <input type="text" id="cod_Instalacion" class="input-estandar" name="cod_Instalacion" maxlength="10" placeholder="" pattern="[a-zA-Z0-9]+"
+                                            [(ngModel)]="vm.datosBasicos.Cod_Instalacion" #mcodInstalacion="ngModel"/>
+                                            <span class="help-block" *ngIf="mcodInstalacion.errors && (mcodInstalacion.dirty || mcodInstalacion.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="mcodInstalacion.errors.pattern">
+                                                        Solo acepta letras y numeros
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                    <!--CECO-->
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="ceco">Ceco:</label>
+                                                <input type="text" id="ceco" class="input-estandar" name="ceco" maxlength="5" placeholder="" [(ngModel)]="vm.datosBasicos.Ceco"
+                                                    #mCeco="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                    (blur)="cecoValidate()" />
+                                                <div id="errorMessageCeco">
+                                                    <span id="errorMessageCecoSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="ctc">Ctc:</label>
+                                                <input type="text" id="ctc" class="input-estandar" name="ctc" maxlength="10" placeholder="" [(ngModel)]="vm.datosBasicos.Ctc"
+                                                    #mCtc="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                    (blur)="ctcValidate()" />
+                                                <div id="errorMessageCtc">
+                                                    <span id="errorMessageCtcSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--CTC-->
+                                    <!-- <div class="row">
+                                    <div class=" col-sm-6 col-md-6 col-lg-6">
+                                        <div class="grupo-input" [ngClass]="{'has-error': !mCtc.valid && (mCtc.dirty || mCtc.touched)}">
+                                            <label class="etiqueta-input" for="ctc">Ctc:</label>
+                                            <input type="text" id="ctc" class="input-estandar" name="ctc" maxlength="10" placeholder="" pattern="[a-zA-Z0-9]+"
+                                            [(ngModel)]="vm.datosBasicos.Ctc" #mCtc="ngModel"/>
+                                            <span class="help-block" *ngIf="mCtc.errors && (mCtc.dirty || mCtc.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="mCtc.errors.pattern">
+                                                        Solo acepta letras y numeros
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                    <!--Nombre Comercial-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="nombre_Comercial">Nombre Comercial:</label>
+                                                <input type="text" id="nombre_Comercial" class="input-estandar" name="nombre_Comercial" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Nombre_Comercial"
+                                                    #mNombreComercial="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="nombreComercialValidate()"
+                                                />
+                                                <div id="errorMessageNombreComercial">
+                                                    <span id="errorMessageNombreComercialSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Razon Social-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="razon_Social">Razón Social:</label>
+                                                <input type="text" id="razon_Social" class="input-estandar" name="razon_Social" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Razon_Social"
+                                                    #mRazonSocial="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="razonSocialValidate()"
+                                                />
+                                                <div id="errorMessageRazonSocial">
+                                                    <span id="errorMessageRazonSocialSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Direccion-->
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="direccion">Dirección:</label>
+                                                <input type="text" id="direccion" class="input-estandar" name="direccion" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Direccion"
+                                                    #mDireccion="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="direccionValidate()"
+                                                />
+                                                <div id="errorMessageDireccion">
+                                                    <span id="errorMessageDireccionSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Codigo Postal y Localidad-->
+                                    <div class="row">
+                                        <!--Codigo Postal-->
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codigo_Postal">Código Postal:</label>
+                                                <input type="text" id="codigo_Postal" class="input-estandar" name="codigo_Postal" maxlength="5" placeholder="" [(ngModel)]="vm.datosBasicos.Codigo_Postal"
+                                                    #mCodigoPostal="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="codigoPostalValidate()"
+                                                />
+                                                <div id="errorMessageCodigoPostal">
+                                                    <span id="errorMessageCodigoPostalSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Localidad-->
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="localidad">Localidad:</label>
+                                                <input type="text" id="localidad" class="input-estandar" name="localidad" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Localidad"
+                                                    #mLocalidad="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="localidadValidate()"
+                                                />
+                                                <div id="errorMessageLocalidad">
+                                                    <span id="errorMessageLocalidadSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Provincia y Pais-->
+                                    <div class="row">
+                                        <!--Provincia-->
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="provincia">Provincia:</label>
+                                                <select id="id_Provincia" class="rps-select selector-multiple niceSelectProvincia" name="id_Provincia" [(ngModel)]="vm.datosBasicos.Id_Provincia"
+                                                    #mProvincia="ngModel" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}">
+                                                    <option value="0">
+                                                        --Seleccione--
+                                                    </option>
+                                                    <option *ngFor="let provincia of vm.rspProvincias.ListaProvincias" [value]="provincia.Id">
+                                                        {{provincia.Nombre}}
+                                                    </option>
+                                                </select>
+                                                <div id="errorMessageProvincia" style="position: absolute; bottom: 1px;">
+                                                    <span id="errorMessageProvinciaSpan">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pais-->
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="pais">País:</label>
+                                                <select id="pais" class="rps-select selector-multiple niceSelectPais" name="pais" [(ngModel)]="vm.datosBasicos.Pais" #mPais="ngModel"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}">
+                                                    <option value="0">
+                                                        --Seleccione--
+                                                    </option>
+                                                    <option *ngFor="let pais of vm.rspPaises.ListaPaises" [value]="pais.Id">
+                                                        {{pais.Nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div id="errorMessagePais" style="position: absolute; bottom: 1px;">
+                                                <span id="errorMessagePaisSpan">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Punto Operacional-->
+                                    <div class="row">
+                                        <div class=" col-sm-4 col-md-4 col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="punto_Operacional">Punto Operacional:</label>
+                                                <input type="text" id="punto_Operacional" class="input-estandar clsNumerico" name="punto_Operacional" maxlength="13" placeholder=""
+                                                    [(ngModel)]="vm.datosBasicos.Punto_Operacional" #mPuntoOperacional="ngModel"
+                                                    autocomplete="off" [readonly]="!vm.habilitarModificar" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                    (blur)="puntoOperacionalValidate()" />
+                                                <div id="errorMessagePuntoOperacional">
+                                                    <span id="errorMessagePuntoOperacionalSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Grupo SE DESCOMENTARA CUANDO XAVI LO INDIQUE-->
+                                    <!-- <div class="row">
+                                    <div class=" col-sm-12 col-md-12 col-lg-12">
+                                        <div class="grupo-input" [ngClass]="{'has-error': !midSegmento.valid && (midSegmento.dirty || midSegmento.touched)}">
+                                            <label class="etiqueta-input" for="id_Segmento">Grupo:</label>
+                                            <input type="text" id="id_Segmento" class="input-estandar" name="id_Segmento" maxlength="5" placeholder=""
+                                                [(ngModel)]="vm.datosBasicos.id_Segmento" #midSegmento="ngModel"
+                                                required/>
+                                            <span class="help-block" *ngIf="midSegmento.errors && (midSegmento.dirty || midSegmento.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="midSegmento.errors.required">
+                                                        El campo grupo es obligatorio
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <!--Margen-->
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="margen">Margen:</label>
+                                                <select id="margen" class="rps-select selector-multiple niceSelectMargen" name="margen" [(ngModel)]="vm.datosBasicos.Margen"
+                                                    #mMargen="ngModel" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}">
+                                                    <option value="0">
+                                                        --Seleccione--
+                                                    </option>
+                                                    <option value="1">Izquierdo</option>
+                                                    <option value="2">Derecho</option>
+                                                </select>
+                                                <div id="errorMessageMargen" style="position: absolute; bottom: 1px;">
+                                                    <span id="errorMessageMargenSpan">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Delegacion Area-->
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="id_Delegacion_Area">Delegación Area:</label>
+                                                <select id="id_Delegacion_Area" class="rps-select selector-multiple niceSelect" name="id_Delegacion_Area" [(ngModel)]="vm.datosBasicos.Id_Delegacion_Area"
+                                                    #mDelegacionArea="ngModel">
+                                                    <option value="0">
+                                                        -- Seleccione --
+                                                    </option>
+                                                    <option *ngFor="let delegacionArea of vm.rspDelegacionArea.ListaEstacionDelegacionArea" [value]="delegacionArea.Id_Delegacion_Area">
+                                                        {{delegacionArea.Nombre}}
+                                                    </option>
+                                                </select>
+                                                <!-- <div class="error-mensaje" *ngIf="!(vm.datosBasicos.Id_Delegacion_Area>0)">
+                                                <span *ngIf="!(vm.datosBasicos.Id_Delegacion_Area>0)">
+                                                    El campo delegacion area es obligatorio
+                                                </span>
+                                                [ngClass]="{'error-validate': !(vm.datosBasicos.Id_Delegacion_Area>0),'input-inhabilitado': !vm.habilitarModificar}"
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Imagen-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="id_Imagen">Imagen:</label>
+                                                <select id="id_Imagen" class="rps-select selector-multiple niceSelect" name="id_Imagen" [(ngModel)]="vm.datosBasicos.Id_Imagen">
+                                                    <option value="0">
+                                                        -- Seleccione --
+                                                    </option>
+                                                    <option *ngFor="let imagen of vm.rspImagen.ListaEstacionImagen" [value]="imagen.Id_Imagen">
+                                                        {{imagen.Codigo}}-{{imagen.Nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Delegacion Area-->
+                                    <!-- <div class="row">
+                                    <div class=" col-sm-12 col-md-12 col-lg-12">
+                                        <div class="grupo-input">
+                                            <label class="etiqueta-input" for="id_Delegacion_Area">Delegación Area:</label>
+                                            <select id="id_Delegacion_Area" class="rps-select selector-multiple" name="id_Delegacion_Area" [(ngModel)]="vm.datosBasicos.Id_Delegacion_Area">
+                                                <option *ngFor="let delegacionArea of vm.rspDelegacionArea.ListaEstacionDelegacionArea" [value]="delegacionArea.Id_Delegacion_Area">
+                                                        {{delegacionArea.Nombre}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                    <!--Jefe Regional-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="jefe_Regional">Jefe Regional:</label>
+                                                <input type="text" id="jefe_Regional" class="input-estandar" name="jefe_Regional" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Jefe_Regional"
+                                                    #mjefeRegional="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="jefeRegionalValidate()"
+                                                />
+                                                <div id="errorMessageJefeRegional">
+                                                    <span id="errorMessageJefeRegionalSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Jefe Provincial-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="jefe_Provincial">Jefe Provincial:</label>
+                                                <input type="text" id="jefe_Provincial" class="input-estandar" name="jefe_Provincial" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Jefe_Provincial"
+                                                    #mjefeProvincial="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="jefeProvincialValidate()"
+                                                />
+                                                <div id="errorMessageJefeProvincial">
+                                                    <span id="errorMessageJefeProvincialSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Jefe de Zona-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="jefe_Zona">Jefe de Zona:</label>
+                                                <input type="text" id="jefe_Zona" class="input-estandar" name="jefe_Zona" maxlength="50" placeholder="" [(ngModel)]="vm.datosBasicos.Jefe_Zona"
+                                                    #mjefeZona="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" (blur)="jefeZonaValidate()"
+                                                />
+                                                <div id="errorMessageJefeZona">
+                                                    <span id="errorMessageJefeZonaSpan" style="float: left;">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Fecha de Alta-->
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaAlta'>
+                                                <label class="etiqueta-input" for="fecha_Alta">Fecha de Alta:</label>
+                                                <input type="text" id="fecha_Alta" class="input-estandar input-limit rps-calendar" name="fecha_Alta" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    [(ngModel)]="vm.datosBasicos.Fecha_Alta_str" #mFechaAlta="ngModel" autocomplete="off"
+                                                    [readonly]="!vm.habilitarModificar" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                    (blur)="fechaAltaBajaValidate()" />
+                                            </div>
+                                            <div id="errorMessageFechaAlta" style="position: relative; top: -1.1em;">
+                                                <span id="errorMessageFechaAltaSpan">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!--Fecha de Baja-->
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechabaja'>
+                                                <label class="etiqueta-input" for="fecha_Baja">Fecha de Baja:</label>
+                                                <input type="text" id="fecha_Baja" class="input-estandar input-limit rps-calendar" name="fecha_Baja" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    [(ngModel)]="vm.datosBasicos.Fecha_Baja_str" #mFechaBaja="ngModel" autocomplete="off"
+                                                    [readonly]="!vm.habilitarModificar" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                    (blur)="fechaAltaBajaValidate()" />
+                                            </div>
+                                            <div id="errorMessageFechaBaja" style="position: relative; top: -1.1em;">
+                                                <span id="errorMessageFechaBajaSpan">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Fecha de Baja-->
+                                    <!-- <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !mfechaBaja.valid && (mfechaBaja.dirty || mfechaBaja.touched)}">
+                                            <label class="etiqueta-input" for="fecha_Baja">Fecha de Baja:</label>
+                                            <input type="text" id="fecha_Baja" class="input-estandar input-limit rps-calendar" name="fecha_Baja" maxlength="10" placeholder="XX/XX/2017"
+                                                pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="vm.datosBasicos.Fecha_Baja"
+                                                #mfechaBaja="ngModel" />
+                                        </div>
+                                        <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="mfechaBaja.errors && (mfechaBaja.dirty || mfechaBaja.touched) ">
+                                            <ul>
+                                                <li class="error" *ngIf="mfechaBaja.errors.pattern">
+                                                    ingresar el formato correcto
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                    <!--Horario de Apertura-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="id_Horario">Horario Apertura:</label>
+                                                <select id="id_Horario" class="rps-select selector-multiple niceSelect" name="id_Horario" [(ngModel)]="vm.datosBasicos.Id_Horario">
+                                                    <option value="0">
+                                                        -- Seleccione --
+                                                    </option>
+                                                    <option *ngFor="let horario of vm.rspHorario.ListaEstacionHorario" [value]="horario.Id_Horario">
+                                                        {{horario.Nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Segmento-->
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="id_Segmento">Segmento:</label>
+                                                <select id="id_Segmento" class="rps-select selector-multiple niceSelect" name="id_Segmento" [(ngModel)]="vm.datosBasicos.Id_Segmento">
+                                                    <option value="0">
+                                                        -- Seleccione --
+                                                    </option>
+                                                    <option *ngFor="let segmento of vm.rspSegmento.ListaSegmentos" [value]="segmento.Id_Segmento">
+                                                        {{segmento.Nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="display: none">
+                    <div class="panel-heading" role="tab" id="acordeon-item-2">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="acordeon-header-text">DATOS DE GESTIÓN</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-2">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <!--Row Vinculo-->
+                            <div class="row">
+                                <!-- Vinculo Datos -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Vinculo-->
+                                    <!-- <div class="row">
+                                    <div class=" col-sm-12 col-md-12 col-lg-12">
+                                        <div class="grupo-input" [ngClass]="{'has-error': !mPuntoOperacional.valid && (mPuntoOperacional.dirty || mPuntoOperacional.touched)}">
+                                            <label class="etiqueta-input" for="punto_Operacional">Vinculo:</label>
+                                            <input type="text" id="punto_Operacional" class="input-estandar" name="punto_Operacional" maxlength="5" placeholder=""
+                                                [(ngModel)]="mEstaciones.punto_Operacional" #mPuntoOperacional="ngModel"
+                                                required/>
+                                            <span class="help-block" *ngIf="mPuntoOperacional.errors && (mPuntoOperacional.dirty || mPuntoOperacional.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="mPuntoOperacional.errors.required">
+                                                        El campo punto operacional es obligatorio
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                </div>
+                                <!-- Vinculo  Fecha Inicio -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!-- Fecha Inicio-->
+                                    <!-- <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                            <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                            <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                #fecIni="ngModel" required />
+                                        </div>
+                                        <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                            <ul>
+                                                <li class="error" *ngIf="fecIni.errors.required">
+                                                    El campo fecha inicio es obligatorio
+                                                </li>
+                                                <li class="error" *ngIf="fecIni.errors.pattern">
+                                                    ingresar el formato correcto
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                </div>
+                                <!-- Vinculo Fecha Fin -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Viculo Fecha Fin-->
+                                    <!-- <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                            <label class="etiqueta-input" for="fechaInicio">Fecha Fin:</label>
+                                            <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                #fecIni="ngModel" required />
+                                        </div>
+                                        <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                            <ul>
+                                                <li class="error" *ngIf="fecIni.errors.required">
+                                                    El campo fecha inicio es obligatorio
+                                                </li>
+                                                <li class="error" *ngIf="fecIni.errors.pattern">
+                                                    ingresar el formato correcto
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                </div>
+                            </div>
+                            <!--Row Explotacion-->
+                            <div class="row">
+                                <!-- Explotacion Datos -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Explotacion-->
+                                    <!-- <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input" [ngClass]="{'has-error': !mPuntoOperacional.valid && (mPuntoOperacional.dirty || mPuntoOperacional.touched)}">
+                                                <label class="etiqueta-input">Explotación:</label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Explotacion  Fecha Inicio -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!-- Fecha Inicio-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Explotacion Fecha Fin -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Explotacion Fecha Fin-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Fin:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!--Row Franquicia-->
+                            <div class="row">
+                                <!-- Franquicia Datos -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Franquicia-->
+                                    <!-- <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <div class="checkbox-box">
+                                                    <div><label>Franquicia:</label></div>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="" id="franquicia" name="franquicia" checked="checked" />
+                                                        <label for="franquicia" onclick>Sí/No:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Franquicia  Fecha Inicio -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!-- Fecha Inicio-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Franquicia Fecha Fin -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Franquicia Fecha Fin-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Fin:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!--Row Gueesst-->
+                            <div class="row">
+                                <!-- Gueesst Datos -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Gueesst-->
+                                    <!-- <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <div class="checkbox-box">
+                                                    <div><label>Gueesst:</label></div>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="" id="gueesst" name="gueesst" checked="checked" />
+                                                        <label for="gueesst" onclick>Sí/No:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Gueesst  Fecha Inicio -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Gueesst Fecha Inicio-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Gueesst Fecha Fin -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Gueesst Fecha Fin-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Fin:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!--Row Sprint-->
+                            <div class="row">
+                                <!-- Sprint Datos -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Sprint-->
+                                    <!-- <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <div class="checkbox-box">
+                                                    <div><label>Sprint:</label></div>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="" id="sprint" name="sprint" checked="checked" />
+                                                        <label for="sprint" onclick>Sí/No:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Sprint  Fecha Inicio -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Sprint Fecha Inicio-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- Sprint Fecha Fin -->
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <!--Sprint Fecha Fin-->
+                                    <!-- <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'has-error': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Fin:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$" [(ngModel)]="fechaInicio"
+                                                    #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="display: none">
+                    <div class="panel-heading" role="tab" id="acordeon-item-3">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="acordeon-header-text">DATOS DE PRODUCTOS</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-3">
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-4">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <span class="acordeon-header-text">DATOS DE CARACTERIZACIÓN</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-4">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row" style="text-align: center;">
+                                <div class="col-md-6">
+                                    <div id="errorMessageCaracteristica" role="alert">
+                                        <span id="errorMessageCaracteristicaSpan" class="texto-resaltado-alerta">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center;">
+                                <div class="col-md-6">
+                                    <div class="rps-tabla">
+                                        <table id="tablaCaracteristica" class="tablesorter myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Característica</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let tipCarac of vm.rpsTiposCaracterizacion.ListaTiposCaracterizacion">
+                                                    <td *ngIf="!vm.habilitarGuardar">
+                                                        <span class="textoInvisible">{{sinTilde(tipCarac.NOMBRE)}}</span>
+                                                        <a href="#" class="enlace enlace-principal" [style.color]="tipCarac.COLOR" data-toggle="modal" (click)="mostrarCaracterizaciones(tipCarac.ID)"
+                                                            data-target="#modalCaracterizacion">
+                                                            <span class="textoVisible">{{tipCarac.NOMBRE}}</span>
+                                                        </a>
+                                                    </td>
+                                                    <td *ngIf="!vm.habilitarModificar">
+                                                        <a class="enlace enlace-principal" [style.color]="tipCarac.COLOR">{{tipCarac.NOMBRE}}</a>
+                                                    </td>
+                                                    <td>{{tipCarac.CARACTERISTICA}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-6">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <span class="acordeon-header-text">DATOS DE GESTIÓN</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse in collapse show" role="tabpanel" aria-labelledby="acordeon-item-6">
+                        <div class="panel-body">
+                            <div class="row  ">
+                                <div class="col-lg-6">
+                                    <div class="row  ">
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="vinculo">Vínculo:</label>
+                                                <input type="text" id="vinculo" class="input-estandar" name="vinculo" maxlength="10" placeholder="" [(ngModel)]="vm.datosSurtidos.Vinculo"
+                                                    disabled="disabled" #mVinculo="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaInicio'>
+                                                <label class="etiqueta-input" for="fecha_inicio">Fecha Inicio:</label>
+                                                <input type="text" id="fecha_inicio" class="input-estandar input-limit rps-calendar" name="fecha_inicio" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    disabled="disabled" [(ngModel)]="vm.datosSurtidos.FechaInicio" #mFechaInicio="ngModel"
+                                                    autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaFin'>
+                                                <label class="etiqueta-input" for="Fecha_fin">Fecha Fin:</label>
+                                                <input type="text" id="Fecha_fin" class="input-estandar input-limit rps-calendar" name="Fecha_fin" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    disabled="disabled" [(ngModel)]="vm.datosSurtidos.FechaFin" #mFechaFin="ngModel"
+                                                    autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row  ">
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="surtido">Surtido:</label>
+                                                <select id="surtido" class="rps-select selector-multiple niceSelectSurtido" name="surtido" [(ngModel)]="vm.datosSurtidos.Surtido"
+                                                    #mSurtido="ngModel">
+                                                    <option value="0">
+                                                        -Seleccione-
+                                                    </option>
+                                                    <option value="1"> Surtido 1</option>
+                                                    <option value="2"> Surtido 2</option>
+                                                    <option value="3"> Surtido 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaSurInicio'>
+                                                <label class="etiqueta-input" for="fechasur_inicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechasur_inicio" class="input-estandar input-limit rps-calendar" name="fechasur_inicio" maxlength="10"
+                                                    placeholder="{{vm.fechaPlaceholder}}" [(ngModel)]="vm.datosSurtidos.FechaSurInicio"
+                                                    #mFechaSurInicio="ngModel" autocomplete="off" (blur)="fechaSurInicioValidate()"
+                                                />
+                                            </div>
+                                            <div id="errorMessageFechaSurInicio" style="position: relative; top: -1.1em;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaSurFin'>
+                                                <label class="etiqueta-input" for="Fechasur_fin">Fecha Fin:</label>
+                                                <input type="text" id="Fechasur_fin" class="input-estandar input-limit rps-calendar" name="Fechasur_fin" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    [(ngModel)]="vm.datosSurtidos.FechaSurFin" #mFechaSurFin="ngModel" autocomplete="off"
+                                                    (blur)="fechaSurFinValidate()" />
+                                            </div>
+                                            <div id="errorMessageFechaSurFin" style="position: relative; top: -1.1em;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row  ">
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="explotacion">Explotación:</label>
+                                                <input type="text" id="explotacion" class="input-estandar" name="explotacion" maxlength="10" placeholder="" [(ngModel)]="vm.datosSurtidos.Explotacion"
+                                                    disabled="disabled" #mExplotacion="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaExpInicio'>
+                                                <label class="etiqueta-input" for="fechaexp_inicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaexp_inicio" class="input-estandar input-limit rps-calendar" name="fechaexp_inicio" maxlength="10"
+                                                    disabled="disabled" placeholder="{{vm.fechaPlaceholder}}" [(ngModel)]="vm.datosSurtidos.FechaExpInicio"
+                                                    #mFechaExpInicio="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepickerFechaExpFin'>
+                                                <label class="etiqueta-input" for="Fechaexp_fin">Fecha Fin:</label>
+                                                <input type="text" id="Fechaexp_fin" class="input-estandar input-limit rps-calendar" name="Fechaexp_fin" maxlength="10" placeholder="{{vm.fechaPlaceholder}}"
+                                                    disabled="disabled" [(ngModel)]="vm.datosSurtidos.FechaExpFin" #mFechaExpFin="ngModel"
+                                                    autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row  ">
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codEstIlion">Código Estación Ilion:</label>
+                                                <input type="text" id="codEstIlion" class="input-estandar" name="codEstIlion" maxlength="5" placeholder="" [(ngModel)]="vm.datosSurtidos.CodigoEstacionIlion"
+                                                    #mCodigoEstacionIlion="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="CodTieIlion">Código Tienda Ilion:</label>
+                                                <input type="text" id="CodTieIlion" class="input-estandar" name="CodTieIlion" maxlength="5" placeholder="" [(ngModel)]="vm.datosSurtidos.CodigoTiendaIlion"
+                                                    #mCodigoTiendaIlion="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="CodAlmIlion">Código Almacen Ilion:</label>
+                                                <input type="text" id="CodAlmIlion" class="input-estandar" name="CodAlmIlion" maxlength="5" placeholder="" [(ngModel)]="vm.datosSurtidos.CodigoAlmacenIlion"
+                                                    #mCodigoAlmacenIlion="ngModel" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-10">
+                                    <div style="text-align: center;">
+                                        <div style="float: left; text-align: center; width: 95%;">
+                                            <label class="etiqueta-input">Histórico de Surtidos de la Estación de Servicio</label>
+                                        </div>
+                                        <div style="z-index: 1;">
+                                            <a title="Agregar" (click)="agregarSurtido(contentSurtido)" >
+                                                <img class="imgTabla" src="assets/anyadir.png" alt="buscar" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="rps-tabla">
+                                        <table id="tablaSurtido" class="tablesorter myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Surtido</th>
+                                                    <th>Fecha Inicio</th>
+                                                    <th>Fecha Fin</th>
+                                                    <th>C. Emp. Ilion</th>
+                                                    <th>C. Tiend. Ilion</th>
+                                                    <th>C. Almacén. Ilion</th>
+                                                    <th>Acciones</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td> Franquicias</td>
+                                                    <td> 10/10/2018</td>
+                                                    <td> 10/10/2019</td>
+                                                    <td> 0001</td>
+                                                    <td> 0002</td>
+                                                    <td> 0003</td>
+                                                    <td>
+                                                        <a title="Eliminar">
+                                                            <img class="imgTabla" src="assets/borrar.png" alt="buscar" />
+                                                        </a>
+                                                        <a title="Editar">
+                                                            <img class="imgTabla" src="assets/editar.png" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Camsared</td>
+                                                    <td> 05/05/2018</td>
+                                                    <td> 12/12/2019</td>
+                                                    <td> 0004</td>
+                                                    <td> 0005</td>
+                                                    <td> 0006</td>
+                                                    <td>
+                                                        <a title="Eliminar">
+                                                            <img class="imgTabla" src="assets/borrar.png" alt="buscar" />
+                                                        </a>
+                                                        <a title="Editar">
+                                                            <img class="imgTabla" src="assets/editar.png" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Sprint</td>
+                                                    <td> 04/07/2018</td>
+                                                    <td> 01/05/2019</td>
+                                                    <td> 0007</td>
+                                                    <td> 0008</td>
+                                                    <td> 0009</td>
+                                                    <td>
+                                                        <a title="Eliminar">
+                                                            <img class="imgTabla" src="assets/borrar.png" alt="buscar" />
+                                                        </a>
+                                                        <a title="Editar">
+                                                            <img class="imgTabla" src="assets/editar.png" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-5">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <span class="acordeon-header-text">DATOS DE PRECIOS</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-5">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-10 vcenter">
+                                    <div class="rps-tabla">
+                                        <table id="tablaCategoriaBase" class="tablesorter myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Familia</th>
+                                                    <th>Base Aplicar</th>
+                                                    <th>Fecha Inicio</th>
+                                                    <th>Fecha Fin</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let categoriaBase of vm.rspDatosPrecios.ListaCategorias; let i = index;trackBy:trackByIdx">
+                                                    <td style="vertical-align: middle;">
+                                                        {{categoriaBase.Nombre}}
+                                                    </td>
+                                                    <td>
+                                                        <div style="height: 0px;">&nbsp;
+                                                        </div>
+                                                        <div class="grupo-input">
+                                                            <select id="id_Base{{i}}" data-value="{{i}}" class="rps-select niceSelectBasePrecio cmbBase{{i}}" name="id_Base{{i}}" [(ngModel)]="vm.rspDatosPrecios.ListaCategorias[i].Id_Base"
+                                                                (change)="asignarIdBaseToVM(i)">
+                                                                <option value="0">
+                                                                    --Seleccione--
+                                                                </option>
+                                                                <option *ngFor="let base of vm.rspDatosPrecios.ListaBases" [value]="base.Id_Base">
+                                                                    {{base.Nombre_Base}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="height: 0px;">&nbsp;
+                                                        </div>
+                                                        <div class="grupo-input input-group rps-datepicker datepickerDatosPrecios" id="datepickerFechaInicio{{i}}">
+                                                            <input type="text" id="fechaInicio{{i}}" class="input-estandar input-limit rps-calendar" name="fechaInicio{{i}}" maxlength="10"
+                                                                placeholder="{{vm.fechaPlaceholder}}" [(ngModel)]="vm.rspDatosPrecios.ListaCategorias[i].Fecha_Inicio_str"
+                                                                autocomplete="off" (change)="fechaInicioFinValidate(i)" />
+                                                        </div>
+                                                        <div id="errorMessageFechaInicio{{i}}" style="position: relative; top: 2.7em;">
+                                                            <span id="errorMessageFechaInicioSpan{{i}}" style="float: left;">
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="height: 0px;">&nbsp;
+                                                        </div>
+                                                        <div class="grupo-input input-group rps-datepicker datepickerDatosPrecios" id="datepickerFechaFin{{i}}">
+                                                            <input type="text" id="fechaFin{{i}}" class="input-estandar input-limit rps-calendar" name="fechaFin{{i}}" maxlength="10"
+                                                                placeholder="{{vm.fechaPlaceholder}}" [(ngModel)]="vm.rspDatosPrecios.ListaCategorias[i].Fecha_Fin_str"
+                                                                autocomplete="off" (change)="fechaInicioFinValidate(i)" />
+                                                        </div>
+                                                        <div id="errorMessageFechaFin{{i}}" style="position: relative; top: 2.7em;">
+                                                            <span id="errorMessageFechaFinSpan{{i}}" style="float: left;">
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rowBoton  sizefooter flex-row-reverse">
+
+        <div class="botoneraLeft">
+            <input type="button" id="btnNuevo" [ngClass]="!vm.habilitarModificar?'boton boton-secundario':'boton boton-inactivo'" [disabled]="vm.habilitarModificar"
+                (click)="nuevaEstacion()" value="Nuevo">
+        </div>
+
+        <div class="botoneraRight">
+            <!-- <button class="boton" [ngClass]="!myForm.valid?'boton-inactivo':'boton-estandar'" type="submit" [disabled]="!myForm.valid">Guardar</button>  -->
+            <button id="btnGuardar" [ngClass]="!vm.habilitarGuardar?'boton boton-estandar':'boton boton-inactivo'" [disabled]="vm.habilitarGuardar"
+                type="submit">Guardar</button>
+            <input type="button" id="btnModificar" [ngClass]="!vm.habilitarModificar?'boton boton-estandar':'boton boton-inactivo'" [disabled]="vm.habilitarModificar"
+                (click)="habilitarControles()" value="Modificar">
+
+        </div>
+    </div>
+
+</form>
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+    <!-- <div class="border-modal">
+        <div class="modal-body">
+            <div class="modal-body-content">
+                <span>{{vm.resul}}</span>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-center">
+            <button type="button" class="btn btn-secondary btn-repsol" (click)="c('Close click')">Aceptar</button>
+        </div>
+    </div> -->
+
+    <div class="modal fade show" style="display: block;" id="modalGuardar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="contenedor-modal" style="padding: 1.875em;">
+                    <div class="modal-header">
+                        <button type="button" style="display: none;" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                            <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                        </button>
+                        <h4 class="modal-title">Alta Estación</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="parrafo-modal">{{vm.resul}}</p>
+                    </div>
+                    <div class="modal-footer" style="border-top: 0em;">
+                        <button type="button" class="boton boton-estandar" (click)="c('Close click')">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</ng-template>
+
+
+<ng-template #contentSurtido let-c="close" let-d="dismiss">       
+    
+        <div class="modal fade show" style="display: block;" id="modalGuardar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="contenedor-modal" style="padding: 1.875em;">
+                        <div class="modal-header">
+                            <button type="button" style="display: none;" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                                <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                            </button>
+                            <h4 class="modal-title">Alta Estación</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="parrafo-modal">{{vm.resul}}</p>
+                        </div>
+                        <div class="modal-footer" style="border-top: 0em;">
+                            <button type="button" class="boton boton-estandar" *ngIf="!vm.ocultarBoton" (click)="c('Close click'); registrarSurtido();">Aceptar </button>
+                            <button type="button" class="boton boton-estandar" (click)="c('Close click')">{{vm.btnName}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+    
+    </ng-template>
+
+<div class="modal fade rps-modal" id="modalCaracterizacion" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="contenedor-modal">
+                <div class="modal-header">
+                    <button type="button" style="display: none;" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                        <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                    </button>
+                    <h4 class="modal-title">{{vm.nombreTipCaract}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <div class="checkbox-box">
+                            <div class="checkbox-vertical">
+                                <p></p>
+
+                                <div class="checkbox-btn" *ngIf="!vm.validarSelectTodas" style="position:  relative; left: -0.2em;">
+                                    <div class="modal-cabecera">
+                                        <input type="checkbox" id="selTodas" name="selectedTodas" [(ngModel)]="vm.rpsCaracterizacion.Selected" (change)="selAllCaracterizacion()"
+                                        />
+                                        <label for="selTodas" onclick>
+                                            <span style="position: relative;top: 0.2em;"> Seleccionar Todas:
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngFor="let caract of vm.rpsCaracterizacion.ListaCaracterizaciones; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                    <input type="checkbox" id="selectedCaract{{i}}" [(ngModel)]="vm.rpsCaracterizacion.ListaCaracterizaciones[i].SELECTED" (change)="verificarSelCaract(caract.ID_TIPO,caract.ID)"
+                                        name="selectedCaract{{i}}" />
+                                    <label for="selectedCaract{{i}}" onclick>{{caract.NOMBRE}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton boton-auxiliar" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnAsignarCaract" class="boton boton-estandar" data-ng-value="" data-dismiss="modal" (click)="agregarCaracterizaciones()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="vm.loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

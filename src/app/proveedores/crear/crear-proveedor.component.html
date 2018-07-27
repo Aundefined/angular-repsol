@@ -1,0 +1,2121 @@
+<!-- 
+<h1>Formularios y validación en Angular 4</h1>
+ 
+<form #myForm="ngForm" (ngSubmit)="guardarProveedores()">
+   <div class="container">
+       <div class="row">
+            <div class="form-group"  [ngClass]="{'error-validate': !name.valid && (name.dirty || name.touched)}">                     
+               <label for="nombre" class="control-label" >Nombre</label>
+               <input type="text" class="form-control" id="nombre" name="nombre" pattern="[a-zA-Z][a-zA-Z ]+"
+               [(ngModel)] = "nombre" #name="ngModel" required />
+               <span class="help-block" *ngIf="name.errors && (name.dirty || name.touched) ">
+                   <ul>
+                       <li class="error" *ngIf="name.errors.required">
+                            El campo nombre es requerido
+                       </li>
+                       <li class="error" *ngIf="name.errors.pattern">
+                            Solo alfabeto 
+                       </li>
+                   </ul>
+
+               </span>
+           </div>
+           &nbsp;&nbsp;&nbsp;
+           <div class="form-group" [ngClass]="{'error-validate': !email.valid && (email.dirty || email.touched)}">                     
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+                [(ngModel)] = "emailModel" email #email="ngModel" required/>
+                <span class="help-block" *ngIf=" email.errors && (email.dirty || email.touched) ">
+                        <ul>
+                            <li class="error" *ngIf="email.errors.required">
+                                 El campo nombre es requerido
+                            </li>
+                            <li class="error" *ngIf="email.errors.pattern">
+                                    email invalido
+                               </li>
+                        </ul>
+     
+                </span>
+
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="form-group"  [ngClass]="{'error-validate': !movil.valid && (movil.dirty || movil.touched)}">                     
+                <label for="telMovil" class="control-label" >Telefono Movil</label>
+                <input type="text" class="form-control" id="telMovil" name="telMovil" pattern="[0-9]*"
+                [(ngModel)] = "telMovil" #movil="ngModel" required  maxlength="9" minlength="9" />
+
+                <span class="help-block" *ngIf=" movil.errors && (movil.dirty || movil.touched) ">
+                        <ul>
+                            <li class="error" *ngIf="movil.errors.required">
+                                 El campo nombre es requerido
+                            </li>
+                            <li class="error" *ngIf="movil.errors.minlength">
+                                    El telefono movil requiere 9 digitos
+                               </li>
+                            <li class="error" *ngIf="movil.errors.pattern">
+                                    el telefono movil deberia tener solo numeros
+                            </li>
+                        </ul>
+     
+                </span>
+
+            </div>
+
+                 
+       </div>
+       <div>
+            <br><br> 
+            <button  class="btn btn-primary" type="submit" [disabled]="!myForm.valid" >Enviar</button>
+        </div>
+   </div>
+   
+</form> -->
+
+<!-- 
+<h1 class="title" style="display:none;">
+    {{title}}
+  </h1>
+  <button (click)="mostrarTitulo()">Mostrar titulo</button>   -->
+<form class="contenedor-formulario" #myForm="ngForm" (ngSubmit)="guardarProveedores(content)" ngNativeValidate>
+
+    <div class="rowFila calcpantalla">
+        <div class="container-fluid container-breadcrumb">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="#">Proveedores</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">Alta de Proveedores</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-acordeon">
+            <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text">DATOS GENERALES</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in collapse show" role="tabpanel" aria-labelledby="acordeon-item-1">
+                        <div class="panel-body">
+                            <div class="row  ">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codigo_Sap">Código:</label>
+                                                <input type="text" id="codigo_Sap" class="input-estandar" name="vm.DatosBasicos.Codigo_Sap" maxlength="10" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Codigo_Sap" #codigoSap="ngModel" (keyup)="searchSugerencia($event)"
+                                                    autocomplete="off" [readonly]="!vm.habilitarModificar || !vm.habilitarSoap"
+                                                    (focusout)="hideResults(codigoSap)" [ngClass]="{'error-validate': (!vm.validarCodigoSap || !vm.validarCodigoSapFinal), 'input-inhabilitado': !vm.habilitarModificar || !vm.habilitarSoap, 'input-valido': !vm.validarEstadoCodigoSap &&  codigoSap.value != '' && codigoSap.value != null && (codigoSap.dirty || codigoSap.touched) && vm.habilitarModificar}"
+                                                    (blur)="vm.habilitarSoap?validarCodigoSap():''" />
+                                                <!-- (blur)="vm.habilitarSoap?validarCodigoSap():''" /> -->
+                                                <!-- pattern="[a-zA-Z0-9]+" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarCodigoSap">
+                                                    <span>
+                                                        El campo código es obligatorio
+                                                    </span>
+                                                </div>
+                                                <div class="error-mensaje" *ngIf="!vm.validarCodigoSapFinal">
+                                                    <span> El código ya existe. </span>
+                                                </div>
+
+                                                <div class="sugerencias" [hidden]="vm.hideSugerencias">
+                                                    <div id="colores" class="list-group">
+                                                        <a #autocompletar *ngFor="let sugerencia of this.vm.ListaCodigosProveedor" class="list-group-item list-group-item-action"
+                                                            (click)="confirmSearch(codigoSap,sugerencia.Codigo_Proveer)">{{sugerencia.Codigo_Proveer}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                                                <label class="etiqueta-input" for="falta">Fecha Alta: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                <input type="text" id="falta" class="input-estandar input-limit rps-calendar" name="vm.DatosBasicos.Falta_str" maxlength="10"
+                                                    placeholder="{{vm.fechaPlaceholder}}" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Falta_str"
+                                                    #fecAlta="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarFechaAlta(); validarFechaAltaFinal();"
+                                                    [ngClass]="{'error-validate-fecha': (!vm.validarFechaAlta || !vm.validarFormatoFechaAlta || !vm.validarFechaAltaFinal), 'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"                                                
+                                                (keyup)="validarFechaAlta(); validarFechaAltaFinal();" [ngClass]="{'error-validate': (!fecAlta.valid || !vm.validarFechaAlta || !vm.validarFechaAltaFinal)  && (fecAlta.dirty || fecAlta.touched), 'input-inhabilitado': !vm.habilitarModificar}" -->
+                                            </div>
+
+                                            <div class="error-mensaje errorFechaAlta" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFormatoFechaAlta">
+                                                <span> Formato fecha incorrecto </span>
+                                            </div>
+                                            <div class="error-mensaje errorFechaAlta" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaAlta">
+                                                <span> Fecha alta inválido </span>
+                                            </div>
+                                            <div class="error-mensaje  errorFechaAlta" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaAltaFinal">
+                                                <span> La fecha alta debe ser menor a la fecha baja </span>
+                                            </div>
+
+                                            <!-- <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="fecAlta.errors && (fecAlta.dirty || fecAlta.touched) ">
+                                            <span *ngIf="fecAlta.errors.pattern">
+                                                Ingresar el formato correcto
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaAlta && (fecAlta.dirty || fecAlta.touched) ">
+                                            <span *ngIf="!vm.validarFechaAlta">
+                                                Fecha alta inválido
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaAltaFinal && (fecAlta.dirty || fecAlta.touched) ">
+                                            <span *ngIf="!vm.validarFechaAltaFinal">
+                                                La fecha alta debe ser menor a la fecha baja
+                                            </span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="cif">CIF:</label>
+                                                <input type="text" id="cif" class="input-estandar" name="vm.DatosBasicos.Cif" maxlength="20" placeholder="" [(ngModel)]="vm.DatosBasicos.Cif"
+                                                    #codCif="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    (blur)="validarCif()" [ngClass]="{'error-validate': (!vm.validarCif || !vm.validarCifExiste) , 'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoCif && codCif.value != '' && codCif.value != null && (codCif.dirty || codCif.touched) && vm.habilitarModificar }"
+                                                />
+                                                <!-- [ngClass]="{'error-validate': !codCif.valid && (codCif.dirty || codCif.touched), 'input-inhabilitado': !vm.habilitarModificar, 'input-valido':codCif.valid && vm.habilitarModificar }" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarCif ">
+                                                    <span> El campo CIF es obligatorio</span>
+                                                </div>
+                                                <div class="error-mensaje" *ngIf="!vm.validarCifExiste ">
+                                                    <span> CIF inválido</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="codCif.errors && (codCif.dirty || codCif.touched)">
+                                                <span *ngIf="codCif.errors.required">
+                                                    El campo CIF es obligatorio
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker2'>
+                                                <label class="etiqueta-input" for="fbaja">Fecha Baja: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                <input type="text" id="fbaja" class="input-estandar input-limit rps-calendar" maxlength="10" name="vm.DatosBasicos.Fbaja_str"
+                                                    placeholder="{{vm.fechaPlaceholder}}" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Fbaja_str"
+                                                    #fecBaja="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarFechaBaja(); validarFechaBajaFinal();"
+                                                    [ngClass]="{'error-validate-fecha': (!vm.validarFechaBaja || !vm.validarFormatoFechaBaja || !vm.validarFechaBajaFinal), 'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                            [(ngModel)]="vm.DatosBasicos.Fbaja_str" #fecBaja="ngModel" [readonly]="!vm.habilitarModificar"
+                                            (keyup)="validarFechaBaja(); validarFechaBajaFinal();" [ngClass]="{'error-validate': (!fecBaja.valid || !vm.validarFechaBaja || !vm.validarFechaBajaFinal) && (fecBaja.dirty || fecBaja.touched), 'input-inhabilitado': !vm.habilitarModificar}" -->
+
+                                                <div class="error-mensaje errorFechaBaja" *ngIf="!vm.validarFormatoFechaBaja">
+                                                    <span> Formato fecha incorrecto </span>
+                                                </div>
+                                                <div class="error-mensaje errorFechaBaja" *ngIf="!vm.validarFechaBaja">
+                                                    <span> Fecha alta inválido </span>
+                                                </div>
+                                                <div class="error-mensaje errorFechaBaja" *ngIf="!vm.validarFechaBajaFinal">
+                                                    <span>La fecha baja debe ser mayor a la fecha alta</span>
+                                                </div>
+
+                                                <!-- <div class="error-mensaje" *ngIf="fecBaja.errors && (fecBaja.dirty || fecBaja.touched) ">
+                                                <span *ngIf="fecBaja.errors.pattern">
+                                                    Ingresar el formato correcto
+                                                </span>
+                                            </div>
+                                            <div class="error-mensaje" *ngIf="!vm.validarFechaBaja && (fecBaja.dirty || fecBaja.touched) ">
+                                                <span *ngIf="!vm.validarFechaBaja">
+                                                    Fecha alta inválido
+                                                </span>
+                                            </div>
+                                            <div class="error-mensaje" *ngIf="!vm.validarFechaBajaFinal && (fecBaja.dirty || fecBaja.touched) ">
+                                                <span *ngIf="!vm.validarFechaBajaFinal">
+                                                    La fecha baja debe ser mayor a la fecha alta
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="razon_Social">Razón Social:</label>
+                                                <input type="text" id="razon_Social" class="input-estandar" name="vm.DatosBasicos.Razon_Social" maxlength="50" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Razon_Social" #razSoc="ngModel" autocomplete="off"
+                                                    (blur)="validarRazonSocial()" [readonly]="!vm.habilitarModificar" [ngClass]="{'error-validate': (!vm.validarRazSocial || !vm.validarRazSocialExiste) ,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoRazSocial && razSoc.value != '' && razSoc.value != null && (razSoc.dirty || razSoc.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- required [readonly]="!vm.habilitarModificar" [ngClass]="{'error-validate': !razSoc.valid && (razSoc.dirty || razSoc.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':razSoc.valid && vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarRazSocial">
+                                                    <span> El campo razón social es obligatorio</span>
+                                                </div>
+                                                <div class="error-mensaje" *ngIf="!vm.validarRazSocialExiste ">
+                                                    <span>Razón social inválido</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="razSoc.errors && (razSoc.dirty || razSoc.touched) ">
+                                                <span *ngIf="razSoc.errors.required">
+                                                    El campo razón social es obligatorio
+                                                </span>
+                                            </div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="direccion">Dirección Social:</label>
+                                                <input type="text" id="direccion" class="input-estandar" name="vm.DatosBasicos.Direccion" maxlength="100" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Direccion" #direc="ngModel" [readonly]="!vm.habilitarModificar"
+                                                    (blur)="validarDireccionSocial()" autocomplete="off" [ngClass]="{'error-validate': !vm.validarDirSocial,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoDirSocial && direc.value != '' && direc.value != null && (direc.dirty || direc.touched)  && vm.habilitarModificar}"
+                                                />
+                                                <!-- autocomplete="off" [ngClass]="{'error-validate': !direc.valid && (direc.dirty || direc.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':direc.valid  && vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarDirSocial">
+                                                    <span> El campo dirección social es obligatorio</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="direc.errors && (direc.dirty || direc.touched) ">
+                                                <span *ngIf="direc.errors.required">
+                                                    El campo dirección social es obligatorio
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-3">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codigo_Postal">Código Postal:</label>
+                                                <input type="text" id="codigo_Postal" class="input-estandar clsNumerico" name="vm.DatosBasicos.Codigo_Postal" maxlength="5"
+                                                    placeholder="" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Codigo_Postal"
+                                                    #codPostal="ngModel" (blur)="validarCodigoPostal();seleccionarProvincia();"
+                                                    [readonly]="!vm.habilitarModificar" [ngClass]="{'error-validate': (!vm.validarCodigoPostal || !vm.validarFormatoCodigoPostal || !vm.validarCodigoPostalFinal),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoCodigoPostal && codPostal.value != '' && codPostal.value != null && (codPostal.dirty || codPostal.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- seleccionarProvincia(); -->
+                                                <!-- pattern="[0-9]+" -->
+                                                <!-- [ngClass]="{'error-validate': (!codPostal.valid || !vm.validarCodigoPostal) && (codPostal.dirty || codPostal.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':codPostal.valid && vm.validarCodigoPostal && vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarCodigoPostal">
+                                                    <span> El campo código postal es obligatorio</span>
+                                                </div>
+                                                <div class="error-mensaje" *ngIf="!vm.validarFormatoCodigoPostal">
+                                                    <span> Codigo Postal no válido</span>
+                                                </div>
+                                                <div class="error-mensaje" *ngIf="!vm.validarCodigoPostalFinal">
+                                                    <span> Código Postal no valido</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="codPostal.errors && (codPostal.dirty || codPostal.touched) ">
+                                                <span *ngIf="codPostal.errors.required">
+                                                    El campo código postal es obligatorio
+                                                </span>
+                                                <span *ngIf="codPostal.errors.pattern">
+                                                    Ingresar solo números
+                                                </span>
+                                            </div>
+                                            <div class="error-mensaje" *ngIf="!vm.validarCodigoPostal && (codPostal.dirty || codPostal.touched) ">
+                                                <span *ngIf="!vm.validarCodigoPostal">
+                                                    Código postal no valido
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-9">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="localidad">Localidad:</label>
+                                                <input type="text" id="localidad" class="input-estandar" name="vm.DatosBasicos.Localidad" maxlength="50" placeholder="" [(ngModel)]="vm.DatosBasicos.Localidad"
+                                                    #local="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar" (blur)="validarLocalidad()"
+                                                    [ngClass]="{'error-validate': !vm.validarLocalidad ,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoLocalidad && local.value != '' && local.value != null && (local.dirty || local.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- [ngClass]="{'error-validate': !local.valid && (local.dirty || local.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':local.valid && vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarLocalidad">
+                                                    <span> El campo localidad es obligatorio</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="local.errors && (local.dirty || local.touched) ">
+                                                <span *ngIf="local.errors.required">
+                                                    El campo localidad es obligatorio
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="provincia">Provincia:</label>
+                                                <select id="provincia" class="rps-select selector-multiple clsProvincia" name="vm.DatosBasicos.Id_Provincia" id="provincia"
+                                                    [(ngModel)]="vm.DatosBasicos.Id_Provincia" [disabled]="!vm.habilitarModificar">
+                                                    <option value="0">--Seleccionar--</option>
+                                                    <option *ngFor="let prov of vm.RspProvincias.ListaProvincias" [selected]="prov.Id === vm.DatosBasicos.Id_Provincia" [value]="prov.Id">
+                                                        {{prov.Nombre}}
+                                                    </option>
+                                                </select>
+                                                <div class="error-mensaje" id="validarProvincia" style="position: absolute; bottom: 1px;">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="pais">País:</label>
+                                                <select class="rps-select selector-multiple" id="pais" name="vm.DatosBasicos.Id_Pais" [(ngModel)]="vm.DatosBasicos.Id_Pais"
+                                                    [disabled]="!vm.habilitarModificar">
+                                                    <option *ngFor="let pais of vm.RspPaises.ListaPaises" [selected]="pais.Id === vm.DatosBasicos.Id_Pais" [value]="pais.Id">
+                                                        {{pais.Nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono1">Teléfono 1:</label>
+                                                <input type="text" id="telefono1" class="input-estandar clsNumerico" name="vm.DatosBasicos.Telefono1" maxlength="9" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Telefono1" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="email1">Correo 1:</label>
+                                                <input type="text" id="email1" class="input-estandar" name="vm.DatosBasicos.Email1" maxlength="100" placeholder="" [(ngModel)]="vm.DatosBasicos.Email1"
+                                                    #correo1="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    (blur)="validarCorreo1()" [ngClass]="{'error-validate': !vm.validarFormatoCorreo1,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoCorreo1 && correo1.value != '' && correo1.value != null && (correo1.dirty || correo1.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                            [(ngModel)]="vm.DatosBasicos.Email1" #correo1="ngModel" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                            [ngClass]="{'error-validate': !correo1.valid && (correo1.dirty || correo1.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':correo1.valid && correo1.value != '' && correo1.value != null && !correo1.errors && (correo1.dirty || correo1.touched) && vm.habilitarModificar}" -->
+
+                                                <div class="error-mensaje" *ngIf="!vm.validarFormatoCorreo1">
+                                                    <span> Formato Correo 1 incorrecto</span>
+                                                </div>
+
+                                                <!-- <div class="error-mensaje" *ngIf="correo1.errors && (correo1.dirty || correo1.touched) ">
+                                                <span *ngIf="correo1.errors.pattern">
+                                                    Correo 1 inválido
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono2">Teléfono 2:</label>
+                                                <input type="text" id="vm.DatosBasicos.Telefono2" class="input-estandar clsNumerico" name="vm.DatosBasicos.Telefono2" maxlength="9"
+                                                    placeholder="" [(ngModel)]="vm.DatosBasicos.Telefono2" [readonly]="!vm.habilitarModificar"
+                                                    autocomplete="off" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="email2">Correo 2:</label>
+                                                <input type="text" id="email2" class="input-estandar" name="vm.DatosBasicos.Email2" maxlength="100" placeholder="" [(ngModel)]="vm.DatosBasicos.Email2"
+                                                    #correo2="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarCorreo2()"
+                                                    autocomplete="off" [ngClass]="{'error-validate': !vm.validarFormatoCorreo2,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoCorreo2 && correo2.value != '' && correo2.value != null &&  (correo2.dirty || correo2.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                            [(ngModel)]="vm.DatosBasicos.Email2" #correo2="ngModel" [readonly]="!vm.habilitarModificar"
+                                            autocomplete="off" [ngClass]="{'error-validate': !correo2.valid && (correo2.dirty || correo2.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':correo2.valid && correo2.value != '' && correo2.value != null && !correo2.errors && (correo2.dirty || correo2.touched) && vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarFormatoCorreo2">
+                                                    <span> Formato Correo 2 incorrecto</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="correo2.errors && (correo2.dirty || correo2.touched) ">
+                                                <span *ngIf="correo2.errors.pattern">
+                                                    Correo 2 inválido
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono">Teléfono 3:</label>
+                                                <input type="text" id="telefono3" class="input-estandar clsNumerico" name="vm.DatosBasicos.Telefono3" maxlength="9" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Telefono3" autocomplete="off" [readonly]="!vm.habilitarModificar"
+                                                    [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="email3">Correo 3:</label>
+                                                <input type="text" id="email3" class="input-estandar" name="vm.DatosBasicos.Email3" maxlength="100" placeholder="" [(ngModel)]="vm.DatosBasicos.Email3"
+                                                    #correo3="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarCorreo3()"
+                                                    autocomplete="off" [ngClass]="{'error-validate': !vm.validarFormatoCorreo3 ,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':!vm.validarEstadoCorreo3 && correo3.value != '' && correo3.value != null &&  (correo3.dirty || correo3.touched)&& vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                [(ngModel)]="vm.DatosBasicos.Email3" #correo3="ngModel" [readonly]="!vm.habilitarModificar"
+                                                autocomplete="off" [ngClass]="{'error-validate': !correo3.valid && (correo3.dirty || correo3.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':correo3.valid && correo3.value != '' && correo3.value != null && !correo3.errors && (correo3.dirty || correo3.touched)&& vm.habilitarModificar}" -->
+                                                <div class="error-mensaje" *ngIf="!vm.validarFormatoCorreo3">
+                                                    <span> Formato Correo 3 incorrecto</span>
+                                                </div>
+                                                <!-- <div class="error-mensaje" *ngIf="correo3.errors && (correo3.dirty || correo3.touched) ">
+                                                <span *ngIf="correo3.errors.pattern">
+                                                    Correo 3 inválido
+                                                </span>
+                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <div class="checkbox-box">
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-lg-5">
+                                                            <div class="checkbox-btn">
+                                                                <input type="checkbox" value="1" id="preproveedor" name="vm.DatosBasicos.Preproveedor" [(ngModel)]="vm.DatosBasicos.Preproveedor"
+                                                                    [disabled]="!vm.habilitarModificar" />
+                                                                <label for="preproveedor" onclick>Pre-proveedor:</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-lg-4">
+                                                            <div class="checkbox-btn">
+                                                                <input type="checkbox" value="1" id="proveedor" name="vm.DatosBasicos.Proveedor" [(ngModel)]="vm.DatosBasicos.Proveedor"
+                                                                    [disabled]="!vm.habilitarModificar" />
+                                                                <label for="proveedor" onclick>Proveedor:</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3">
+                                                            <div class="checkbox-btn">
+                                                                <input type="checkbox" value="1" id="distribuidor" name="vm.DatosBasicos.Distribuidor" [(ngModel)]="vm.DatosBasicos.Distribuidor"
+                                                                    [disabled]="!vm.habilitarModificar" />
+                                                                <label for="distribuidor" onclick>Distribuidor:</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="clasificacion">Clasificación:</label>
+                                                <select class="rps-select selector-multiple clsClasificacion " name="vm.DatosBasicos.Clasificacion" id="clasificacion" [(ngModel)]="vm.DatosBasicos.Clasificacion"
+                                                    [disabled]="!vm.habilitarModificar">
+                                                    <option value="0">--Seleccionar--</option>
+                                                    <option *ngFor="let clasi of vm.RspClasificacion.ListaClasificacion" [selected]="clasi.Id_Clasificacion === vm.DatosBasicos.Clasificacion"
+                                                        [value]="clasi.Id_Clasificacion">
+                                                        {{clasi.Nombre}}
+                                                    </option>
+                                                </select>
+                                                <div class="error-mensaje" id="validarClasificacion" style="position: absolute; bottom: 1px;">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="observaciones">Comentario:</label>
+                                                <textarea style="height: 144px;" id="observaciones" class="input-estandar" name="vm.DatosBasicos.Observaciones" placeholder=""
+                                                    [(ngModel)]="vm.DatosBasicos.Observaciones" [readonly]="!vm.habilitarModificar"
+                                                    autocomplete="off" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="acuerdo_Comercial">Acuerdos Comerciales(%):</label>
+                                                <input type="number" min="0" step="any" id="acuerdo_Comercial" class="input-estandar clsDecimal" name="vm.DatosBasicos.Acuerdo_Comercial"
+                                                    maxlength="5" placeholder="" [(ngModel)]="vm.DatosBasicos.Acuerdo_Comercial"
+                                                    #acuerComer="ngModel" [readonly]="!vm.habilitarModificar" autocomplete="off"
+                                                    [ngClass]="{'error-validate': (!vm.validarAcuerdoComercial || !vm.validarFormatoAcuerdoComercial)  ,'input-inhabilitado': !vm.habilitarModificar, 'input-valido': !vm.validarEstadoAcuerdoComercial && acuerComer.value != '' && acuerComer.value != null && (acuerComer.dirty || acuerComer.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- (blur)="validarAcuerdoComercial()" -->
+                                                <div id="validarFormatoAcuerdoComercial1" class="error-mensaje" *ngIf="!vm.validarFormatoAcuerdoComercial">
+                                                    <span> Formato numérico incorrecto </span>
+                                                </div>
+                                                <div id="validarFormatoAcuerdoComercial2" style="display: none;" class="error-mensaje">
+                                                    <span> Formato numérico incorrecto </span>
+                                                </div>
+
+                                                <div id="validarFormAcuerCom1" class="error-mensaje" *ngIf="!vm.validarAcuerdoComercial">
+                                                    <span> Ingresar de 0 a 100 con dos decimales </span>
+                                                </div>
+                                                <div id="validarFormAcuerCom2" style="display: none" class="error-mensaje">
+                                                    <span> Ingresar de 0 a 100 con dos decimales </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="importe_Fijo">Importe Fijo:</label>
+                                                <input type="number" min="0" step="any" id="importe_Fijo" class="input-estandar clsDecimal" name="vm.DatosBasicos.Importe_Fijo"
+                                                    maxlength="12" placeholder="" [(ngModel)]="vm.DatosBasicos.Importe_Fijo"
+                                                    #impFijo="ngModel" [readonly]="!vm.habilitarModificar" autocomplete="off"
+                                                    [ngClass]="{'error-validate':(!vm.validarImporteFijo || !vm.validarFormatoImporteFijo ) ,'input-inhabilitado': !vm.habilitarModificar, 'input-valido':  !vm.validarEstadoImporteFijo  && impFijo.value != '' && impFijo.value != null  && (impFijo.dirty || impFijo.touched) && vm.habilitarModificar}"
+                                                />
+                                                <!-- (blur)="validarImporteFijo()" -->
+                                                <!-- #impFijo="ngModel" [readonly]="!vm.habilitarModificar" [ngClass]="{'error-validate':(!impFijo.valid  || !vm.validarImporteFijo) && (impFijo.dirty || impFijo.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':impFijo.valid && vm.validarImporteFijo && impFijo.value != '' && impFijo.value != null && !impFijo.errors && (impFijo.dirty || impFijo.touched) && vm.habilitarModificar}" -->
+                                                <!-- <div class="error-mensaje" *ngIf="impFijo.errors && (impFijo.dirty || impFijo.touched) ">
+                                                <span *ngIf="impFijo.errors.pattern">
+                                                    Formato no válido
+                                                </span>
+                                            </div> 
+                                            <div class="error-mensaje" *ngIf="!vm.validarImporteFijo && (impFijo.dirty || impFijo.touched) ">
+                                                <span *ngIf="!vm.validarImporteFijo">
+                                                    Ingresar de 0 a 999999999,99 con dos decimales
+                                                </span>
+                                            </div>
+                                            -->
+                                                <div id="validarFormatoImporteFijo1" class="error-mensaje" *ngIf="!vm.validarFormatoImporteFijo">
+                                                    <span> Formato numérico incorrecto </span>
+                                                </div>
+                                                <div id="validarFormatoImporteFijo2" style="display: none;" class="error-mensaje">
+                                                    <span> Formato numérico incorrecto </span>
+                                                </div>
+                                                <div id="validarImpFij1" class="error-mensaje" *ngIf="!vm.validarImporteFijo">
+                                                    <span> Ingresar de 0 a 999999999,99 con dos decimales</span>
+                                                </div>
+                                                <div id="validarImpFij2" style="display: none;" class="error-mensaje">
+                                                    <span> Ingresar de 0 a 999999999,99 con dos decimales</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <div class='grupo-input'>
+                                                <label class="etiqueta-input" style="position: relative; top: 35px;">Validez:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3'>
+                                                <label class="etiqueta-input" for="fini_Acuerdo">Fecha Inicio:</label>
+                                                <input type="text" id="fini_Acuerdo" class="input-estandar input-limit rps-calendar" name="vm.DatosBasicos.Fini_Acuerdo_str"
+                                                    maxlength="10" placeholder="{{vm.fechaPlaceholder}}" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Fini_Acuerdo_str"
+                                                    #fecIni="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarFechaIni();validarFechaIniFinal();"
+                                                    [ngClass]="{'error-validate-fecha': ( !vm.validarFechaIni || !vm.validarFormatoFechaIni || !vm.validarFechaIniFinal ),'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                                <!-- pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                            
+                                            (blur)="validarFechaIni(); validarFechaIniFinal();" [ngClass]="{'error-validate': (!fecIni.valid || !vm.validarFechaIni || !vm.validarFechaIniFinal) && (fecIni.dirty || fecIni.touched),'input-inhabilitado': !vm.habilitarModificar}" -->
+
+
+                                            </div>
+
+                                            <div class="error-mensaje errorFechaIniAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFormatoFechaIni">
+                                                <span> Formato fecha incorrecto </span>
+                                            </div>
+                                            <div class="error-mensaje errorFechaIniAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaIni">
+                                                <span> Fecha alta inválido </span>
+                                            </div>
+                                            <div class="error-mensaje errorFechaIniAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaIniFinal">
+                                                <span> La fecha inicio debe ser menor a la fecha fin </span>
+                                            </div>
+
+                                            <!-- <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                            <span *ngIf="fecIni.errors.pattern">
+                                                Ingresar el formato correcto
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaIni && (fecIni.dirty || fecIni.touched) ">
+                                            <span *ngIf="!vm.validarFechaIni">
+                                                Fecha alta inválido
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaIniFinal && (fecIni.dirty || fecIni.touched) ">
+                                            <span *ngIf="!vm.validarFechaIniFinal">
+                                                La fecha inicio debe ser menor a la fecha fin
+                                            </span>
+                                        </div> -->
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker4'>
+                                                <label class="etiqueta-input" for="ffin_Acuerdo">Fecha Fin:</label>
+                                                <input type="text" id="ffin_Acuerdo" class="input-estandar input-limit rps-calendar" name="vm.DatosBasicos.Ffin_Acuerdo_str"
+                                                    maxlength="10" placeholder="{{vm.fechaPlaceholder}}" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Ffin_Acuerdo_str"
+                                                    #fecFin="ngModel" [readonly]="!vm.habilitarModificar" (blur)="validarFechaFin(); validarFechaFinFinal();"
+                                                    [ngClass]="{'error-validate-fecha': (!vm.validarFechaFin || !vm.validarFormatoFechaFin || !vm.validarFechaFinFinal),'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+
+                                                <!-- pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                            [(ngModel)]="vm.DatosBasicos.Ffin_Acuerdo_str" #fecFin="ngModel" [readonly]="!vm.habilitarModificar"
+                                            (keyup)="validarFechaFin(); validarFechaFinFinal();" [ngClass]="{'error-validate': (!fecFin.valid || !vm.validarFechaFin || !vm.validarFechaFinFinal) && (fecFin.dirty || fecFin.touched),'input-inhabilitado': !vm.habilitarModificar}" -->
+                                            </div>
+
+                                            <div class="error-mensaje errorFechaFinAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFormatoFechaFin">
+                                                <span> Formato fecha incorrecto </span>
+                                            </div>
+                                            <div class="error-mensaje errorFechaFinAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaFin">
+                                                <span> Fecha alta inválido </span>
+                                            </div>
+                                            <div class="error-mensaje errorFechaFinAcuerdo" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaFinFinal">
+                                                <span> La fecha fin debe ser mayor a la fecha inicio </span>
+                                            </div>
+
+                                            <!-- <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="fecFin.errors && (fecFin.dirty || fecFin.touched) ">
+                                            <span *ngIf="fecFin.errors.pattern">
+                                                Ingresar el formato correcto
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaFin && (fecFin.dirty || fecFin.touched) ">
+                                            <span *ngIf="!vm.validarFechaFin">
+                                                Fecha alta inválido
+                                            </span>
+                                        </div>
+                                        <div class="error-mensaje" style="position: relative; top: -1.1em;" *ngIf="!vm.validarFechaFinFinal && (fecFin.dirty || fecFin.touched) ">
+                                            <span *ngIf="!vm.validarFechaFinFinal">
+                                                La fecha fin debe ser mayor a la fecha inicio
+                                            </span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-4 col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="punto_Operacional">Punto Operacional:</label>
+                                                <input type="text" id="punto_Operacional" class="input-estandar clsNumerico" name="vm.DatosBasicos.Punto_Operacional" maxlength="13"
+                                                    placeholder="" pattern="[0-9]+" autocomplete="off" [(ngModel)]="vm.DatosBasicos.Punto_Operacional"
+                                                    #puntoOpe="ngModel" [readonly]="!vm.habilitarModificar" [ngClass]="{'error-validate': !puntoOpe.valid && (puntoOpe.dirty || puntoOpe.touched),'input-inhabilitado': !vm.habilitarModificar, 'input-valido':puntoOpe.valid  && puntoOpe.value != '' && puntoOpe.value != null && !puntoOpe.errors && (puntoOpe.dirty || puntoOpe.touched) && vm.habilitarModificar}"
+                                                />
+                                                <div class="error-mensaje" *ngIf="puntoOpe.errors && (puntoOpe.dirty || puntoOpe.touched) ">
+                                                    <span *ngIf="puntoOpe.errors.pattern">
+                                                        Ingresar solo números
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto">Persona de Contacto 1:</label>
+                                                <input type="text" id="contacto" class="input-estandar" name="vm.DatosBasicos.Contacto" maxlength="50" placeholder="" [(ngModel)]="vm.DatosBasicos.Contacto"
+                                                    [readonly]="!vm.habilitarModificar" autocomplete="off" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto2">Persona de Contacto 2:</label>
+                                                <input type="text" id="contacto2" class="input-estandar" name="vm.DatosBasicos.Contacto2" maxlength="50" placeholder="" [(ngModel)]="vm.DatosBasicos.Contacto2"
+                                                    [readonly]="!vm.habilitarModificar" autocomplete="off" [ngClass]="{'input-inhabilitado': !vm.habilitarModificar}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input">&nbsp;</label>
+                                                <div class="checkbox-box">
+                                                    <div class="checkbox-btn" style="position: relative; top: 7px;">
+                                                        <input type="checkbox" value="1" id="facturador" name="vm.DatosBasicos.Facturador" [(ngModel)]="vm.DatosBasicos.Facturador"
+                                                            (click)="validarSelecFacturador()" [disabled]="!vm.habilitarModificar"
+                                                        />
+                                                        <label for="facturador" onclick>Facturador:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-lg-8">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input">&nbsp;</label>
+                                                <select class="rps-select selector-multiple clsFacturador" name="vm.DatosBasicos.Id_Facturador" id="id_Facturador" [(ngModel)]="vm.DatosBasicos.Id_Facturador"
+                                                    [disabled]="!vm.habilitarModificar">
+                                                    <option value="0">--Seleccionar--</option>
+                                                    <option *ngFor="let prov of vm.RspFacturador.ListaProveedores" [selected]="prov.Id_Proveedores === vm.DatosBasicos.Id_Facturador"
+                                                        [value]="prov.Id_Proveedores">
+                                                        {{prov.Razon_Social}}
+                                                    </option>
+                                                </select>
+                                                <div class="error-mensaje" id="validarFacturador" style="position: absolute; bottom: 1px;">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-2">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="acordeon-header-text">DATOS DE CARACTERIZACIÓN</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-2">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-6">
+                                    <div class="rps-tabla">
+                                        <table id="tablaCaracteristica" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Característica</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let tipCarac of vm.RpsTiposCaracterizacion.ListaTiposCaracterizacion">
+                                                    <td *ngIf="!vm.habilitarGuardar">
+                                                        <span class="textoInvisible">{{sinTilde(tipCarac.NOMBRE)}}</span>
+                                                        <a href="#" class="enlace enlace-principal" [style.color]="tipCarac.COLOR" data-toggle="modal" (click)="mostrarCaracterizaciones(tipCarac.ID)"
+                                                            data-target="#modalCaracterizacion">
+                                                            <span class="textoVisible">{{tipCarac.NOMBRE}}</span>
+                                                        </a>
+                                                    </td>
+                                                    <td *ngIf="!vm.habilitarModificar">
+                                                        <a class="enlace enlace-principal" [style.color]="tipCarac.COLOR">{{tipCarac.NOMBRE}}</a>
+                                                    </td>
+                                                    <td>{{tipCarac.CARACTERISTICA}}</td>
+                                                </tr>
+                                                <!-- <tr>
+                                                <td>
+                                                    <a href="#" class="enlace enlace-principal" data-toggle="modal" data-target="#modalEjemplo">Área Geográfica</a>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#" class="enlace enlace-principal">Área Regional</a>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-3">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="acordeon-header-text">DATOS DE PRODUCTOS</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="acordeon-item-3">
+                        <div class="panel-body">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-10 vcenter">
+                                    <div class="rps-tabla">
+                                        <table id="tablaArticulo" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Referencia Producto</th>
+                                                    <th>Referencia Proveedor</th>
+                                                    <th>Descripción</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr *ngFor="let listArti of vm.ListaArticuloProveedor">
+                                                    <td>{{listArti.Referencia_Articulo}}</td>
+                                                    <td>{{listArti.Su_Ref}}</td>
+                                                    <td>{{listArti.Nombre_Articulo}}</td>
+                                                    <td *ngIf="!vm.habilitarGuardar">
+                                                        <a [routerLink]="['/alta-articulos']" [queryParams]="{id:listArti.Id_Articulo,action:0}" title="Ver">
+                                                            <img class="imgTabla" src="assets/detalle.png" alt="buscar" />
+                                                        </a>
+                                                        <a [routerLink]="['/alta-articulos']" [queryParams]="{id:listArti.Id_Articulo,action:1}" title="Editar">
+                                                            <img class="imgTabla" src="assets/editar.png" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                    <td *ngIf="!vm.habilitarModificar">
+                                                        <a title="Ver">
+                                                            <img class="imgTabla" src="assets/detalle.png" alt="buscar" />
+                                                        </a>
+                                                        <a title="Editar">
+                                                            <img class="imgTabla" src="assets/editar.png" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- <tr>
+                                                <td>89632</td>
+                                                <td>5689565623</td>
+                                                <td>Coca Cola</td>
+                                                <td>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                    </a>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>35689</td>
+                                                <td>5689565623</td>
+                                                <td>Pepsi</td>
+                                                <td>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                    </a>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>794646</td>
+                                                <td>5689565623</td>
+                                                <td>Inca Kola</td>
+                                                <td>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                    </a>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>134659</td>
+                                                <td>5689565623</td>
+                                                <td>Fanta</td>
+                                                <td>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                    </a>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4579846</td>
+                                                <td>5689565623</td>
+                                                <td>Sprite</td>
+                                                <td>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                    </a>
+                                                    <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                        <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                    </a>
+                                                </td>
+                                            </tr> -->
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 vcenter">
+                                    <div style="position: absolute; bottom: 0.75em;right: 0.7em">
+                                        <input type="button" id="btnAltaArticulo" (click)="mostrarAltaArticuloForm(content)" [ngClass]="!vm.habilitarModificar?'boton boton-inactivo':'boton boton-estandar'"
+                                            [disabled]="!vm.habilitarModificar" value="Alta Nuevo Artículo" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="rowBoton sizefooter flex-row-reverse">
+
+        <div class="botoneraLeft">
+            <input type="button" id="btnNuevo"  [ngClass]="!vm.habilitarModificar && !vm.habilitarModificarDetalle?'boton boton-secundario':'boton boton-inactivo'" 
+            [disabled]="vm.habilitarModificar || vm.habilitarModificarDetalle" (click)="nuevoProveedor()"  value="Nuevo">
+        </div>
+
+        <div class="botoneraRight">
+            <!-- <button class="boton" [ngClass]="!myForm.valid?'boton-inactivo':'boton-estandar'" type="submit" [disabled]="!myForm.valid">Guardar</button>  -->
+            <button id="btnGuardar" [ngClass]="!vm.habilitarGuardar?'boton boton-estandar':'boton boton-inactivo'" [disabled]="vm.habilitarGuardar"
+                type="submit">Guardar</button>
+            <input type="button" id="btnModificar" [ngClass]="!vm.habilitarModificar && !vm.habilitarModificarDetalle?'boton boton-estandar':'boton boton-inactivo'"
+                [disabled]="vm.habilitarModificar || vm.habilitarModificarDetalle" (click)="habilitarControles()" value="Modificar">
+
+        </div>
+    </div>
+
+</form>
+
+
+<!-- <form class="contenedor-formulario" #myForm="ngForm" (ngSubmit)="guardarProveedores()" ngNativeValidate>
+    
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DATOS GENERALES
+                        </button>
+                    </h5>
+                </div>
+    
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !codProveedor.valid && (codProveedor.dirty || codProveedor.touched)}">
+                                                <label class="etiqueta-input" for="codigo">Código:</label>
+                                                <input type="text" id="codigo" class="input-estandar" name="codigo" maxlength="10" placeholder="" pattern="[a-zA-Z0-9]+"
+                                                    [(ngModel)]="codigo" #codProveedor="ngModel" required />
+                                                <span class="help-block" *ngIf="codProveedor.errors && (codProveedor.dirty || codProveedor.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="codProveedor.errors.required">
+                                                            El campo codigo es obligatorio
+                                                        </li>
+                                                        <li class="error" *ngIf="codProveedor.errors.pattern">
+                                                            Solo acepta letras y numeros
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker1' [ngClass]="{'error-validate': !fecAlta.valid && (fecAlta.dirty || fecAlta.touched)}">
+                                                <label class="etiqueta-input" for="fechaAlta">Fecha Alta:</label>
+                                                <input type="text" id="fechaAlta" class="input-estandar input-limit rps-calendar" name="fechaAlta" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                                    [(ngModel)]="fechaAlta" #fecAlta="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecAlta.errors && (fecAlta.dirty || fecAlta.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecAlta.errors.required">
+                                                        El campo fecha alta es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecAlta.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !codCif.valid && (codCif.dirty || codCif.touched)}">
+                                                <label class="etiqueta-input" for="cif">CIF:</label>
+                                                <input type="text" id="cif" class="input-estandar" name="cif" maxlength="20" placeholder="" [(ngModel)]="cif" #codCif="ngModel"
+                                                    required/>
+                                                <span class="help-block" *ngIf="codCif.errors && (codCif.dirty || codCif.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="codCif.errors.required">
+                                                            El campo CIF es obligatorio
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker2' [ngClass]="{'error-validate': !fecBaja.valid && (fecBaja.dirty || fecBaja.touched)}">
+                                                <label class="etiqueta-input" for="fechaBaja">Fecha Baja:</label>
+                                                <input type="text" id="fechaBaja" class="input-estandar input-limit rps-calendar" maxlength="10" name="fechaBaja" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                                    [(ngModel)]="fechaBaja" #fecBaja="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecBaja.errors && (fecBaja.dirty || fecBaja.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecBaja.errors.required">
+                                                        El campo fecha baja es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecBaja.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !razSoc.valid && (razSoc.dirty || razSoc.touched)}">
+                                                <label class="etiqueta-input" for="razonSocial">Razón Social:</label>
+                                                <input type="text" id="razonSocial" class="input-estandar" name="razonSocial" maxlength="50" placeholder="" [(ngModel)]="razonSocial"
+                                                    #razSoc="ngModel" required/>
+                                                <span class="help-block" *ngIf="razSoc.errors && (razSoc.dirty || razSoc.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="razSoc.errors.required">
+                                                            El campo razon social es obligatorio
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !dirSocial.valid && (dirSocial.dirty || dirSocial.touched)}">
+                                                <label class="etiqueta-input" for="direccionSocial">Dirección Social:</label>
+                                                <input type="text" id="direccionSocial" class="input-estandar" name="direccionSocial" maxlength="100" placeholder="" [(ngModel)]="direccionSocial"
+                                                    #dirSocial="ngModel" required/>
+                                                <span class="help-block" *ngIf="dirSocial.errors && (dirSocial.dirty || dirSocial.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="dirSocial.errors.required">
+                                                            El campo dirección social es obligatorio
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-3">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !codPostal.valid && (codPostal.dirty || codPostal.touched)}">
+                                                <label class="etiqueta-input" for="codigoPostal">Codigo Postal:</label>
+                                                <input type="text" id="codigoPostal" class="input-estandar" name="objProveedores.codigo_Postal" maxlength="5" placeholder=""
+                                                    pattern="[0-9]+" [(ngModel)]="objProveedores.codigo_Postal" #codPostal="ngModel"
+                                                    required/>
+                                                <span class="help-block" *ngIf="codPostal.errors && (codPostal.dirty || codPostal.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="codPostal.errors.required">
+                                                            El campo codigo postal es obligatorio
+                                                        </li>
+                                                        <li class="error" *ngIf="codPostal.errors.pattern">
+                                                            ingresar solo numeros
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-9">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !local.valid && (local.dirty || local.touched)}">
+                                                <label class="etiqueta-input" for="localidad">Localidad:</label>
+                                                <input type="text" id="localidad" class="input-estandar" name="localidad" maxlength="50" placeholder="" [(ngModel)]="localidad"
+                                                    #local="ngModel" required/>
+                                                <span class="help-block" *ngIf="local.errors && (local.dirty || local.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="local.errors.required">
+                                                            El campo localidad es obligatorio
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="provincia">Provinicia:</label>
+                                                <select id="provincia" class="rps-select selector-multiple" name="objProveedores.id_Provincia" id="provincia" [(ngModel)]="objProveedores.id_Provincia">
+                                                    <option *ngFor="let prov of objProvincia" [value]="prov.id">
+                                                        {{prov.nombre}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="pais">Pais:</label>
+                                                <select id="pais" class="rps-select selector-multiple" name="pais" [(ngModel)]="pais">
+                                                    <option value="1">Perú</option>
+                                                    <option value="2">España</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono1">Telefono 1:</label>
+                                                <input type="text" id="telefono1" class="input-estandar" name="telefono1" maxlength="20" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !email1.valid && (email1.dirty || email1.touched)}">
+                                                <label class="etiqueta-input" for="correo1">Correo 1:</label>
+                                                <input type="text" id="correo1" class="input-estandar" name="correo1" maxlength="100" placeholder="" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                    [(ngModel)]="correo1" #email1="ngModel" />
+                                                <span class="help-block" *ngIf="email1.errors && (email1.dirty || email1.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="email1.errors.pattern">
+                                                            correo 1 invalido
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono2">Telefono 2:</label>
+                                                <input type="text" id="telefono2" class="input-estandar" name="telefono2" maxlength="20" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !email2.valid && (email2.dirty || email2.touched)}">
+                                                <label class="etiqueta-input" for="correo2">Correo 2:</label>
+                                                <input type="text" id="correo2" class="input-estandar" name="correo2" maxlength="100" placeholder="" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                    [(ngModel)]="correo2" #email2="ngModel" />
+                                                <span class="help-block" *ngIf="email2.errors && (email2.dirty || email2.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="email2.errors.pattern">
+                                                            correo 2 invalido
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono3">Telefono 3:</label>
+                                                <input type="text" id="telefono3" class="input-estandar" name="telefono3" maxlength="20" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !email3.valid && (email3.dirty || email3.touched)}">
+                                                <label class="etiqueta-input" for="correo3">Correo 3:</label>
+                                                <input type="text" id="correo3" class="input-estandar" name="correo3" maxlength="100" placeholder="" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                    [(ngModel)]="correo3" #email3="ngModel" />
+                                                <span class="help-block" *ngIf="email3.errors && (email3.dirty || email3.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="email3.errors.pattern">
+                                                            correo 3 invalido
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto1">Persona de Contacto 1:</label>
+                                                <input type="text" id="contacto1" class="input-estandar" name="contacto1" maxlength="50" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto2">Persona de Contacto 2:</label>
+                                                <input type="text" id="contacto2" class="input-estandar" name="contacto2" maxlength="50" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="clasificacion">Clasificación:</label>
+                                                <select class="rps-select selector-multiple" name="clasificacion" id="clasificacion">
+                                                    <option value="1" selected="selected">Centralizado ECI</option>
+                                                    <option value="2">Centralizado No ECI</option>
+                                                    <option value="3">Autoventa ECI</option>
+                                                    <option value="4">Autoventa No ECI</option>
+                                                    <option value="5">Local</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="comentario">Comentario:</label>
+                                                <textarea rows="100" id="comentario" class="input-estandar" name="comentario" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2">
+    
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !acuerComer.valid && (acuerComer.dirty || acuerComer.touched)}">
+                                                <label class="etiqueta-input" for="acuerdosComerciales">Acuerdos Comerciales(%):</label>
+                                                <input type="text" id="acuerdosComerciales" class="input-estandar" name="acuerdosComerciales" maxlength="6" placeholder=""
+                                                    pattern="^[0-9]+([.][0-9]+)?$" [(ngModel)]="acuerdosComerciales" #acuerComer="ngModel"
+                                                />
+                                                <span class="help-block" *ngIf="acuerComer.errors && (acuerComer.dirty || acuerComer.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="acuerComer.errors.pattern">
+                                                            formato no valido
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !impFijo.valid && (impFijo.dirty || impFijo.touched)}">
+                                                <label class="etiqueta-input" for="importFijo">Importe Fijo:</label>
+                                                <input type="text" id="importFijo" class="input-estandar" name="importFijo" maxlength="12" placeholder="" pattern="^[0-9]+([.][0-9]+)?$"
+                                                    [(ngModel)]="importFijo" #impFijo="ngModel" />
+                                                <span class="help-block" *ngIf="impFijo.errors && (impFijo.dirty || impFijo.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="impFijo.errors.pattern">
+                                                            formato no valido
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3' [ngClass]="{'error-validate': !fecIni.valid && (fecIni.dirty || fecIni.touched)}">
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" id="fechaInicio" class="input-estandar input-limit rps-calendar" name="fechaInicio" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                                    [(ngModel)]="fechaInicio" #fecIni="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecIni.errors && (fecIni.dirty || fecIni.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecIni.errors.required">
+                                                        El campo fecha inicio es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecIni.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker4' [ngClass]="{'error-validate': !fecFin.valid && (fecFin.dirty || fecFin.touched)}">
+                                                <label class="etiqueta-input" for="fechaFin">Fecha Fin:</label>
+                                                <input type="text" id="fechaFin" class="input-estandar input-limit rps-calendar" name="fechaFin" maxlength="10" placeholder="XX/XX/2017"
+                                                    pattern="^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$"
+                                                    [(ngModel)]="fechaFin" #fecFin="ngModel" required />
+                                            </div>
+                                            <span class="help-block" style="position: relative; top: -1.1em;" *ngIf="fecFin.errors && (fecFin.dirty || fecFin.touched) ">
+                                                <ul>
+                                                    <li class="error" *ngIf="fecFin.errors.required">
+                                                        El campo fecha fin es obligatorio
+                                                    </li>
+                                                    <li class="error" *ngIf="fecFin.errors.pattern">
+                                                        ingresar el formato correcto
+                                                    </li>
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-2 col-lg-2"></div>
+                                        <div class=" col-md-8 col-lg-8">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !puntoOpe.valid && (puntoOpe.dirty || puntoOpe.touched)}">
+                                                <label class="etiqueta-input" for="puntoOperacional">Punto Operacional:</label>
+                                                <input type="text" id="puntoOperacional" class="input-estandar" name="puntoOperacional" maxlength="13" placeholder="" pattern="[0-9]+"
+                                                    [(ngModel)]="puntoOperacional" #puntoOpe="ngModel" required/>
+                                                <span class="help-block" *ngIf="puntoOpe.errors && (puntoOpe.dirty || puntoOpe.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="puntoOpe.errors.required">
+                                                            El campo punto operacional es obligatorio
+                                                        </li>
+                                                        <li class="error" *ngIf="puntoOpe.errors.pattern">
+                                                            ingresar solo numeros
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-2 col-lg-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5 col-md-5 col-lg-5">
+                                    <div class="grupo-input">
+                                        <div class="checkbox-box">
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor3" id="valor3" name="valor3" checked="checked" />
+                                                <label for="valor3" onclick>Pre-proveedor:</label>
+                                            </div>
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor4" id="valor4" name="valor4" />
+                                                <label for="valor4" onclick>Proveedor:</label>
+                                            </div>
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor5" id="valor5" name="valor5" />
+                                                <label for="valor5" onclick>Facturador:</label>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <div class="grupo-input input-group-fecha">
+                                        <input type="text" id="entradaFinal" style="height: 2.75em" class="form-control input-estandar" name="entradaFinal" placeholder=""
+                                        />
+                                        <div class="input-group-addon">
+                                            <span class="input-group-text iconos-repsol icon-buscar_descriptor"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="grupo-input">
+                                        <input type="text" id="entradaFinal1" class="input-estandar" disabled="disabled" name="entradaFinal1" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            DATOS DE CARACTERIZACIÓN
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-12">
+                                    <div class="rps-tabla">
+                                        <table id="tablaOrdenable" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Característica</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#" class="enlace enlace-principal" data-toggle="modal" data-target="#modalEjemplo">Área Geográfica</a>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#" class="enlace enlace-principal">Área Regional</a>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            DATOS DE PRODUCTOS
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="panel-body">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-10 vcenter">
+                                    <div class="rps-tabla">
+                                        <table id="tablaOrdenable1" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Referencia Producto</th>
+                                                    <th>Referencia Proveedor</th>
+                                                    <th>Descripción</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>89632</td>
+                                                    <td>5689565623</td>
+                                                    <td>Coca Cola</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>35689</td>
+                                                    <td>5689565623</td>
+                                                    <td>Pepsi</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>794646</td>
+                                                    <td>5689565623</td>
+                                                    <td>Inca Kola</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>134659</td>
+                                                    <td>5689565623</td>
+                                                    <td>Fanta</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4579846</td>
+                                                    <td>5689565623</td>
+                                                    <td>Sprite</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/repsol/img/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 vcenter">
+                                    <div style="position: absolute; bottom: 1.75em;">
+                                        <button class="boton boton-estandar">Alta Nuevo Artículo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+            </div>
+    
+        </div>
+        <div class="fila-componente">
+            <button class="boton" [ngClass]="!myForm.valid?'boton-inactivo':'boton-estandar'" type="submit" [disabled]="!myForm.valid">Guardar</button> 
+            <button class="boton boton-estandar" type="submit">Guardar</button>
+            <button class="boton boton-estandar">Modificar</button>
+        </div>
+    </form> -->
+
+
+<!-- <div class="contenedor-acordeon">
+            <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-1">
+                        <h4 class="panel-title">
+                            <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text">DATOS GENERALES</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input" [ngClass]="{'error-validate': !codProveedor.valid && (codProveedor.dirty || codProveedor.touched)}">
+                                                <label class="etiqueta-input" for="codigo">Código:</label>
+                                                <input type="text" id="codigo" class="input-estandar" name="codigo" placeholder="" pattern="[a-zA-Z]+" [(ngModel)]="codigo"
+                                                    #codProveedor="ngModel" required />
+                                                <span class="help-block" *ngIf="codProveedor.errors && (codProveedor.dirty || codProveedor.touched) ">
+                                                    <ul>
+                                                        <li class="error" *ngIf="codProveedor.errors.required">
+                                                            El campo nombre es requerido
+                                                        </li>
+                                                        <li class="error" *ngIf="codProveedor.errors.pattern">
+                                                            Solo alfabeto
+                                                        </li>
+                                                    </ul>
+    
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker1'>
+                                                <label class="etiqueta-input" for="fechaAlta">Fecha Alta:</label>
+                                                <input type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="fechaAlta" placeholder="XX/XX/2017"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="cif">CIF:</label>
+                                                <input type="text" id="cif" class="input-estandar" name="cif" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker2'>
+                                                <label class="etiqueta-input" for="fechaBaja">Fecha Baja:</label>
+                                                <input type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="fechaBaja" placeholder="XX/XX/2017"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="razonSocial">Razón Social:</label>
+                                                <input type="text" id="razonSocial" class="input-estandar" name="razonSocial" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="direccionSocial">Dirección Social:</label>
+                                                <input type="text" id="direccionSocial" class="input-estandar" name="direccionSocial" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="codigoPostal">Codigo Postal:</label>
+                                                <input type="text" id="codigoPostal" class="input-estandar" name="codigoPostal" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="localidad">Localidad:</label>
+                                                <input type="text" id="localidad" class="input-estandar" name="localidad" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="provincia">Provinicia:</label>
+                                                <select class="rps-select selector-multiple" name="provincia" id="provincia">
+                                                    <option value="1">Alicante</option>
+                                                    <option value="2">Barcelona</option>
+                                                    <option value="3">Madrid</option>
+                                                    <option value="4">Sevilla</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="pais">Pais:</label>
+                                                <select class="rps-select selector-multiple" name="pais" id="pais">
+                                                    <option value="1">Perú</option>
+                                                    <option value="2">España</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono1">Telefono 1:</label>
+                                                <input type="text" id="telefono1" class="input-estandar" name="telefono1" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="correo1">Correo 1:</label>
+                                                <input type="text" id="correo1" class="input-estandar" name="correo1" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono2">Telefono 2:</label>
+                                                <input type="text" id="telefono2" class="input-estandar" name="telefono2" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="correo2">Correo 2:</label>
+                                                <input type="text" id="correo2" class="input-estandar" name="correo2" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="telefono3">Telefono 3:</label>
+                                                <input type="text" id="telefono3" class="input-estandar" name="telefono3" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6 col-md-6 col-lg-6">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="correo3">Correo 3:</label>
+                                                <input type="text" id="correo3" class="input-estandar" name="correo3" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto1">Persona de Contacto 1:</label>
+                                                <input type="text" id="contacto1" class="input-estandar" name="contacto1" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="contacto2">Persona de Contacto 2:</label>
+                                                <input type="text" id="contacto2" class="input-estandar" name="contacto2" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="clasificacion">Clasificación:</label>
+                                                <select class="rps-select selector-multiple" name="clasificacion" id="clasificacion">
+                                                    <option value="1">Clasi 1</option>
+                                                    <option value="2">Clasi 2</option>
+                                                    <option value="3">Clasi 3</option>
+                                                    <option value="4">Clasi 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-sm-12 col-md-12 col-lg-12">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="comentario">Comentario:</label>
+                                                <textarea rows="100" id="comentario" class="input-estandar" name="comentario" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2">
+    
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="acuerdosComerciales">Acuerdos Comerciales(%):</label>
+                                                <input type="text" id="acuerdosComerciales" class="input-estandar" name="acuerdosComerciales" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class="grupo-input">
+                                                <label class="etiqueta-input" for="importFijo">Importe Fijo:</label>
+                                                <input type="text" id="importFijo" class="input-estandar" name="importFijo" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker3'>
+                                                <label class="etiqueta-input" for="fechaInicio">Fecha Inicio:</label>
+                                                <input type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="fechaInicio" placeholder="XX/XX/2017"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <div class='grupo-input input-group rps-datepicker' id='datetimepicker4'>
+                                                <label class="etiqueta-input" for="fechaFin">Fecha Fin:</label>
+                                                <input type="text" class="input-estandar input-limit rps-calendar" maxlength="10" id="fechaFin" placeholder="XX/XX/2017"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-lg-2">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class=" col-md-12 col-lg-12">
+                                                <div class="grupo-input">
+                                                    <label class="etiqueta-input" for="puntoOperacional">Punto Operacional:</label>
+                                                    <input type="text" id="puntoOperacional" class="input-estandar" name="puntoOperacional" placeholder="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5 col-md-5 col-lg-5">
+                                    <div class="grupo-input">
+                                        <div class="checkbox-box">
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor3" id="valor3" name="valor3" checked="checked" />
+                                                <label for="valor3" onclick>Pre-proveedor:</label>
+                                            </div>
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor4" id="valor4" name="valor4" />
+                                                <label for="valor4" onclick>Proveedor:</label>
+                                            </div>
+                                            <div class="checkbox-btn">
+                                                <input type="checkbox" value="valor5" id="valor5" name="valor5" />
+                                                <label for="valor5" onclick>Facturador:</label>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <div class="grupo-input input-group">
+                                        <input type="text" id="entradaFinal" class="form-control input-estandar" name="entradaFinal" placeholder="" />
+                                        <div class="input-group-addon">
+                                            <span class="input-group-text iconos-repsol icon-buscar_descriptor"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="grupo-input">
+                                        <input type="text" id="entradaFinal1" class="input-estandar" disabled="disabled" name="entradaFinal1" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-2">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="acordeon-header-text">DATOS DE CARACTERIZACIÓN</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-2">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-12">
+                                    <div class="rps-tabla">
+                                        <table id="tablaOrdenable" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Característica</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#" class="enlace enlace-principal" data-toggle="modal" data-target="#modalEjemplo">Área Geográfica</a>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#" class="enlace enlace-principal">Área Regional</a>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="acordeon-item-3">
+                        <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse"
+                                data-parent="#acordeon" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="acordeon-header-text">DATOS DE PRODUCTOS</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-3">
+                        <div class="panel-body" style="padding-top: 1.75em">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-9 vcenter">
+                                    <div class="rps-tabla">
+                                        <table id="tablaOrdenable" class="tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Referencia Producto</th>
+                                                    <th>Referencia Proveedor</th>
+                                                    <th>Descripción</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>89632</td>
+                                                    <td>5689565623</td>
+                                                    <td>Coca Cola</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>35689</td>
+                                                    <td>5689565623</td>
+                                                    <td>Pepsi</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>794646</td>
+                                                    <td>5689565623</td>
+                                                    <td>Inca Kola</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>134659</td>
+                                                    <td>5689565623</td>
+                                                    <td>Fanta</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4579846</td>
+                                                    <td>5689565623</td>
+                                                    <td>Sprite</td>
+                                                    <td>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_ver.jpg" alt="buscar" />
+                                                        </a>
+                                                        <a class="botonImage" placement="bottom" ngbTooltip="Visualizar">
+                                                            <img src="assets/icon_editar.jpg" alt="buscar" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="rps-paginacion">
+                                        <nav aria-label="Page navigation">
+                                            <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 vcenter">
+                                    <div style="position: relative; bottom: 1.75em;">
+                                        <button class="boton boton-estandar">Alta Nuevo Artículo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fila-componente">
+            <button class="boton" [ngClass]="!myForm.valid?'boton-inactivo':'boton-estandar'" type="submit" [disabled]="!myForm.valid">Guardar</button> 
+            <button class="boton boton-estandar" type="submit">Guardar</button>
+            <button class="boton boton-estandar">Modificar</button>
+        </div> -->
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+    <!-- <div class="border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>{{vm.resul}}</span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-secondary btn-repsol" (click)="c('Close click')">Aceptar</button>
+            </div>
+        </div> -->
+
+    <div class="modal fade show" style="display: block;" id="modalGuardar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="contenedor-modal" style="padding: 1.875em;">
+                    <div class="modal-header">
+                        <button type="button" style="display: none;" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                            <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                        </button>
+                        <h4 class="modal-title">Alta Proveedor</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="parrafo-modal">{{vm.resul}}</p>
+                    </div>
+                    <div class="modal-footer" style="border-top: 0em;">
+                        <button type="button" class="boton boton-estandar" (click)="c('Close click')">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</ng-template>
+
+<div class="modal fade rps-modal" id="modalCaracterizacion" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="contenedor-modal">
+                <div class="modal-header">
+                    <button type="button" style="display: none;" class="close iconos-repsol icon-close icon-after" data-dismiss="modal" aria-label="Close">
+                        <span class="hide-text-accesible" aria-hidden="true">Cerrar</span>
+                    </button>
+                    <h4 class="modal-title">{{vm.nombreTipCaract}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <div class="checkbox-box">
+                            <div class="checkbox-vertical">
+                                <p></p>
+
+                                <div class="checkbox-btn" style="position:  relative; left: -0.2em;">
+                                    <div class="modal-cabecera">
+                                        <input type="checkbox" id="selTodas" name="selectedTodas" [(ngModel)]="vm.RpsCaracterizacion.Selected" (change)="selAllCaracterizacion()"
+                                        />
+                                        <label for="selTodas" onclick>
+                                            <span style="position: relative;top: 0.2em;"> Seleccionar Todas:
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngFor="let caract of vm.RpsCaracterizacion.ListaCaracterizaciones; let i = index;trackBy:trackByIdx" class="checkbox-btn">
+                                    <input type="checkbox" id="selectedCaract{{i}}" [(ngModel)]="vm.RpsCaracterizacion.ListaCaracterizaciones[i].SELECTED" (change)="verificarSelCaract()"
+                                        name="selectedCaract{{i}}" />
+                                    <label for="selectedCaract{{i}}" onclick>{{caract.NOMBRE}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton boton-auxiliar" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnAsignarCaract" class="boton boton-estandar" data-ng-value="" data-dismiss="modal" (click)="agregarCaracterizaciones()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ngx-loading [show]="vm.loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

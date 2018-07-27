@@ -1,0 +1,180 @@
+<div class="right-paragraph">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" id="cls-breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Promociones</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Gestión de Grupos</li>
+        </ol>
+    </nav>
+    <div class="cls-form-buscar">
+        <div class="form-row">
+
+            <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1 mx-sm-3 mb-2">
+                <label for="inputCodigo" class="lbl-title">C&oacute;digo:</label>
+                <input type="text" class="form-control form-control-sm" id="codigoFiltro" [(ngModel)]="mGrupoOfertaFiltro.codigoFiltro" name="codigoFiltro"
+                    placement="bottom" ngbTooltip="{{mGrupoOfertaFiltro.codigoFiltro}}">
+            </div>
+            <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5 mx-sm-3 mb-2">
+                <label for="inputDescripcion" class="lbl-title">Descripci&oacute;n:</label>
+                <input type="text" class="form-control form-control-sm" id="descripcionFiltros" [(ngModel)]="mGrupoOfertaFiltro.descripcionFiltro"
+                    name="descripcionFiltro" placement="bottom" ngbTooltip="{{mGrupoOfertaFiltro.descripcionFiltro}}">
+            </div>
+            <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-sm-3 mb-2">
+                <div style="float: right; text-align: center; padding-top: 30px;">
+                    <button type="submit" class="btn btn-primary  mb-2  btn-repsol" (click)="limpiarFiltros()" placement="bottom" ngbTooltip="Limpiar filtros">Limpiar</button>
+                    <button type="submit" class="btn btn-primary mb-2 btn-repsol" (click)="cargarGruposOfertasFisrtTime()" placement="bottom"
+                        ngbTooltip="Buscar grupos">Buscar</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="cls-content">
+        <div class="cls-content-lista ">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped-alter">
+                    <thead class="bg-Cabecera">
+                        <tr>
+                            <!-- <th scope="col" (click)="headerClickGO('codigo')">C&oacute;digo</th> <span class="glyphicon glyphicon-arrow-up"></span>-->
+                            <th scope="col" WIDTH="200" (click)="headerClickGO('codigo')">C&oacute;digo
+                                <img [src]="mGrupoOfertaFiltro.orderByGO=='codigo'?setClassHeaderOrder():''" /> </th>
+                            <th scope="col" (click)="headerClickGO('nombre')">Descripci&oacute;n
+                                <img [src]="mGrupoOfertaFiltro.orderByGO=='nombre'?setClassHeaderOrder():''" />
+                            </th>
+                            <th scope="col" WIDTH="200">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-fila" *ngFor="let grupoOferta of allGruposOfertas">
+                            <td>{{grupoOferta.codigo}}</td>
+                            <td>{{grupoOferta.nombre}}</td>
+                            <td class="cls-botton">
+                                <a class="botonImage" [routerLink]="['/alta-grupos']" [queryParams]="{id:grupoOferta.id_Grupos_Oferta,action:0}"
+                                    placement="bottom" ngbTooltip="Visualizar">
+                                    <img src="assets/buscar.jpg" alt="buscar" />
+                                </a>
+                                <a class="botonImage" [routerLink]="['/alta-grupos']" [queryParams]="{id:grupoOferta.id_Grupos_Oferta,action:1}"
+                                    placement="bottom" ngbTooltip="Editar">
+                                    <img src="assets/editar.jpg" alt="editar" />
+                                </a>
+                                <a class="botonImage" (click)="mostrarMensajeEliminar(content,grupoOferta.id_Grupos_Oferta)" placement="bottom" ngbTooltip="Eliminar">
+                                    <img src="assets/eliminar.jpg" alt="eliminar" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <div *ngIf="mGrupoOfertaFiltro.p.numeroPaginas>1?true:false" style="background-color: #ffffff;color:#eb7b31;">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm paginationTexto">
+                                <li class="page-item">
+                                    <a class="page-link page-color-link" (click)="paginacionClick(1)">&#60;&#60;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a (click)="paginacionClick(-1)" [class]="mGrupoOfertaFiltro.p.paginaActual==1?'page-link page-color-link adisabled':'page-link page-color-link'">Anterior</a>
+                                </li>
+                                <li *ngFor="let pagina of mGrupoOfertaFiltro.p.listPaginas" [class]="setClassActive(pagina)">
+                                    <a class="page-link page-color-link" (click)="paginacionClick(pagina)">{{pagina}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a (click)="paginacionClick(0)" [class]="mGrupoOfertaFiltro.p.paginaActual==mGrupoOfertaFiltro.p.numeroPaginas?'page-link page-color-link adisabled':'page-link page-color-link'">Siguiente</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link page-color-link" (click)="paginacionClick(mGrupoOfertaFiltro.p.numeroPaginas)">&#62;&#62;</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="cls-form-botton">
+            <a [routerLink]="['/alta-grupos']" class="btn btn-primary  mb-2  btn-repsol" placement="bottom" ngbTooltip="Crear grupos">
+                <span>Crear</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Eliminar-->
+<div class="modal fade" id="ModalEliminarConfirmacion" [ngStyle]="{'display': showModalConfimacion ? 'block' : 'none', 'opacity': 1}"
+    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>Se va a eliminar el grupo de oferta seleccionado, ¿está seguro?</span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-primary btn-repsol" (click)="eliminarGrupoOferta()">Aceptar</button>&nbsp;
+                <button type="button" class="btn btn-secondary btn-repsol" data-dismiss="modal" (click)="cancelarConfirmacion()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar Aviso-->
+<div class="modal fade" id="ModalEliminarAviso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>El grupo de oferta no puede ser eliminado ya que forma parte de una promoción
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-secondary btn-repsol" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Informacion-->
+<div class="modal fade" id="ModalInformacion" [ngStyle]="{'display': showModal ? 'block' : 'none', 'opacity': 1}" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-body">
+                <div class="modal-body-content">
+                    <span>{{textoModal}}
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button type="button" class="btn btn-secondary btn-repsol" data-dismiss="modal" (click)="cerrarModal()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+    <div class="border-modal">
+        <div class="modal-body">
+            <div class="modal-body-content">
+                <span>{{resul}}</span>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-center">
+            <button [hidden]="!ocultarBtn" type="button" class="btn btn-primary btn-repsol" (click)="eliminarGrupoOferta(idGrupoOfertaSeleccionado)">Aceptar</button>&nbsp;
+            <button type="button" class="btn btn-secondary btn-repsol" (click)="c('Close click')">{{nameBtn}}</button>
+        </div>
+    </div>
+
+
+</ng-template>
+
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

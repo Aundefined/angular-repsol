@@ -1,0 +1,129 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.btn-link {
+  font-weight: 400;
+  color: #000000;
+  background-color: transparent;
+  font-weight: bold;
+}
+.card-header {
+  padding: 0em;
+}
+.btn-link:hover,
+.btn-link:focus {
+  text-decoration: none;
+  color: #ff8200;
+  }
+ 
+/*  
+.contenedor-acordeon .panel {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border: 1px solid #5c4e44;
+}
+
+.contenedor-acordeon .panel-default > .panel-heading {
+  background-color: #dcdcdc;
+  border-bottom: 1px solid #5c4e44;
+}
+
+.contenedor-acordeon .panel-heading {
+  border: none;
+  padding: 10px 0; 
+}
+
+.contenedor-acordeon .panel-title {
+  position: relative;
+  font-family: 'titilliumbold';
+  color: #5c4e44;
+  font-size: 1.313em;
+  font-weight: normal; 
+  padding-left: 0.5em;
+}
+
+.contenedor-acordeon .panel-title > a:hover,
+.contenedor-acordeon .panel-title a:focus {
+  text-decoration: none;
+  color: #ff8200;
+}
+
+.contenedor-acordeon .acordeon-header {
+  position: relative;
+  display: inline-block;
+  line-height: 23px;
+  padding-right: 10px;
+  width: 100%;
+}
+
+.contenedor-acordeon .acordeon-header .acordeon-header-text {
+  display: inline-block;
+  width: 98%;
+  color: #000000;
+  font-size: 0.75em;
+}
+
+.contenedor-acordeon .panel-body {
+  font-family: 'titilliumregular';
+  color: #5c4e44;
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+.contenedor-acordeon .panel-group .panel {
+  margin: 0;
+}
+
+.contenedor-acordeon .panel-group .panel-heading + .panel-collapse > .list-group,
+.contenedor-acordeon .panel-group .panel-heading + .panel-collapse > .panel-body {
+  border: none;
+}
+
+.contenedor-acordeon .panel-heading [data-toggle="collapse"]:after {
+  position: absolute;
+  right: 0.75em;
+  top: 2px;
+  color: #ff8200;
+  font-size: 17px;
+  line-height: 22px;
+  transform: rotate(-180deg);  
+}
+
+.contenedor-acordeon .panel-heading [data-toggle="collapse"].collapsed:after {
+  transform: rotate(0deg);
+}
+
+.contenedor-acordeon .iconos-repsol {
+  font-size: 1em;
+  margin: 0;
+}
+
+.contenedor-acordeon .iconos-repsol:before {
+  float: right;
+  color: #ff8200;
+}
+
+.contenedor-acordeon__top {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 6.250em;
+  background-color: #fbfbfb;  
+}
+
+.contenedor-acordeon__top .panel-heading [data-toggle="collapse"]:after {
+  transform: rotate(0deg);  
+}
+
+.contenedor-acordeon__top .panel-heading [data-toggle="collapse"].collapsed:after {
+  transform: rotate(-180deg);  
+}
+
+@media screen and (max-width: 767px) {
+  .contenedor-acordeon__top {
+    padding: 0 1.250em;
+  }
+}  */

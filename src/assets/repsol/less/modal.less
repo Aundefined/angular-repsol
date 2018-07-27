@@ -1,0 +1,62 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.rps-modal{
+    background-color: fade(@blanco, 80%);
+    .contenedor-modal {
+        width:100%;
+        padding: 0 1.875em;
+    }
+
+    .modal-content {
+        border: 1px solid @gris-claro;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+        padding: 3em 0 0.625em;
+        border-bottom: 1px solid @gris-claro;
+    }
+
+    .modal-title {
+        font-family: @bold;
+        font-size: 1.5em;
+        color: @gris-oscuro;
+    }
+
+    .modal-body {
+        padding: 1.25em 0 1.875em;
+    }
+
+    .parrafo-modal {
+        font-family: @regular;
+        color: @gris-oscuro;
+    }
+
+    .modal-footer {
+        border: none;
+        padding: 0 0 1.875em;
+        .boton-estandar {
+            margin-left: 1.125em;
+        }
+    }
+
+    .modal-header {
+        .close {
+            font-family: @regular;
+            margin-top: -18px;
+            color: @naranja-principal;
+            opacity: 1;
+            position: relative;
+
+            &:after {
+                position: absolute;
+                font-size: 0.810em;
+                right: 0;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,114 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.contenedor-acordeon {
+    .panel {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    .panel-default > .panel-heading {
+        background-color: transparent;
+    }
+
+    .panel-heading {
+        border: none;
+        padding: 10px 0;
+    }
+
+    .panel-title {
+        position: relative;
+        font-family: @semi-bold;
+        color: @gris-oscuro;
+        font-size: 1.313em;
+        font-weight: normal;
+
+        & > a:hover,
+        a:focus {
+            text-decoration: none;
+            color: @naranja-principal;
+        }
+    }
+
+    .acordeon-header {
+        position: relative;
+        display: inline-block;
+        line-height: 23px;
+        padding-right: 10px;
+        width: 100%;
+        .acordeon-header-text {
+            display: inline-block;
+            width: 98%;
+        }
+    }
+
+    .panel-body {
+        font-family: @regular;
+        color: @gris-oscuro;
+        padding-top: 0;
+        padding-bottom: 20px;
+    }
+    .panel-group {
+        .panel {
+            margin: 0;
+        }
+        .panel-heading {
+            +.panel-collapse{
+                > .list-group,
+                > .panel-body {
+                    border: none;
+                }
+            }
+        }
+    }
+    // Icono y animación
+    .panel-heading [data-toggle="collapse"]:after {
+        position: absolute;
+        right: 0;
+        top: 2px;
+        color: @naranja-principal;
+        font-size: 17px;
+        line-height: 22px;
+        //Girar el chevron-right (>) para que se convierta en chevron-down, apuntando para abajo
+        transform: rotate(-180deg);
+    }
+
+    .panel-heading [data-toggle="collapse"].collapsed:after {
+        //Girar el chevron para que apunte hacia arriba
+        transform: rotate(0deg);
+    }
+    .iconos-repsol {
+        font-size: 1em;
+        margin: 0;
+        &:before {
+            float: right;
+            color: @naranja-principal;
+        }
+
+    }
+    &__top {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0 6.250em;
+        background-color: #fbfbfb;
+        .panel-heading [data-toggle="collapse"]:after {
+            //Girar el chevron para que apunte hacia arriba
+            transform: rotate(0deg);
+        }
+        .panel-heading [data-toggle="collapse"].collapsed:after {
+            //Girar el chevron para que apunte hacia arriba
+            transform: rotate(-180deg);
+        }
+    }
+}
+
+//
+@media screen and (max-width: @bk1) {
+    .contenedor-acordeon {
+        &__top {
+            padding: 0 1.250em;
+        }
+    }
+}
+

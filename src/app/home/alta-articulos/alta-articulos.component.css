@@ -1,0 +1,312 @@
+@import "../../../assets/repsol/boton_dropdown.css";
+@import "../../../assets/repsol/botones_enlaces.css";
+@import "../../../assets/repsol/formulario.css";
+@import "../../../assets/repsol/input_text.css"; 
+
+@import "../../../assets/repsol/acordeon.css"; 
+@import "../../../assets/repsol/iconos.css"; 
+
+@import "../../../assets/repsol/breadcrumb.css"; 
+@import "../../../assets/repsol/header.css"; 
+@import "../../../assets/repsol/header_sticky.css"; 
+@import "../../../assets/repsol/iconos.css"; 
+
+@import "../../../assets/repsol/boton_dropdown.css"; 
+@import "../../../assets/repsol/botones_enlaces.css"; 
+
+@import "../../../assets/repsol/bootstrap-multiselect.css";  
+@import "../../../assets/repsol/desplegable.css";  
+@import "../../../assets/repsol/input_text.css"; 
+@import "../../../assets/repsol/jquery-ui.theme.min.css";
+
+ @import "../../../assets/repsol/calendario.css";  
+
+@import "../../../assets/repsol/selectores.css"; 
+
+@import "../../../assets/repsol/modal.css"; 
+
+@import "../../../assets/repsol/tabla.css"; 
+@import "../../../assets/repsol/paginacion.css"; 
+@import "../../../assets/repsol/paginacionDatatable.css"; 
+@import "../../../assets/repsol/buttonAddon.css"; 
+@import "../../../assets/repsol/botones_enlaces.css";  
+
+@import "../../../assets/css/styles.css"; 
+
+
+/* -------------BREADCRUMB---------------------- */
+
+ol {  background-color: white; }
+
+a { 
+    text-decoration: none; 
+    color:#e67600;
+}
+
+.contenedor-acordeon .panel-default > .panel-heading {
+    background-color: #dcdcdc;       
+     border-bottom: 1px solid #5c4e44; 
+  }
+
+.container{
+    margin-left: 60px;
+    margin-top: 0px;
+    padding:0px;
+}
+
+
+
+
+
+
+
+.contenedor-formulario {
+    border:1px solid white;
+    margin:0px;
+    padding:0px;
+}
+.contenedor-acordeon {
+    margin:0px;
+    padding:0px;
+    /* border:1px solid black; */
+    width:100%;
+}
+
+.container-fluid{
+    /* border:1px solid red; */
+    width:95%;
+    padding:5px;
+  
+}
+
+
+
+ 
+.sec { 
+    border:1px solid silver;
+    padding:10px 10px;
+    margin-right:15px;
+}
+
+.secNoTop { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    margin-right:15px;
+    border-top:none;
+}
+
+.secNoBottom { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    margin-right:15px;
+    border-bottom:none;
+}
+
+.secNoAll { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    margin-right:15px;
+    border-bottom:none;
+    border-top:none;
+}
+
+.secNoTopNoPad { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    padding-top:0; 
+    margin-right:15px;
+    border-top:none;
+}
+
+.secNoBottomNoPad { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    padding-bottom:0;
+    margin-right:15px;
+    border-bottom:none;
+}
+
+.secNoAllNoPad { 
+    border:1px solid silver; 
+    padding:10px 10px; 
+    padding-top:0;
+    padding-bottom:0;
+    margin-right:15px;
+    border-bottom:none;
+    border-top:none;
+}
+
+hr{ width:98%; }
+
+.sino{
+   padding-top:25px;
+    /* margin:auto auto; */
+}
+
+.consigna{
+    padding:auto auto;
+    margin:auto auto;
+}
+
+.derecha{ 
+    /* border:1px solid black; */
+    /* padding-left: 15px; */
+}
+
+.segment{
+    margin-top:20px;
+}
+
+.tipo{
+    width:33%;
+}
+
+.promo {
+    padding-top:50px;
+    padding-left:20px;
+}
+
+ .ibae{
+    padding-top:25px;
+}
+
+.tablaseg{
+    padding-right:30px;
+}
+
+.preciosVenta{
+    margin-top:10px;
+}
+
+.ingredientes{
+    width:60%;
+}
+
+.ssecc{
+    padding-left:30px;
+}
+
+.caja{
+    display:block;
+    width:80%;
+    margin:auto auto;
+}
+
+.modal-content{
+    margin-left:300px;
+    margin-top:20px;
+   
+}
+
+.breadcrumb{
+    margin-top:10px;
+}
+
+
+
+.filaCaja{ height:50px;}
+
+.upload{
+    width:300px;
+    height:200px;
+}
+
+.imgTabla{
+     width:30px;
+     height:30px;
+}
+
+.img{
+    width:35px;
+     height:35px;
+
+}
+
+.btnlnk{
+    text-align:center;
+    padding-top:22px;
+}
+
+.mrgnlft{
+    margin-left:15px;
+}
+
+.sep{ height:20px; }
+
+.eliminar{
+    /* padding-top:50px; */
+}
+
+th{
+    text-align: center;
+}
+
+.botones{
+    height: 80px;
+    border: solid 1px #e0ded9; 
+   
+ 
+}
+
+ .blanco{
+     background-color: white;
+ }
+
+ 
+ .primerRow{
+      height: calc( 100vh - 210px);
+      overflow-y: scroll;  
+
+ }
+
+
+ .canarias{
+     padding-top:10px;
+     padding-top:10px;
+ }
+
+ .bot{
+     padding:15px;
+ }
+
+ 
+/* STYLE BOTTON CALENDAR*/
+.input-group {
+    position: relative;  
+    display: table;
+    width: 0em;
+  } 
+/* FIN STYLE BOTTON CALENDAR*/
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+  /* .row{
+  border:1px solid red;   
+}   
+ .col-xl-1{border:1px solid aqua;}
+.col-xl-2{border:1px solid aqua;}
+.col-xl-3{border:1px solid aqua;}
+.col-xl-4{border:1px solid aqua;}
+.col-xl-5{border:1px solid aqua;}
+.col-xl-6{border:1px solid aqua;}
+.col-xl-7{border:1px solid aqua;}
+.col-xl-8{border:1px solid aqua;}
+.col-xl-9{border:1px solid aqua;}
+.col-xl-10{border:1px solid aqua;}
+.col-xl-11{border:1px solid aqua;}
+.col-xl-12{border:1px solid aqua;}       
+ */
+
+
+
+
+
+
+

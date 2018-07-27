@@ -1,0 +1,24 @@
+@import '../../assets/repsol/breadcrumb.css';
+@import '../../assets/repsol/acordeon/acordeon.css';
+@import '../../assets/repsol/button_addons.css';
+@import '../../assets/repsol/tabla/botones_enlaces.css';
+@import '../../assets/repsol/tabla/despegable.css';
+@import url("../../assets/repsol/paginacionDatatable.css");
+@import '../../assets/repsol/tabla/tabla.css';
+@import '../../assets/repsol/botones_enlaces/boton_dropdown.css';
+@import '../../assets/repsol/botones_enlaces/botones_enlaces.css';
+@import '../../assets/repsol/selectores.css';
+@import url("../../assets/repsol/botones_enlaces.css");
+
+#cc-action-footer{
+    border: solid 1px #e0ded9;
+    height: 80px;
+}
+
+#cc-form-content{
+    height: calc( 100vh - 160px );
+    overflow-y: auto;
+}
+#cc-acciones{
+    padding: 15px;
+}

@@ -1,0 +1,133 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.boton {
+    font-family: @semi-bold;
+    border: 1px solid @blanco;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.825em;
+    padding: 0 1.2em 0.1em;
+}
+
+.boton-estandar {
+    &:extend(.boton);
+    background-color: @naranja-principal;
+    color: @blanco;
+
+    &:hover {
+        background-color: @blanco;
+        color: @naranja-principal;
+        border: 1px solid @naranja-principal;
+    }
+
+    &:focus {
+        background-color: @naranja-principal;
+        color: @blanco;
+        border: none;
+    }
+
+}
+a.boton-estandar {
+    padding: 9px 1.2em 11px;
+    border-color: @naranja-principal;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton-secundario {
+    &:extend(.boton);
+    background-color: @azul-marino;
+    color: @blanco;
+
+    &:hover {
+        background-color: @blanco;
+        color: @azul-marino;
+        border: 1px solid @azul-marino;
+    }
+
+    &:focus {
+        background-color: @azul-marino;
+        color: @blanco;
+        border: none;
+    }
+}
+
+.boton-auxiliar {
+    &:extend(.boton);
+    background-color: @blanco;
+    color: @gris-medio;
+    border: 1px solid @gris-medio;
+
+    &:hover {
+        background-color: @gris-medio;
+        color: @blanco;
+        border: none;
+    }
+
+    &:focus {
+        background-color: @blanco;
+        color: @gris-medio;
+        border: 1px solid @gris-medio;
+    }
+}
+
+.boton-inactivo {
+    &:extend(.boton);
+    background-color: @gris-claro;
+    color: @gris-medio;
+    cursor: default;
+}
+
+.enlace {
+    font-family: @semi-bold;
+    text-decoration: none;
+}
+
+.enlace-principal {
+    &:extend(.enlace);
+    color: @naranja-principal;
+
+    &:hover {
+        color: @naranja-principal;
+    }
+}
+
+.enlace-parrafo {
+    &:extend(.enlace);
+    color: @turquesa;
+
+    &:hover {
+        color: @turquesa;
+    }
+}
+
+.btn-info {
+    background-color: @naranja-principal;
+    border-color: @naranja-principal;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+    font-size: 21px;
+    width: 1.905em;
+    height: 1.905em;
+    font-family: 'titillium_bdbold';
+    line-height: 21px;
+    &:hover, &:focus {
+        background-color: @blanco;
+        color: @naranja-principal;
+        border: 1px solid @naranja-principal;
+    }
+    &:active {
+        background-color: @naranja-principal;
+        color: @blanco;
+        border: none;
+        box-shadow: none;
+        &:focus {
+            background-color: @naranja-principal;
+            color: @blanco;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.header-sticky {
+  min-height: 2000px;
+  padding-top: 48px;
+}
+
+.header-sticky header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  top: 0;
+}

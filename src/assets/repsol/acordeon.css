@@ -1,0 +1,118 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.contenedor-acordeon .panel {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  margin-bottom: 5px;
+}
+
+.contenedor-acordeon .panel-default > .panel-heading {
+  background-color: transparent;
+}
+
+.contenedor-acordeon .panel-heading {
+  padding: 10px 10px;
+  border: 1px solid #9C9081;
+  background-color: #E0DED9;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.contenedor-acordeon .panel-title {
+  position: relative;
+  font-family: 'titilliumregular';
+  color: #5c4e44;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.contenedor-acordeon .panel-title > a{
+    color: #5c4e44;
+}
+
+.contenedor-acordeon .panel-title > a:hover,
+.contenedor-acordeon .panel-title a:focus {
+  text-decoration: none;
+  color: #ff8200;
+}
+
+.contenedor-acordeon .acordeon-header {
+  position: relative;
+  display: inline-block;
+  line-height: 23px;
+  padding-right: 10px;
+  width: 100%;
+}
+
+.contenedor-acordeon .acordeon-header .acordeon-header-text {
+  display: inline-block;
+  width: 98%;
+  height: auto;
+}
+
+.contenedor-acordeon .panel-body {
+  font-family: 'titilliumregular';
+  color: #5c4e44;
+  padding: 10px 10px;
+  border: 1px solid #9C9081;
+  border-top: 0px;
+  border-radius: 0rem 0rem .25rem .25rem;
+  background-color: transparent;
+}
+
+
+/* .contenedor-acordeon .panel-group .panel-heading + .panel-collapse > .list-group,
+.contenedor-acordeon .panel-group .panel-heading + .panel-collapse > .panel-body {
+    
+} */
+
+
+.contenedor-acordeon .panel-heading [data-toggle="collapse"]:after {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  color: #ff8200;
+  font-size: 15px;
+  line-height: 22px;
+  transform: rotate(-180deg);
+}
+
+.contenedor-acordeon .panel-heading [data-toggle="collapse"].collapsed:after {
+  transform: rotate(0deg);
+}
+
+.contenedor-acordeon .iconos-repsol {
+  font-size: 1em;
+  margin: 0;
+}
+
+.contenedor-acordeon .iconos-repsol:before {
+  float: right;
+  color: #ff8200;
+}
+
+.contenedor-acordeon__top {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 6.250em;
+  background-color: #fbfbfb;
+}
+
+.contenedor-acordeon__top .panel-heading [data-toggle="collapse"]:after {
+  transform: rotate(0deg);
+}
+
+.contenedor-acordeon__top .panel-heading [data-toggle="collapse"].collapsed:after {
+  transform: rotate(-180deg);
+}
+
+@media screen and (max-width: 767px) {
+  .contenedor-acordeon__top {
+    padding: 0 1.250em;
+  }
+}

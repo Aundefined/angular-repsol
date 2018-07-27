@@ -1,0 +1,193 @@
+@import '../../assets/repsol/breadcrumb.css';
+@import '../../assets/repsol/acordeon/acordeon.css';
+/* @import '../../assets/repsol/acordeon/iconos.css'; */
+@import '../../assets/repsol/button_addons.css';
+@import '../../assets/repsol/tabla/botones_enlaces.css';
+@import '../../assets/repsol/tabla/despegable.css';
+@import url("../../assets/repsol/paginacionDatatable.css");
+@import '../../assets/repsol/tabla/tabla.css';
+@import '../../assets/repsol/botones_enlaces/boton_dropdown.css';
+@import '../../assets/repsol/botones_enlaces/botones_enlaces.css';
+@import '../../assets/repsol/selectores.css';
+@import url("../../assets/repsol/botones_enlaces.css");
+
+
+ol.breadcrumb{
+    margin-bottom: 0px;
+}
+
+.acordeon-margen{
+    padding-left:0px;
+}
+.filtros {
+    padding: 0px;
+    position: relative;
+    left: 0px;
+    -webkit-transition: all 400ms ease;
+    -moz-transition:all 400ms ease;
+    transition: all 400ms ease;
+}
+
+.pestana-filtros {
+    position: absolute;
+    display: none;
+    margin-top: 65px;
+    left: -3px;
+    z-index: 1;
+}
+
+.contenedor-acordeon{
+    margin:0px;
+    padding:0px;
+}
+
+.contenedor-acordeon .panel{
+    margin: 0px;
+}
+
+.contenedor-acordeon .panel-heading {
+    border-radius: 0px;
+    padding: 10px 5px;
+}
+
+.contenedor-acordeon .panel-heading-principal{
+    background-color: #9C9081;
+    padding: 10px 5px;
+
+}
+.panel-heading-principal .acordeon-header{
+    width: 50%;
+}
+.panel-heading-principal .refrescar{
+    padding: 0px;
+    background-color: transparent;
+    color: white;
+    -moz-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.panel-heading-principal .refrescar:focus{
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    box-shadow: none;
+}
+.panel-heading-principal .refrescar:visited{
+    transform: rotate(360deg);
+}
+
+.contenedor-acordeon .panel-heading-principal .panel-title > a{
+    font-family: 'titilliumbold';
+    font-size: 16px;
+    color:white;
+}
+
+.contenedor-acordeon .panel-body{
+    border-radius: 0px;
+}
+
+.contenedor-acordeon .panel-body .checkbox-box{
+    margin-bottom: 0px;
+}
+.texto-centrado{
+    text-align: center;
+}
+.rps-tabla{
+    margin-top: 20px;
+}
+
+.rps-button_addons .form-control {
+    border-right: 1px solid #e0ded9;
+    border-radius: 5px;
+}
+
+
+    
+     
+   /*  #sidebar {
+    position: absolute;
+    left: 0px;
+    background: #2290c9;
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-transition: all 500ms ease;
+    -moz-transition:all 500ms ease;
+    transition: all 500ms ease;
+    } */
+
+    .close-filtros {
+        left: -16.666667% !important;
+        position: relative;
+    }
+
+    .cierra-div{
+        position: absolute;
+    }
+    
+    /* .close-filtros-boton {
+        left: -300px !important;
+    } */
+
+
+    .main-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
+    }
+    .main-content .content{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-left: 60px;
+    width: 100%;
+    }
+    .main-content .content h1{
+    font-weight: 100;
+    }
+    .main-content .content p{
+    width: 100%;
+    line-height: 160%;
+    }
+    .main-content #sidebar-toggle {
+    background: #2290c9;
+    border-radius: 3px;
+    display: block;
+    position: relative;
+    padding: 10px 7px;
+    float: left;
+    }
+    .main-content #sidebar-toggle .bar{
+    display: block;
+    width: 18px;
+    margin-bottom: 3px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+    }
+    .main-content #sidebar-toggle .bar:last-child{
+    margin-bottom: 0;
+    }
+
+    .img{
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .sizefooter{
+        border: solid 1px #e0ded9;
+        height: 80px;
+    }
+
+    .calcpantalla{
+        height: calc( 100vh - 160px );
+        overflow-y: scroll;
+    }
+
+    .botonera{
+
+        padding: 15px;
+
+    }

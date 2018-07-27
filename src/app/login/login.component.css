@@ -1,0 +1,53 @@
+@import url("../../assets/repsol/input_login.css");
+@import url("../../assets/repsol/botones_enlaces.css");
+
+.btn:hover{
+    transform: scale(1.2);
+}
+
+.naranja{
+    /*height: 25px;*/
+    margin-top: 10px;
+    background-color: #ffa100;
+    text-align: center;
+    /*line-height: 5px;*/
+    color:white;
+}
+/*.card-footer > .col{
+    margin-top: 10px;
+}*/
+
+/*.logo{
+    width: 560px;
+    height: 170px;
+    margin-top: 110px;
+}*/
+
+/*div{
+    border:1px solid black;
+}*/
+
+.card{
+   /*padding: 20px;*/
+   box-shadow: 3px 4px #e0d9cb;
+}
+.card-footer{
+    text-align: center;
+}
+.col-center{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#divForm {
+    margin-bottom: 0px;
+}
+
+#inputPass {
+    margin-bottom: 0px;
+}
+
+#enterButton {
+    width: 100%;
+}

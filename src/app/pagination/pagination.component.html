@@ -1,0 +1,46 @@
+
+
+<div class="rps-paginacion" *ngIf="count > 0">
+    <!-- <div class="description">
+      <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }}</span>
+      <span class="page-totals">{{ totalPages() }} pages</span>
+    </div> -->
+    <nav aria-label="Page navigation">
+      <ul id="paginacion-adaptativa" class="rps-pagination-list pagination">
+          <li [ngClass]="{ 'page-item prev': page >= 0,' disabled': page === 1 || loading }">
+            <a class="page-link" (click)="onPrev()">
+              <span aria-hidden="true">«</span>
+            </a>
+          </li>
+          <li *ngFor="let pageNum of getPages()" [ngClass]="{'page-item': page >= 0, ' active': pageNum === page, 'disabled': loading }">
+            <a class="page-link" (click)="onPage(pageNum)">{{pageNum}}</a>
+          </li>
+          <li [ngClass]="{ 'page-item next': page >= 0, ' disabled': lastPage() || loading }" >
+            <a class="page-link" (click)="onNext(true)">
+              <span aria-hidden="true">»</span>
+            </a>
+          </li>
+      </ul>
+    </nav>
+  </div>
+
+      
+      
+  <!-- 
+      <button class="link" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">Next &gt;</button>
+    </div>
+  </div>
+
+        <li class="page-item prev disabled">
+          <a href="#" class="page-link">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li class="page-item active">
+          <a href="#" class="page-link">1</a>
+        </li>
+        <li class="page-item">
+          <a href="#" class="page-link">2</a></li><li class="page-item"><a href="#" class="page-link">3</a></li><li class="page-item"><a href="#" class="page-link">4</a></li><li class="page-item"><a href="#" class="page-link">5</a></li><li class="page-item next"><a href="#" class="page-link"><span aria-hidden="true">»</span></a></li></ul>
+    </nav>
+    
+</div> -->

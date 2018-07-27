@@ -1,0 +1,691 @@
+/*--------------------------------
+	# GENERIC RESET
+--------------------------------*/
+
+html,
+body,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+article,
+aside,
+details,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary,
+audio,
+canvas,
+video,
+mark,
+code,
+kbd,
+pre,
+samp,
+a,
+abbr,
+acronym,
+address,
+code,
+del,
+dfn,
+em,
+strong,
+img,
+q,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+div {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+}
+
+/*-----------------------------------
+	#TAGS HTML5 BROWSER NO SUPPORT
+-------------------------------------*/
+
+article,
+aside,
+details,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+dfn {
+  font-style: italic;
+}
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1.6em;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*-----------------------------------
+	#LINKS
+-------------------------------------*/
+
+a {
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration-skip: objects;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/*-----------------------------------
+	#HEADINGS, WITH AND WITHOUT LINK
+-------------------------------------*/
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: inherit;
+}
+
+/*-----------------------------------
+	#RESET TABLE
+-------------------------------------*/
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*-----------------------------------
+	#RESET FORM
+-------------------------------------*/
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ * 3. Remove shading to form elements
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+[type="radio"] + label,
+[type="checkbox"] + label {
+  cursor: pointer;
+}
+
+/*-----------------------------------
+	#RESET INTERACTIVE
+-------------------------------------*/
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details,
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/*-----------------------------------
+	#RESET SCRIPTING
+-------------------------------------*/
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/*-----------------------------------
+	#RESET HIDDEN
+-------------------------------------*/
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+
+/*--------------------------------
+	# END GENERIC RESET
+--------------------------------*/
+
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+/*--------------------------------
+	# GENERIC FONTS
+--------------------------------*/
+
+@font-face {
+  font-family: 'titilliumregular';
+  src: url('fonts/titillium-regular-webfont.eot') format('eot');
+  src: url('fonts/titillium-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/titillium-regular-webfont.woff2') format('woff2'), url('fonts/titillium-regular-webfont.woff') format('woff'), url('fonts/titillium-regular-webfont.svg#svgFontName') format('svg'), url('fonts/titillium-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'titillium_bdbold';
+  src: url('fonts/titillium-bold-webfont.eot') format('eot');
+  src: url('fonts/titillium-bold-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/titillium-bold-webfont.woff2') format('woff2'), url('fonts/titillium-bold-webfont.woff') format('woff'), url('fonts/titillium-bold-webfont.svg#svgFontName') format('svg'), url('fonts/titillium-bold-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'titilliumbold';
+  src: url('fonts/titillium-semibold-webfont.eot') format('eot');
+  src: url('fonts/titillium-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/titillium-semibold-webfont.woff2') format('woff2'), url('fonts/titillium-semibold-webfont.woff') format('woff'), url('fonts/titillium-semibold-webfont.svg#svgFontName') format('svg'), url('fonts/titillium-semibold-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ @font-face {
+  font-family: 'repsolvietregular';
+  src: url('fonts/repsolviet-regular-webfont.eot') format('eot');
+  src: url('fonts/repsolviet-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/repsolviet-regular-webfont.woff2') format('woff2'), url('fonts/repsolviet-regular-webfont.woff') format('woff'), url('fonts/repsolviet-regular-webfont.svg#svgFontName') format('svg'), url('fonts/repsolviet-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?40008215');
+  src: url('fonts/fontello.eot?40008215#iefix') format('embedded-opentype'), url('fonts/fontello.woff2?40008215') format('woff2'), url('fonts/fontello.woff?40008215') format('woff'), url('fonts/fontello.ttf?40008215') format('truetype'), url('fonts/fontello.svg?40008215#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-pri-regular {
+  font-family: 'titilliumregular' !important;
+}
+
+.font-pri-bold {
+  font-family: 'titillium_bdbold' !important;
+}
+
+.font-pri-semibold {
+  font-family: 'titilliumbold' !important;
+}
+
+/*--------------------------------
+	# GENERIC STYLES
+--------------------------------*/
+
+html,
+body {
+  font-size: 16px;
+  background-color: transparent;
+  font-family: 'titilliumregular';
+}
+
+p {
+  margin: 0 0 25px;
+  color: #5c4e44;
+}
+
+.fila-componente {
+  margin: 0 0 1.875em;
+  text-align: right;
+  margin-top: 0.55em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #5c4e44;
+  margin-top: 22px;
+  margin-bottom: 11px;
+}
+
+h1,
+.h1 {
+  font-size: 41px;
+}
+
+h2,
+.h2 {
+  font-size: 34px;
+}
+
+h3,
+.h3 {
+  font-size: 28px;
+}
+
+h4,
+.h4 {
+  font-size: 20px;
+}
+
+h5,
+.h5 {
+  font-size: 16px;
+}
+
+h6,
+.h6 {
+  font-size: 14px;
+}
+
+h5 {
+  margin: 0;
+}
+
+.hide-text-accesible {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.hide-link-accesible {
+  text-indent: -9999999em;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.parrafo-sm {
+  font-size: 15px;
+}
+
+.parrafo-md {
+  font-size: 16px;
+}
+
+.parrafo-lg {
+  font-size: 22px;
+}

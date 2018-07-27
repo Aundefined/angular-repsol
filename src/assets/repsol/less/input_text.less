@@ -1,0 +1,167 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+input[type=email],
+input[type=password],
+input[type=text],
+input[type=number],
+textarea {
+    display: block;
+    border: 1px solid;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 0.750em;
+    font-family: @regular;
+    font-weight: normal;
+    font-size: 0.938em;
+    width: 100%;
+    &:disabled {
+        border: none;
+        background-color: @gris-claro;
+    }
+
+}
+
+.cuenta-caracteres,
+.etiqueta-input {
+    font-family: @regular;
+    font-weight: normal;
+    font-size: 0.938em;
+    color: @gris-medio;
+}
+
+// input[type=email]:valid,
+// input[type=text]:valid {
+//     background-image: url("../img/Checked_ok.png");
+//     background-repeat: no-repeat;
+//     background-position: center right;
+// }
+
+.input-valido {
+    background-image: url("../img/Checked_ok.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.grupo-input{
+    .error-validate {
+        border-color: @rojo !important;
+        color: @rojo;
+        background-image: url("../img/novalido.png");
+        background-repeat: no-repeat;
+        background-position: center right;
+
+        &:focus {
+            outline: none;
+            border-color: @rojo;
+            box-shadow: none;
+        }
+    }
+}
+
+.error-mensaje {
+    font-family: @regular;
+    font-size: 0.813em;
+    color: @rojo;
+}
+
+textarea {
+    height: 12.5em;
+    resize: none;
+}
+
+.cuenta-caracteres {
+    margin-top: 0.625em;
+}
+
+.grupo-fecha {
+    input[type=text],
+    input[type=number]{
+        width: 4%;
+        display: block;
+        border: 1px solid;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        border-color: @gris-claro;
+        padding: 0.750em;
+        font-family: @regular;
+        font-weight: normal;
+        font-size: 0.938em;
+        -moz-appearance:textfield;
+        &:focus {
+            outline: none;
+            border-color: @turquesa;
+            box-shadow: 0 0 3px @turquesa;
+        }
+        @media screen and (max-width: @bk1) {
+            width: 100%;
+        }
+    }
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.grupo-fecha-container {
+    display: flex;
+    align-items: center;
+    input[type=text],
+    input[type=number] {
+        -moz-appearance:textfield;
+        @media screen and (min-width: @bk2) {
+            width: 0;
+        }
+        @media screen and (max-width: @bk1) {
+            width: 100%;
+        }
+    }
+    .dia-nacimiento,
+    .mes-nacimiento {
+        width: 30%;
+        input[type=text],
+        input[type=number] {
+            -moz-appearance:textfield;
+            @media screen and (min-width: @bk2) {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+    }
+    .anyo-nacimiento {
+        width: 40%;
+        input[type=text],
+        input[type=number] {
+            @media screen and (min-width: @bk2) {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.separador {
+    margin: 0 0.438em;
+    color: @gris-medio;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: @gris-medio;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: @gris-medio;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: @gris-medio;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: @gris-medio;
+}

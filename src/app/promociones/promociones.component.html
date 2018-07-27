@@ -1,0 +1,52 @@
+<!-- <div class="cls-div-entrada">        
+        
+        <a [routerLink]="['/alta-proveedores']">
+                <span>PROVEEDORES</span>
+        </a>
+
+        <a [routerLink]="['/grupos']">
+                <span>GRUPOS</span>
+        </a>
+        <a [routerLink]="['/promociones']">
+                <span>PROMOCIONES</span>
+        </a>
+
+        <a [routerLink]="['/alta-estaciones']">
+                <span>ESTACIONES</span>
+        </a>
+        <a [routerLink]="['/subida-ftp']">
+                <span>ARTICULOS.csv</span>
+        </a>
+
+        <a [routerLink]="['/alta-proveedores']" [queryParams]="{id:262,action:1}"
+            placement="bottom" ngbTooltip="Editar">
+            <span>Edit Proveedor</span>
+        </a>
+
+        <a [routerLink]="['/alta-estaciones']" [queryParams]="{id:61,action:1}"
+            placement="bottom" ngbTooltip="Editar">
+            <span>Edit Estación</span>
+        </a>
+
+</div> -->
+
+<div class="container my-3">
+        <div class="row justify-content-center d-flex">
+                <div class="col-10 text-center">
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/alta-proveedores']">PROVEEDORES</button>
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/grupos']">GRUPOS</button>
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/promociones']">PROMOCIONES</button>
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/alta-estaciones']">ESTACIONES</button>
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/alta-proveedores']" [queryParams]="{id:41,accion:'editar'}" ngbTooltip="Editar">Edit Proveedor</button>
+                        <button type="button" class="boton boton-estandar" [routerLink]="['/alta-estaciones']" [queryParams]="{id:34,accion:'editar'}" ngbTooltip="Editar">Edit Estación</button>
+                </div>
+        </div>
+        <div class="row justify-content-center d-flex mt-3">
+                <div class="col-4 text-center">
+                        <button type="button" class="boton boton-secundario" (click)="importarXML()">SAP</button>
+                        <button type="button" class="boton boton-secundario" [routerLink]="['/subida-ftp']">ARTICULOS.csv</button>
+                </div>
+        </div>
+</div>
+
+

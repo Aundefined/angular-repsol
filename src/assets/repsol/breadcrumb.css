@@ -1,0 +1,44 @@
+/*--------------------------------
+	# GENERIC VARIABLES
+--------------------------------*/
+
+.container-breadcrumb {
+    padding-top: 0;
+    padding-left: 2.813em;
+  }
+  
+  .breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: 'titilliumregular';
+    font-size: 0.813em;
+  }
+
+  .breadcrumb li {
+      padding-left: 0px;
+  }
+  
+  .breadcrumb li a {
+    color: #e67600;
+  }
+  
+  .breadcrumb li .active {
+    color: #5c4e44;
+    cursor: default;
+  }
+  
+  .breadcrumb li .active:hover {
+    text-decoration: none;
+  }
+  
+  .breadcrumb > li + li:before {
+    color: #e67600;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .container-breadcrumb {
+      display: none;
+    }
+  }
+  

@@ -1,0 +1,307 @@
+.right-paragraph{   
+     height: 100%;
+ }
+ .cls-title{
+    background-color: #dae3f2;
+    padding: 0px;
+    margin: 0px;    
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 3px;
+}
+.cls-title span{ 
+ color: black; 
+ font-size: 12px;
+ font-weight: bold;
+ padding-left: 5px;
+}
+.cls-form-buscar{
+    background-color: #dae3f2;
+    padding: 0px;
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+    padding: 5px;
+    border-radius: 10px 10px 10px 10px;
+}
+.cls-form-registrar{
+    background-color: #ffffff;
+    padding: 0px;
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 10px 10px 10px 10px;
+}
+.cls-contentGru{
+    background-color: #ffffff;     
+    float: left;
+    margin: 0px;
+    padding: 0px;      
+    width: 100%;
+    padding-top: 15px;        
+    margin-bottom: 3px;    
+}
+.cls-content-lista{
+    padding-left: 15px;  
+}
+.cls-content-lista  div span{
+background-color:  #5b9bd4;
+text-align: center;
+color: #ffffff;
+font-size: 10px;
+padding-left: 8px;
+padding-right: 8px;
+}
+
+.bg-Cabecera{
+    background-color:  #5b9bd4;
+
+}
+.bg-Cabecera tr th{
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    font-size: 10px;
+    cursor: pointer;
+
+}
+.bg-fila{
+    background-color:  #e9edf5;
+   
+}
+.bg-fila td{
+    color: #000000;
+    border: 1px solid #ffffff;
+    font-size: 10px;
+}
+
+.cls-articulo-content-botton{
+
+    background-color: #ffffff; 
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    float: left;    
+    text-align: right;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.cls-content-agregada{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.cls-content-agregada  div span{
+    background-color:  #5b9bd4;    
+    text-align: center;
+    color: #ffffff;
+    font-size: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    }
+#inputDescGrupo{
+    width: 100%;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+#referenciaFiltro{    
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+#descripcionFiltro{    
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+#cmbProveedor{    
+    height: 22px;
+    padding: 0px;
+    margin: 0px;   
+
+}
+.lbl-title{
+
+    font-size: 12px;
+    color: #000000;
+}
+#cls-breadcrumb{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .1rem 1rem;
+    margin-bottom: 0.2rem;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: .0rem;
+    width: 35%;
+    height: 5%;    
+
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #000000;
+    content: ">";
+}
+.breadcrumb-item a{
+    color: #000000;
+}
+.breadcrumb-item.active{
+    color: #eb7b31;
+}
+#cmbFamilia{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+#cmbSubFamilia{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+#cmbGrupo{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+.cls-form-asignar{
+    background-color: #dae3f2;
+    padding: 0px;
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+    padding: 5px;
+
+}
+
+#inputNroArticulo{
+    width: 50px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+#cmbPvpPromocional{
+    width: 160px;
+    height: 22px;
+    padding: 0px;
+    margin: 0px;   
+
+}
+#inputCantPvpPromocional{
+    width: 50px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+#btnAnadir{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    width: 80px; 
+    height: 20px;
+    padding: 0px;
+    margin: 0px;  
+    font-size: 10px; 
+          
+}
+#btnQuitar{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    width: 80px; 
+    height: 20px;
+    padding: 0px;
+    margin: 0px;  
+    font-size: 10px; 
+    
+}
+.btn-repsol{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    height: 25px;
+    width: 100px;    
+    padding: 0px;
+    margin: 0px; 
+    font-size: 12px;              
+}
+.controlPaginacion{
+    font-size: 11px !important;
+}
+
+
+.page-item.active .page-link {
+    color: white;
+    background-color: #eb7b31;
+    border-color: #eb7b31;
+}
+
+.paginationTexto li a{
+    font-size: 12px;
+}
+.modal-body-content{
+    background-color: #d1dded; 
+    border: 1px solid rgb(160, 154, 154);
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 10px;
+}
+.border-modal{
+    border: 1px solid #eb7b31;
+}
+
+a.adisabled {
+    cursor: not-allowed !important;
+    opacity: .65;
+  }
+
+.btn-repsol{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    height: 25px;
+    width: 100px;    
+    padding: 0px;
+    margin: 0px; 
+    font-size: 12px;              
+}
+
+.btn-repsol:hover{
+    background-color: #eb7b31;    
+    border: 1px solid #f2af83;             
+}
+
+.claseArticuloNuevo{
+    color: green;
+    font-size: 10px;
+}
+
+.claseArticuloEliminado{
+    color: red;
+    font-size: 10px;
+}
+
+.claseArticuloActualizado{
+    color: black;
+    font-size: 10px;
+}
+
+.stiloImagenHeader{
+    vertical-align: text-bottom !important;
+    border-style: none;
+}
+
+.cls-input{
+    width: 100%;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    border-radius: 5px;
+}

@@ -1,0 +1,399 @@
+.right-paragraph{    
+     height: 100%;
+ }
+ .cls-title{
+    background-color: #dae3f2;
+    padding: 0px;
+    margin: 0px;    
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+
+}
+.cls-title span{ 
+ color: black; 
+ font-size: 12px;
+ font-weight: bold;
+ padding-left: 5px;
+}
+.cls-form-buscar{
+    background-color: #e7e9ec;
+    padding: 0px;
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);    
+    padding:15px;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+
+    
+
+}
+.cls-form-buscar-botton{
+    
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    float: left;            
+    text-align: right;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: -35px;
+}
+.cls-content{
+    background-color: #ffffff;     
+    float: left;
+    margin: 0px;
+    padding: 0px;    
+    height: 100%;
+    width: 100%;
+    padding: 15px;    
+}
+.cls-content-lista{
+    background-color: #ffffff;    
+  
+}
+.cls-content-lista  div span{
+background-color:  #5b9bd4;
+text-align: center;
+color: #ffffff;
+font-size: 10px;
+padding-left: 8px;
+padding-right: 8px;
+}
+
+.bg-Cabecera{
+    background-color:  #5b9bd4;
+    text-align: center;
+    font-weight: bold;
+
+}
+.bg-Cabecera tr th{
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+
+}
+.bg-fila{
+    background-color:  #e9edf5;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.bg-fila td{
+    color: #000000;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+}
+.cls-botton{
+    text-align: center;
+}
+
+.cls-articulo-content-botton{
+
+    background-color: #ffffff; 
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    float: left;    
+    text-align: right;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.cls-articulo-content-agregada{
+    background-color: #ffffff;    
+}
+.cls-articulo-content-agregada  div span{
+    background-color:  #5b9bd4;    
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+    }
+
+#codigoFiltro{   
+    height: 21px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+
+}
+#inputEstacion{
+    width: 150px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+#descripcion{ 
+    height: 21px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+}
+#cmbProvincia{
+    width: 160px;
+    height: 22px;
+    padding: 0px;
+    margin: 0px;   
+
+}
+#cmbTipoCaracterizacion{   
+    height: 21px;
+    padding: 0px;
+    margin: 0px;  
+    border-radius: 5px; 
+
+}
+#cmbValorCaracterizacion{   
+    height: 21px;
+    padding: 0px;
+    margin: 0px;   
+    border-radius: 5px; 
+}
+
+.cls-fecha{   
+    height: 21px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+    position: relative;
+    top: -3px;
+    font-size: 12px;
+}
+.cls-fecha:read-only{
+    background-color: #ffffff;
+}
+.cls-fecha:-moz-read-only { /* For Firefox */
+    background-color: #ffffff;
+}
+.btnFecha{
+
+    width: 21px;
+    height: 21px;
+    position: relative;
+    top: -3px;
+    background-color: #ffffff;
+    border: 1px solid #005fb3;
+}
+.btnFecha img{
+
+    position: relative;
+    left: -14px;
+    top: -10px;
+}
+
+
+.lbl-title{
+
+    font-size: 12px;
+    color: #000000;
+}
+#cls-breadcrumb{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .1rem 1rem;
+    margin-bottom: 0.2rem;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: .0rem;
+    width: 35%;
+    height: 5%;    
+    padding: 0px;
+    margin: 0px;
+
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #000000;
+    content: ">";
+}
+.breadcrumb-item a{
+    color: #000000;
+}
+.breadcrumb-item.active{
+    color: #eb7b31;
+}
+#cmbFamilia{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+#cmbSubFamilia{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+#cmbGrupo{
+    padding: 0px;
+    margin: 0px;   
+    font-size: 12px;
+}
+.cls-form-asignar{
+    background-color: #dae3f2;
+    padding: 0px;
+    text-align: left;
+    border:  1px solid rgb(160, 154, 154);
+    padding: 5px;
+
+}
+
+#inputNroArticulo{
+    width: 50px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+#cmbPvpPromocional{
+    width: 160px;
+    height: 22px;
+    padding: 0px;
+    margin: 0px;   
+
+}
+#inputCantPvpPromocional{
+    width: 50px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+}
+.paginationTexto li a{
+    font-size: 10px;
+    color: #eb7b31;
+}
+.paginationTexto ul li .active{
+    font-size: 10px;
+    color: #eb7b31;
+    background-color: #f2af83;
+}
+
+
+#btnAnadir{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    width: 80px; 
+    height: 20px;
+    padding: 0px;
+    margin: 0px;  
+    font-size: 10px; 
+          
+}
+#btnQuitar{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    width: 80px; 
+    height: 20px;
+    padding: 0px;
+    margin: 0px;  
+    font-size: 10px; 
+    
+}
+.btn-repsol{
+    background-color: #f2af83;
+    color: #000000;
+    border: 1px solid #eb7b31;
+    height: 25px;
+    width: 100px;    
+    padding: 0px;
+    margin: 0px; 
+    font-size: 12px;              
+}
+
+.btn-repsol:hover{
+    background-color: #eb7b31;    
+    border: 1px solid #f2af83;             
+}
+
+.page-color-link{
+color: #eb7b31;
+}
+.cls-form-botton{
+
+    background-color: #ffffff; 
+    width: 100%;
+    padding: 0px;
+    margin: 0px;   
+    text-align: right;  
+    
+}
+.botonImage{
+    padding: 0px;
+    margin: 0px;
+}
+.botonImage img{
+    width: 30px; 
+    height: 30px;    
+    border-radius: 20px; 
+}
+.btn-circle { 
+    width: 20px; 
+    height: 25px;    
+    border-radius: 18px; 
+} 
+.table-striped-alter tbody tr:nth-of-type(odd) {
+    background-color: #d1dded;
+}
+
+.modal-body-content{
+    background-color: #d1dded; 
+    border: 1px solid rgb(160, 154, 154);
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 10px;
+
+}
+.modal-body-content span{
+    font-size: 13px;
+    color: #000000;
+    
+}
+.border-modal{
+    border: 1px solid #eb7b31;
+}
+.modal-footer-center{
+    justify-content: center;
+}
+.input-icon{
+
+    padding: 0px;
+}
+    
+
+
+.page-item.active .page-link {
+    color: white;
+    background-color: #eb7b31;
+    border-color: #eb7b31;
+}
+
+
+a.adisabled {
+    cursor: not-allowed !important;
+    opacity: .65;
+  }
+
+.form-inline {
+    margin-top: 3px !important;
+}
+
+.textoHeader{
+    text-align: center !important;
+}
+
+.estiloFlechaDefecto
+{
+    display: none;
+}

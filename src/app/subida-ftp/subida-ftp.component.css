@@ -1,0 +1,23 @@
+@import "../../assets/repsol/button_addons.css";
+@import "../../assets/css/styles.css";
+@import "../../assets/repsol/alert_style.css";
+/* @import "../../assets/repsol/bootstrap.min.css";*/
+@import "../../assets/repsol/loading_stater.css"; 
+
+.btn {
+    width:60px;
+}
+
+.form-control{
+    text-align:center;
+}
+
+.alert{
+    height:60px;
+    padding-top:15px;
+    text-align: center;
+}
+
+.top{
+    height:80px;
+}

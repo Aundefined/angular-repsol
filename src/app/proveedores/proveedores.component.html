@@ -1,0 +1,163 @@
+<div class="row calcpantalla">
+    <div class="pestana-filtros">
+        <div class="rps-button_addons input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" title="Mostrar filtros" (click)="mostrarFiltros()">                      
+                    <i class="fa fa-filter"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-2 filtros">
+        <div class="contenedor-acordeon">
+                <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                        <div class="panel-heading panel-heading-principal" role="tab" id="acordeon-item-0">
+                            <h4 class="panel-title">
+                                <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse" data-parent="#acordeon" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="acordeon-header-text" class="main-content">FILTROS: </span> 
+                                </a>
+                                    <button type="button" class="btn refrescar" (click)="ocultarFiltros()" title="Ocultar filtros" style="float:right;">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </button>
+                                    <button type="button" class="btn refrescar" (click)=limpiarFiltros() style="float:right">
+                                        <i class="fa fa-sync-alt"></i>
+                                    </button>
+                            </h4> 
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading" role="tab" id="acordeon-item-1">
+                            <h4 class="panel-title">
+                                <a class="acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse" data-parent="#acordeon" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="acordeon-header-text">CLASIFICACIÓN</span></a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acordeon-item-1">
+                            <div class="panel-body">
+                                <div class="checkbox-box">
+                                    <div class="checkbox-vertical">
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor1" id="valor1" name="valor1" [(ngModel)]="proveedoresFiltros.clas_ceci"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor1">Centralizado ECI</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor2" id="valor2" name="valor2" [(ngModel)]="proveedoresFiltros.clas_cneci"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor2">Centralizado No ECI</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor3" id="valor3" name="valor3" [(ngModel)]="proveedoresFiltros.clas_aeci"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor3">Autoventa ECI</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor4" id="valor4" name="valor4" [(ngModel)]="proveedoresFiltros.clas_aneci"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor4">Autoventa NO ECI</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor5" id="valor5" name="valor5" [(ngModel)]="proveedoresFiltros.clas_local"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor5">Local</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading" role="tab" id="acordeon-item-2">
+                            <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse" data-parent="#acordeon" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span class="acordeon-header-text">RESPONSABILIDAD</span></a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-2">
+                            <div class="panel-body">
+                                <div class="checkbox-box">
+                                    <div class="checkbox-vertical">
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor6" id="valor6" name="valor6" [(ngModel)]="proveedoresFiltros.resp_preprov"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor6">Pre - Proveedor</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor7" id="valor7" name="valor7" [(ngModel)]="proveedoresFiltros.resp_prov"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor7">Proveedor</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor8" id="valor8" name="valor8" [(ngModel)]="proveedoresFiltros.resp_fac"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor8">Facturador</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor9" id="valor9" name="valor9" [(ngModel)]="proveedoresFiltros.resp_dist"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor9">Distribuidor</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading" role="tab" id="acordeon-item-3">
+                            <h4 class="panel-title">
+                            <a class="collapsed acordeon-header icon-after iconos-repsol icon-arrow-down-sign-to-navigate" role="button" data-toggle="collapse" data-parent="#acordeon" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="acordeon-header-text">ESTADO</span></a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acordeon-item-3">
+                            <div class="panel-body">
+                                <div class="checkbox-box">
+                                    <div class="checkbox-vertical">
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor10" id="valor10" name="valor10" [(ngModel)]="proveedoresFiltros.e_alta"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor10">Alta</label>
+                                        </div>
+                                        <div class="checkbox-btn">
+                                            <input type="checkbox" value="valor11" id="valor11" name="valor11" [(ngModel)]="proveedoresFiltros.e_baja"/>
+                                            <label (click)="loadingService.showLoading(true); seleccionFiltro();" for="valor11">Baja</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col" style="background: white;">
+        <div class="row justify-content-start">
+                <!-- <a href="#" data-toggle=".container" id="sidebar-toggle" class="btn"(click)=menu()>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a> -->
+            <div class="container-fluid container-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Proveedores&nbsp;&nbsp;</li>
+                    <li class="breadcrumb-item " aria-current="page">Búsqueda de Proveedores</li>
+                </ol>
+            </div>      
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="rps-button_addons input-group">
+                            <input #buscador type="text" class="form-control" placeholder="Introduce una palabra para buscar" (keyup)="buscar(buscador.value)">
+                            <!-- <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Buscar</button>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center" >
+                    <div class="col-12">
+                        <div class="rps-tabla">
+                            <table id="myTable" class="tablesorter"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row  sizefooter flex-row-reverse">
+    <div class="botonera" >
+        <button [routerLink]="['/alta-proveedores']" class="boton boton-estandar">Alta Nueva</button>
+    </div>
+</div>
+<app-loading-component></app-loading-component>

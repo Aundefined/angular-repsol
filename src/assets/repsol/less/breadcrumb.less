@@ -1,0 +1,38 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.container-breadcrumb {
+    padding-top: 0;
+    padding-left: 2.813em;
+    @media screen and (max-width: @bk1) {
+        // Las migas de pan no se muestran en mobile
+        display: none;
+    }
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: @regular;
+    font-size: 0.813em;
+
+    li {
+        a {
+            color: @naranja-principal;
+        }
+
+        .active {
+            color: @gris-oscuro;
+            cursor: default;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+// Color de la barra inclinada separadora
+
+.breadcrumb > li+li:before {
+    color: @naranja-principal;
+}

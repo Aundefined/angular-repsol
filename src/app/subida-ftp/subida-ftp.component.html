@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 top"></div>
+  </div>
+  <div class="row">
+    <div class="col col-md-1"></div>
+
+    <div *ngIf="!alerta && !success && !errorEnvio && !cargando" class="col col-md-10">
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="texto-resaltado-alerta">Selecciona el archivo que quieres subir</span>
+      </div>
+    </div>
+
+    <div *ngIf="success" class="col col-md-10">
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="texto-resaltado-alerta">Archivo subido con éxito</span>
+      </div>
+    </div>
+
+      <div *ngIf="cargando" class="col-md-4"></div>
+      <div *ngIf="cargando" class="rps-loading col col-md-2">
+        <div class="row fila-componente">
+          <p class="rps-main-subtitulo">Enviando archivo</p>
+          <figure class="rps-loading__figure">
+            <img class="rps-loading__img" src="../../assets/repsol/img/loading.gif">
+          </figure>
+        </div>
+      </div>
+      <div *ngIf="cargando" class="col-md-4"></div>
+
+    <div *ngIf="errorEnvio" class="col col-md-10">
+      <div class="alert alert-danger" role="alert">Error en el envío</div>
+    </div>
+
+    <div *ngIf="alerta" class="col col-md-10">
+      <div class="alert alert-danger" role="alert">Formato incorrecto</div>
+    </div>
+   
+    <div class="col col-md-1"></div>
+  </div>
+
+  <div class="row">
+    <div class="col col-md-4"></div>
+    <div class="rps-button_addons input-group col col-md-4">
+      <input type="text" readonly class="form-control" name="selectedFile" [(ngModel)]="selectedFileName">
+      <input style="display: none" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        (change)="onFileChanged($event.target.files)" #fileInput>
+      <span class="input-group-btn">
+        <button (click)="fileInput.click()" class="btn btn-default" type="button">Buscar</button>
+        <button (click)="subir()" class="btn btn-default" type="button">Subir</button>
+      </span>
+    </div>
+    <div class="col col-md-4"></div>
+  </div>
+</div>

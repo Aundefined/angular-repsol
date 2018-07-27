@@ -1,0 +1,144 @@
+<div class="right-paragraph" [hidden]="!estadoPro">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" id="cls-breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Promociones</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Gestión de Promociones</li>
+        </ol>
+    </nav>
+    <div class="cls-title">
+        <span>DATOS CABECERA</span>
+    </div>
+    <div class="cls-form-registrar table-responsive">
+        <table class="table table-sm">
+            <thead class="bg-Cabecera">
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col" style="width:  350px;">Descripción</th>
+                    <th scope="col" style="width:  350px;">Descripción Ticket</th>
+                    <th scope="col" style="width:  150px;">Fecha Desde</th>
+                    <th scope="col" style="width:  150px;">Fecha Hasta</th>
+                    <th scope="col">Artículos Necesarios</th>
+                    <th scope="col">Importe Promoción</th>
+                    <th scope="col">% DTO Medio</th>
+                    <th scope="col">Valor DTO Medio</th>
+                    <th scope="col">Prioridad</th>
+                    <th scope="col" style="width: 80px;">Importe Mínimo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-fila">
+                    <td>{{mPromotions.code}}</td>
+                    <td>
+                        <input type="text" id="inputDesc" class="form-control cls-input" value="" [(ngModel)]="mPromotions.description" name="description"
+                            [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{mPromotions.description}}" title="{{mPromotions.description}}">
+                    </td>
+                    <td>
+                        <input type="text" id="inputDescTiket" class="form-control cls-input" value="" [(ngModel)]="mPromotions.description_Tpv"
+                            name="description_Tpv" [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{mPromotions.description_Tpv}}"
+                            title="{{mPromotions.description_Tpv}}">
+                    </td>
+                    <td>
+                        <div class="form-inline ">
+                            <input class="form-control cls-fecha cls-input " id="inputFecDes" placeholder="dd/mm/yyyy" (keyup)="verificarFechaRealDesde()"
+                                (blur)="asignarFechaRealDesde()" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="mPromotions.fecha_desde"
+                                name="fecha_desde" [disabled]="!habilitarControles()">
+                            <div class=" input-group-append">
+                                <button class="btn  btnFecha" (click)="d.toggle()" type="button" [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="Seleccionar fecha">
+                                    <img src="assets/icon-calendar.png" style="width: 2rem; height: 1.5rem; cursor: pointer;" />
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-inline ">
+                            <input class="form-control cls-fecha cls-input" placeholder="dd/mm/yyyy" (keyup)="verificarFechaRealHasta()" (blur)="asignarFechaRealHasta()"
+                                ngbDatepicker #h="ngbDatepicker" [(ngModel)]="mPromotions.fecha_hasta" name="fecha_hasta" [disabled]="!habilitarControles()">
+                            <div class=" input-group-append">
+                                <button class="btn  btnFecha" (click)="h.toggle()" type="button" [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="Seleccionar fecha">
+                                    <img src="assets/icon-calendar.png" style="width: 2rem; height: 1.5rem; cursor: pointer;" />
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{mPromotions.cant_Min}}</td>
+                    <!-- <td>{{mPromotions.pvp_Promotion | number:'1.2-2'}}</td>
+                    <td>{{mPromotions.dto_Medio | number:'1.2-2'}}</td>
+                    <td>{{mPromotions.valor_Dto | number:'1.2-2'}}</td> -->
+                    <td> <input type="number" value="{{mPromotions.pvp_Promotion | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center;"></td>
+                    <td> <input type="number" value="{{mPromotions.dto_Medio | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center"></td>
+                    <td> <input type="number" value="{{mPromotions.valor_Dto | number:'1.2-2'}}" readonly="readonly" style=" width: 5em; border: 0em; background-color: transparent; text-align: center"></td>
+                    <td>
+                        <input type="number" id="inputPrio" min="0" max="9" step="1" maxlength="1" value="0" class="form-control cls-input-numero"
+                            value="" [(ngModel)]="mPromotions.prioridad" name="prioridad" (blur)="validarEntradaPrioridad()"
+                            (keyup)="onInputChangePrioridad()" [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{mPromotions.prioridad}}">
+                    </td>
+                    <td>
+                        <input type="text" id="inputImpMin" value="0" maxlength="7" value="0" class="form-control cls-input-numero" value="" [(ngModel)]="mPromotions.importe_Minimo"
+                            #importeMinimo name="importe_Minimo" (blur)="onInputChangeImpMinTexto()" (keyup)="validarEntradaImpMinTexto($event,importeMinimo)"
+                            [disabled]="!habilitarControles()" placement="bottom" ngbTooltip="{{mPromotions.importe_Minimo}}">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cls-title">
+        <a href="javascript:void(0);" (click)="toggleDiv(ocultaDivComPro)">
+            <span>COMBUSTIBLES PROMOCIONABLES</span>
+        </a>
+
+    </div>
+    <div class="cls-form-registrar" [hidden]="!ocultaDivComPro">
+
+        <table class="table table-sm table-striped-alter" style="width: 20%;">
+            <thead class="bg-Cabecera">
+                <tr>
+                    <th scope="col" style=" width: 70%;">Producto de pista</th>
+                    <th scope="col" style="width: 30%;">Precio</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-fila" *ngFor="let promCond of mPromotions.detalleConditions; let i = index;trackBy:trackByIdx" [hidden]="habilitarControles()==false?(promCond.importe>'0,00'?false:true):false">
+                    <td>{{promCond.nombre}}</td>
+                    <td>
+                        <input type="text" maxlength="5" value="0" #importe class="form-control cls-importe cls-input" value="{{mPromotions.detalleConditions[i].importe}}"
+                            [(ngModel)]="mPromotions.detalleConditions[i].importe" name="importe{{i}}" (blur)="onInputChangeCombPromTexto(i)"
+                            (keyup)="validarEntradaCombPromTexto($event,i,importe)" [disabled]="!habilitarControles()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <div class="cls-title">
+        <span>TIPO DE PROMOCIÓN</span>
+    </div>
+    <div class="cls-form-registrar">
+        <div class="form-row">
+            <div class="form-group col-xs-3 col-sm-5 col-md-5 col-lg-3 mx-sm-3 mb-2">
+                <span class="cls-span">Seleccione el tipo de promoción:</span>
+            </div>
+            <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2" style="padding-left: 30px;">
+                <input type="radio" name="rdbTipo" value="1" [(ngModel)]="mPromotions.type" class="form-check-input" (change)="redireccionarTipo()"
+                    id="rdbProArt" [disabled]="!mPromotions.habilitarTipo">
+                <label class="form-check-label lbl-title" for="exampleCheck1">Promoción de artículos</label>
+            </div>
+            <div class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 mx-sm-3 mb-2" style="padding-left: 30px;">
+                <input type="radio" name="rdbTipo" value="2" [(ngModel)]="mPromotions.type" class="form-check-input" (change)="redireccionarTipo()"
+                    id="rdbProGru" [disabled]="!mPromotions.habilitarTipo">
+                <label class="form-check-label lbl-title" for="exampleCheck1"> Promoción de grupos</label>
+            </div>
+        </div>
+    </div>
+
+    <app-promocion-articulo [mPromotions]="mPromotions" [mPromotionsById]="mPromotionsById" (desahabilitarTipo)="inhabilitarTipo($event)"
+        (volverForm)="cambiarEstadoArt($event)" [hidden]="!estadoArt"></app-promocion-articulo>
+    <app-promocion-grupo [mPromotions]="mPromotions" [mPromotionsById]="mPromotionsById" (desahabilitarTipo)="inhabilitarTipo($event)"
+        (volverForm)="cambiarEstadoGru($event)" [hidden]="!estadoGru"> </app-promocion-grupo>
+</div>

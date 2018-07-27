@@ -1,0 +1,87 @@
+<!-- <button type="button" class="btn btn-primary" (click)=montarTabla() data-toggle="modal" data-target=".bd-example-modal-lg" >Buscador</button> -->
+<button type="button" class="boton boton-estandar" (click)=montarTabla() data-toggle="modal" data-target=".bd-example-modal-lg">Buscador</button>
+
+<!-- Large modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <div class="row col-11">
+            <form class="col-12">
+              <div class="row">
+                <div class="col-5">
+                  <div class="grupo-input">
+                    <select class="rps-select selector-multiple" name="opciones-multiples" id="opciones-multiples">
+                        <option selected>Elige para buscar...</option>  
+                        <option *ngFor="let key of keys" value={{key}}>{{key.toLowerCase()}}</option>
+                    </select>
+                  </div>
+                  <!-- <select class="form-control form-control-sm">
+                      <option>Buscar por...</option>
+                      <option *ngFor="let key of keys">{{key.toLowerCase()}}</option>
+                  </select> -->
+                </div>
+                <div class="col-7">
+                    <div class="rps-button_addons input-group">
+                      <input type="text" class="form-control" placeholder="Introduce una palabra para buscar">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Buscar</button>
+                      </span>
+                    </div>
+                    <!-- <input class="form-control form-control-sm" type="text" placeholder="Es un input"> -->
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-1 justify-content-center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+              </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col rps-tabla">
+                <table id="myTable" class="tablesorter">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th *ngFor="let key of keys">{{key.toUpperCase()}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let registro of values; let i = index">
+                        <th scope="row row-centered">{{i}}</th>
+                        <td *ngFor="let value of registro">{{value}}</td>
+                  </tbody>
+                </table>
+                
+              <!-- <table datatable id="pagina" class="table table-sm">
+                <thead class ="cabeceraTabla">
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th *ngFor="let key of keys">{{key}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let registro of values; let i = index">
+                    <th class="text-center" scope="row row-centered">{{i}}</th>
+                    <td *ngFor="let value of registro">{{value}}</td>
+                  </tr>
+                </tbody>
+              </table> -->
+            </div>
+          </div><!--End row-->
+        </div><!--End Modal body-->
+        <!-- <div class="modal-footer">
+            <div class="rps-paginacion">
+              <nav aria-label="Page navigation">
+                  <ul id="paginacion-adaptativa" class="rps-pagination-list">
+                  </ul>
+              </nav>
+            </div>
+        </div> -->
+      </div>
+    </div>
+  </div>

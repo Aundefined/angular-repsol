@@ -1,0 +1,73 @@
+@import "../../../../assets/assets_generalComponents/less/generic/_generic__variables";
+
+.rps-paginacion {
+    .rps-pagination-list {
+        padding: 0 0  1.500em 0;
+        margin: 0;
+        min-width: 18.125em;
+        &.rps-paginacion-right {
+            float: right;
+        }
+        .page-item {
+            min-width: 48px;
+            display: inline-block;
+            a {
+                font-family: @regular;
+                font-size: 0.938em;
+                color: @naranja-principal;
+                width: 100%;
+                text-align: center;
+                padding: 0.667em 12px;
+                border-right-width: 0;
+                &:hover {
+                    border-color: @naranja-principal;
+                    background-color: @naranja-principal;
+                    color: @blanco;
+                }
+            }
+            &.active {
+                a {
+                    background-color: @naranja-principal;
+                    border-color: @naranja-principal;
+                    color: @blanco;
+                    &:hover {
+                        background-color: @naranja-principal;
+                        border-color: @naranja-principal;
+                    }
+                }
+            }
+            &.next{
+                a {
+                    border-right-width: 1px;
+                }
+            }
+        }
+    }
+    //
+    // ***** Botones Anterior-Siguiente *****
+    ///
+    .rps-pagination-button {
+        text-align: left;
+        list-style: none;
+        padding: 0;
+        li {
+            display: inline-block;
+        }
+        li a {
+            font-family: @regular;
+            font-size: 1em;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            border-color: @gris-claro;
+            color: @naranja-principal;
+
+            &:hover {
+                background-color: @naranja-principal;
+                color: @blanco;
+                border-color: @naranja-principal;
+            }
+        }
+    }
+}
+
